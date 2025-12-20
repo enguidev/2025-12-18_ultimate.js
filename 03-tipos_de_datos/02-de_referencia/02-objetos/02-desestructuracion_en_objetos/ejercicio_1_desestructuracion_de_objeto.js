@@ -88,12 +88,12 @@ const persona = {
 
 // Extraer propiedades anidadas
 const {
-  nombre,
+  nombre2,
   direccion: { ciudad, pais },
   contacto: { email },
 } = persona;
 
-console.log("Nombre:", nombre); // "Carlos"
+console.log("Nombre2:", nombre2); // "Carlos"
 console.log("Ciudad:", ciudad); // "Madrid"
 console.log("País:", pais); // "España"
 console.log("Email:", email); // "carlos@example.com"
