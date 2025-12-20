@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ejemplo de Eventos</title>
+  </head>
+  <body>
+    <button id="miBoton">Haz clic en mí</button>
+    <input type="text" id="miInput" placeholder="Escribe algo..." />
+    <form id="miFormulario">
+      <input type="submit" value="Enviar" />
+    </form>
+
+    <script>
+      const boton = document.getElementById("miBoton");
+      const input = document.getElementById("miInput");
+      const formulario = document.getElementById("miFormulario");
+
+      // Evento click en el botón () (Evento click en el botón: Se ejecuta cuando se hace clic en el botón y muestra el mensaje "Botón clicado" en la consola).
+      boton.addEventListener("click", function () {
+        console.log("Botón clicado");
+      });
+
+      // Evento keydown en el input (Se ejecuta cada vez que se presiona una tecla mientras el input tiene el enfoque y muestra el carácter de la tecla presionada en la consola).
+      input.addEventListener("keydown", function (event) {
+        console.log(`Tecla presionada: ${event.key}`);
+      });
+
+      // Evento submit en el formulario (Se ejecuta cuando se intenta enviar el formulario, pero se previene el envío y se muestra el mensaje "Formulario no enviado" en la consola).
+      formulario.addEventListener("submit", function (event) {
+        event.preventDefault();
+        console.log("Formulario no enviado");
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,19 @@
+      .cuadrado {
+        width: 200px;
+        height: 200px;
+        text-align: center;
+      }
+
+      .cuadradop {
+        width: 100px;
+        height: 100px;
+        text-align: center;
+      }
+
+      .rojo {
+        background-color: red;
+      }
+
+      .azul {
+        background-color: blue;
+      }

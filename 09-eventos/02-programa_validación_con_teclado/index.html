@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Validación con Eventos de Teclado</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <body>
+    <body>
+    <div class="container">
+        <h1>⌨️ Validación con Teclado</h1>
+        <p class="subtitle">Ejemplos prácticos para tu examen</p>
+
+        <!-- Selector de modo de validación -->
+        <div class="validation-mode">
+            <h3>🎯 Modo de Validación</h3>
+            <div class="radio-group">
+                <div class="radio-option">
+                    <input type="radio" id="modoTiempoReal" name="validacion" value="tiempo-real" checked>
+                    <label for="modoTiempoReal">
+                        ⚡ Tiempo Real
+                        <div style="font-size: 0.85em; margin-top: 5px; opacity: 0.9;">Valida mientras escribes</div>
+                    </label>
+                </div>
+                <div class="radio-option">
+                    <input type="radio" id="modoEnvio" name="validacion" value="envio">
+                    <label for="modoEnvio">
+                        📤 Al Enviar
+                        <div style="font-size: 0.85em; margin-top: 5px; opacity: 0.9;">Valida al hacer submit</div>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <form id="formulario">
+            <!-- CAMPO 1: Solo números (Teléfono) -->
+            <div class="form-group">
+                <label class="field-label" for="telefono">📱 Teléfono (solo números)</label>
+                <input
+                    type="text"
+                    id="telefono"
+                    name="telefono"
+                    maxlength="9"
+                    placeholder="Ej: 612345678"
+                />
+                <div class="hint">✏️ Solo se permiten números (9 dígitos)</div>
+                <div class="error-message" id="errorTelefono">
+                    ❌ Debe contener exactamente 9 números
+                </div>
+            </div>
+
+            <!-- CAMPO 2: DNI (8 números + letra) -->
+            <div class="form-group">
+                <label class="field-label" for="dni">🆔 DNI (8 números + letra)</label>
+                <input
+                    type="text"
+                    id="dni"
+                    name="dni"
+                    maxlength="9"
+                    placeholder="Ej: 12345678A"
+                    style="text-transform: uppercase"
+                />
+                <div class="hint">✏️ Formato: 12345678A</div>
+                <div class="error-message" id="errorDni">
+                    ❌ Formato incorrecto (8 números + letra)
+                </div>
+            </div>
+
+            <!-- CAMPO 3: Email -->
+            <div class="form-group">
+                <label class="field-label" for="email">📧 Email</label>
+                <input
+                    type="text"
+                    id="email"
+                    name="email"
+                    placeholder="ejemplo@correo.com"
+                />
+                <div class="hint">✏️ Formato válido de correo electrónico</div>
+                <div class="error-message" id="errorEmail">❌ Email inválido</div>
+            </div>
+
+            <!-- CAMPO 4: Edad (solo números, máx 3 cifras) -->
+            <div class="form-group">
+                <label class="field-label" for="edad">🎂 Edad (mayor de 18)</label>
+                <input
+                    type="text"
+                    id="edad"
+                    name="edad"
+                    maxlength="3"
+                    placeholder="Ej: 25"
+                />
+                <div class="hint">✏️ Solo números, entre 18 y 120</div>
+                <div class="error-message" id="errorEdad">
+                    ❌ Debes tener entre 18 y 120 años
+                </div>
+            </div>
+
+            <!-- CAMPO 5: Comentario con contador -->
+            <div class="form-group">
+                <label class="field-label" for="comentario">💬 Comentario (máx 200 caracteres)</label>
+                <textarea
+                    id="comentario"
+                    name="comentario"
+                    rows="4"
+                    maxlength="200"
+                    placeholder="Escribe tu comentario..."
+                ></textarea>
+                <div class="char-counter">
+                    <span id="charCount">0</span> / 200 caracteres
+                </div>
+            </div>
+
+            <button type="submit" class="btn">Enviar Formulario</button>
+            <button type="button" class="btn btn-secondary" id="resetBtn">
+                Limpiar
+            </button>
+        </form>
+
+        <div class="shortcuts-box">
+            <h3>⌨️ Atajos de Teclado:</h3>
+            <ul>
+                <li><strong>Ctrl + Enter:</strong> Enviar formulario</li>
+                <li><strong>Escape:</strong> Limpiar formulario</li>
+                <li><strong>Tab:</strong> Navegar entre campos</li>
+            </ul>
+        </div>
+
+        <div class="result" id="result">
+            <h3>✅ Datos del Formulario</h3>
+            <div id="resultContent"></div>
+        </div>
+    </div>
+  </body>
+</html>

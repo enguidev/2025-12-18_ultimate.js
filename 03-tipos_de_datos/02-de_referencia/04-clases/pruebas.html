@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 2 formas de crear clases
+
+      // 1ª forma
+      function Fpersona(nombre) {
+        this.nombre = nombre;
+        this.edad = 0;
+        this.cumplir = function () {
+          this.edad++;
+        };
+      }
+
+      // 2ª forma
+      class Cpersona {
+        constructor(nombre) {
+          this.nombre = nombre;
+          this.edad = 0;
+        }
+        cumplir() {
+          this.edad++;
+        }
+      }
+
+      /* Creamos un objeto/instancia (p1) de tipo 
+         Fpersona y le pasamos por parámetro el nombre
+      */
+      let p1 = new Fpersona("Raúl");
+      // Ejecutamos su método cumplir()
+      p1.cumplir();
+      // Vemos el objeto
+      console.log(p1); // Fpersona {nombre: 'Raúl', edad: 1, cumplir:f}...
+      // Vemos Raúl tiene: 1
+      console.log(p1.nombre + " tiene: " + p1.edad);
+
+      /* 
+        Creamos un objeto/instancia (p2) de tipo 
+        Cpersona y le pasamos por parámetro el nombre
+      */
+      let p2 = new Cpersona("Raúl2");
+      // Ejecutamos 2 veces su método cumplir
+      p2.cumplir();
+      p2.cumplir();
+      // Vemos Raúl2 tiene: 2
+      console.log(p2.nombre + " tiene: " + p2.edad);
+
+      /* Vemos de que tipo muestra por consola que es la 
+         clase Fpersona y Cpersona y vemos que es function
+      */
+      console.log(typeof Fpersona); //function
+      console.log(typeof Cpersona); //function
+
+      // Mostramos el objeto p2
+      console.log(p2); // Cpersona {nombre: 'Raúl2', edad: 2}
+
+      /* Creamos un objeto/instancia de tipo Cpersona (p3)
+         y le pasamos el nombre
+      */
+      let p3 = new Cpersona("pedro");
+
+      // Mostramos el objeto
+      console.log(p3); // Cpersona {nombre: 'pedro', edad: 0}
+      Cpersona.prototype.apellido = "xx";
+
+      p4 = new Cpersona(" persona 4");
+      p4.apellido = "otro";
+      console.log(p4.apellido);
+    </script>
+  </body>
+</html>

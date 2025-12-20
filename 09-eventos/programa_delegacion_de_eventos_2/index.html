@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delegación de eventos 2</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎯 Delegación de Eventos</h1>
+      <p class="subtitle">Ejemplo completo con todos los controles</p>
+
+      <div class="section">
+        <div class="info-box">
+          <strong>📝 Instrucciones:</strong><br />
+          1. <strong>Click en cuadrado</strong>: Muestra su número en el pie<br />
+          2. <strong>Borrar Pie</strong>: Limpia el mensaje del pie<br />
+          3. <strong>Agregar</strong>: Añade un nuevo cuadrado<br />
+          4. <strong>Eliminar Último</strong>: Quita el último cuadrado<br />
+          5. <strong>Reiniciar</strong>: Vuelve al estado inicial (10 cuadrados)
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>🎮 Controles</h2>
+        <div class="controls">
+          <button id="btnBorrarPie" class="danger">🗑️ Borrar Pie</button>
+          <button id="btnAgregar" class="success">➕ Agregar Cuadrado</button>
+          <button id="btnEliminar" class="warning">➖ Eliminar Último</button>
+          <button id="btnReiniciar" class="secondary">🔄 Reiniciar Todo</button>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>📦 Cuadrados (haz click en cualquiera)</h2>
+        <div id="contenedor"></div>
+      </div>
+
+      <div class="section">
+        <h2>📄 Pie de Página</h2>
+        <div id="pie" class="vacio">
+          👆 Haz click en un cuadrado para ver su número aquí
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>📊 Estadísticas en Tiempo Real</h2>
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-number" id="statCuadrados">10</div>
+            <div class="stat-label">Cuadrados Totales</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="statClicks">0</div>
+            <div class="stat-label">Clicks Realizados</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="statEventListeners">1</div>
+            <div class="stat-label">Event Listeners</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section">
+        <h2>💻 Código Principal (Delegación)</h2>
+        <div class="codigo">
+          <span class="comentario"
+            >// ✅ DELEGACIÓN: UN SOLO evento para TODOS los cuadrados</span
+          >
+          contenedor.<span class="keyword">addEventListener</span>(<span
+            class="string"
+            >'click'</span
+          >, <span class="keyword">function</span>(e) {
+          <span class="comentario"
+            >// Verificar si el click fue en un cuadrado</span
+          >
+          <span class="keyword">if</span> (e.target.classList.contains(<span
+            class="string"
+            >'cuadrado'</span
+          >)) {
+          <span class="comentario">// e.target = elemento clickeado</span>
+          pie.textContent = <span class="string">'✅ Has clickeado: '</span> +
+          e.target.textContent;
+
+          <span class="comentario"
+            >// Los nuevos cuadrados funcionan automáticamente!</span
+          >
+          } });
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

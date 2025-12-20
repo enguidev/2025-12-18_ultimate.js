@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delegación de Eventos</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <body>
+    <div class="container">
+        <h1>🎯 Delegación de Eventos</h1>
+        <p class="subtitle">Ejemplo práctico de Event Delegation en JavaScript</p>
+
+        <div class="info-box">
+            <h3>💡 ¿Qué es la Delegación de Eventos?</h3>
+            <p>
+                La <strong>delegación de eventos</strong> es una técnica donde en lugar de añadir un event listener 
+                a cada elemento hijo, añadimos UN SOLO listener al elemento padre. Esto aprovecha el 
+                <strong>bubbling</strong> (propagación) de eventos en el DOM.
+            </p>
+            <p style="margin-top: 10px;">
+                <strong>Ventajas:</strong> Mejor rendimiento, funciona con elementos dinámicos, menos memoria utilizada.
+            </p>
+        </div>
+
+        <!-- EJEMPLO 1: Lista de Tareas -->
+        <div class="section">
+            <h2>📝 Ejemplo 1: Lista de Tareas con Delegación</h2>
+            
+            <div class="add-task">
+                <input type="text" id="taskInput" placeholder="Escribe una nueva tarea...">
+                <button id="addTaskBtn">➕ Añadir Tarea</button>
+            </div>
+
+            <ul id="taskList">
+                <!-- Las tareas se añadirán aquí dinámicamente -->
+            </ul>
+
+            <div class="stats">
+                <div class="stat-item">
+                    <div class="stat-number" id="totalTasks">0</div>
+                    <div class="stat-label">Total Tareas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="completedTasks">0</div>
+                    <div class="stat-label">Completadas</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" id="pendingTasks">0</div>
+                    <div class="stat-label">Pendientes</div>
+                </div>
+            </div>
+
+            <div class="code-example">
+                <pre><code>// ✅ CON DELEGACIÓN (Un solo listener en el padre)
+document.getElementById('taskList').addEventListener('click', function(e) {
+    if (e.target.classList.contains('btn-complete')) {
+        // Completar tarea
+    }
+    if (e.target.classList.contains('btn-delete')) {
+        // Eliminar tarea
+    }
+});
+
+// ❌ SIN DELEGACIÓN (Un listener por cada botón)
+// Esto sería muy ineficiente con muchos elementos</code></pre>
+            </div>
+        </div>
+
+        <!-- EJEMPLO 2: Galería de Imágenes -->
+        <div class="section">
+            <h2>🖼️ Ejemplo 2: Galería de Imágenes con Delegación</h2>
+            
+            <div class="add-image">
+                <input type="text" id="emojiInput" placeholder="Escribe un emoji (🎨🌟🚀🎭🎪)">
+                <button id="addImageBtn">➕ Añadir Imagen</button>
+            </div>
+
+            <div id="gallery">
+                <!-- Las imágenes se añadirán aquí dinámicamente -->
+            </div>
+
+            <div class="code-example">
+                <pre><code>// ✅ CON DELEGACIÓN
+document.getElementById('gallery').addEventListener('click', function(e) {
+    // Delegamos el click desde el contenedor padre
+    if (e.target.classList.contains('delete-image')) {
+        // Eliminar imagen
+    }
+    if (e.target.classList.contains('gallery-item')) {
+        // Ver imagen en grande
+    }
+});</code></pre>
+            </div>
+        </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="01-document_propiedades_basicas.js" defer></script>
+    <script src="02-document_metodos_seleccion.js" defer></script>
+    <script src="03-document_metodos_manipulacion.js" defer></script>
+    <script
+      src="04-document_metodos_inspeccion_de_posicion_y_estado.js"
+      defer
+    ></script>
+    <script src="05-metodos_de_eventos.js" defer></script>
+    <script src="06-propiedades_del_dom.js" defer></script>
+    <script src="07-navigator_clipboard_api.js" defer></script>
+    <title>Manipulación del DOM</title>
+  </head>
+  <body>
+    <h1 id="titulo">Bienvenido, Carlos</h1>
+
+    <p class="descripcion">Este es un párrafo de prueba.</p>
+    <p class="descripcion">Otro párrafo con la misma clase.</p>
+
+    <a href="https://ejemplo.com" class="enlace">Ir a ejemplo</a>
+    <a href="https://google.com" class="enlace">Ir a Google</a>
+
+    <img src="https://via.placeholder.com/100" alt="Imagen de prueba" />
+    <img src="https://via.placeholder.com/150" alt="Otra imagen" />
+
+    <form id="formulario">
+      <input type="text" name="nombre" placeholder="Tu nombre" />
+      <input type="submit" value="Enviar" />
+    </form>
+
+    <button class="btn">Botón 1</button>
+    <button class="btn">Botón 2</button>
+
+    <div class="container">
+      <p class="texto1">Lorem, ipsum dolor. 1</p>
+      <p class="texto1">Lorem, ipsum dolor. 2</p>
+      <p class="texto1">Lorem, ipsum dolor. 3</p>
+    </div>
+    <p class="texto1">Fuera del container</p>
+
+    <!-- HTML DE EJEMPLO -->
+    <div class="container2" id="miContainer" data-tipo="contenedor">
+      <p class="text-danger primero">Párrafo 1 en container</p>
+      <p class="text-danger text-warning">Párrafo 2 en container</p>
+      <p class="text-warning">Párrafo 3 en container</p>
+      <span class="text-danger">Span en container</span>
+    </div>
+
+    <div class="wrapper">
+      <p class="text-danger" name="parrafoImportante">Párrafo 4 en wrapper</p>
+      <p class="text-danger text-warning">Párrafo 5 en wrapper</p>
+      <p>Párrafo 6 en wrapper</p>
+    </div>
+
+    <div class="box">
+      <p class="text-danger">Párrafo 7 en box</p>
+      <div class="inner">
+        <p class="text-danger">Párrafo 8 en box>inner</p>
+      </div>
+    </div>
+
+    <p class="text-danger">Párrafo 9 fuera de divs</p>
+
+    <form id="miFormulario">
+      <input type="text" name="nombre" class="input-text" id="inputNombre" />
+      <input type="email" name="email" class="input-text" />
+      <input type="checkbox" name="aceptar" value="si" />
+      <button type="submit">Enviar</button>
+    </form>
+
+    <script>
+      // Puedes añadir pruebas inline aquí si lo deseas
+    </script>
+  </body>
+</html>

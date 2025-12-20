@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Ejemplos de Formularios en JavaScript</title>
+    <!-- Cambia el nombre del script aquí según el ejemplo que quieras probar -->
+    <script src="03-formularios_validacion_html5.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <h1>🧾 Ejemplos de Formularios en JavaScript</h1>
+
+    <form id="formulario">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required minlength="3" />
+      <!--Para el 2º .js-->
+      <!-- <input type="text" id="nombre" name="nombre" /> -->
+
+      <label for="email">Correo electrónico:</label>
+      <input type="email" id="email" name="email" required />
+      <!--Para el 2º .js-->
+      <!-- <input type="email" id="email" name="email" /> -->
+
+      <button type="submit">Enviar</button>
+      <button type="button" class="btn">Resetear</button>
+    </form>
+  </body>
+</html>

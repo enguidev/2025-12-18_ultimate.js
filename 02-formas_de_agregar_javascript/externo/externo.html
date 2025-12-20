@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Archivo JavaScript externo</title>
+    <!-- -Creamos un archivo .js separado y lo vinculamos con el html de esta forma  
+         Se recomienda poner el atributo defer que descarga el script en paralelo 
+         y lo ejecuta después de parsear el HTML.
+
+         -Se puede añadir tantas vinculaciones con archivos .js como necesitemos.
+         
+         -Esta etiqueta tiene más atributos como:
+            -async: Descarga el script en paralelo y lo ejecuta inmediatamente cuando termina:
+              No garantiza el orden de ejecución
+              Ideal para scripts independientes (analytics, ads).
+
+            -type: Especifica el tipo de script:
+                JavaScript moderno con módulos ES6:
+                  <script type="module" src="app.js"></script>
+                Script que no se ejecuta (útil para templates):
+                  <script type="text/template" id="mi-template">
+                      <div>contenido</div>
+                  </script>
+
+            -integrity: Verificación de seguridad (SRI):
+              <script src="https://cdn.example.com/lib.js" 
+                  integrity="sha384-xyz123..." 
+                  crossorigin="anonymous"></script>
+
+            -crossorigin: Control de CORS:
+                  <script src="https://cdn.com/script.js" crossorigin="anonymous"></script>
+                
+            -nomodule: Fallback para navegadores antiguos:
+                  <script type="module" src="modern.js"></script>
+                  <script nomodule src="legacy.js"></script>
+    -->
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- Al final del body (sin atributo defer) -->
+    <script src="script.js"></script>
+  </body>
+</html>

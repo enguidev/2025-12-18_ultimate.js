@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía Completa del DOM - JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- ============================================ -->
+    <!-- SCRIPTS DEL PROYECTO 4 - TODOS LOS MÓDULOS -->
+    <!-- ============================================ -->
+    <!-- defer: Los scripts se ejecutan DESPUÉS de que el HTML esté completamente parseado -->
+
+    <!-- ============================================ -->
+    <!-- SCRIPTS DEL PROYECTO 4 - TODOS LOS MÓDULOS -->
+    <!-- ============================================ -->
+    <!-- defer: Los scripts se ejecutan DESPUÉS de que el HTML esté completamente parseado -->
+
+    <!-- FUNDAMENTOS BÁSICOS -->
+    <script src="script1-propiedades_y_seleccion.js" defer></script>
+    <!-- <script src="script2-conversiones_y_manipulacion.js" defer></script> -->
+    <!-- <script src="script3-posiciones_y_manipulacion_avanzada.js" defer></script> -->
+    <!-- <script src="script4-copiar_cortar_y_funciones.js" defer></script> -->
+
+    <!-- INSPECCIÓN Y ESTADO -->
+    <!-- <script src="script5-inspeccion_y_estado.js" defer></script> -->
+
+    <!-- EVENTOS Y PROPIEDADES -->
+    <!-- <script src="script6-metodos_de_eventos.js" defer></script> -->
+    <!-- <script src="script7-propiedades_del_dom.js" defer></script> -->
+
+    <!-- ATRIBUTOS, ESTILOS Y DIMENSIONES -->
+    <!-- <script src="script8-atributos_clases_estilos.js" defer></script> -->
+    <!-- <script src="script9-dimensiones_y_posicionamiento.js" defer></script> -->
+
+    <!-- OBSERVADORES Y CONTENIDO AVANZADO -->
+    <!-- <script src="script10-observadores.js" defer></script> -->
+    <!-- <script src="script11-contenido_y_manipulacion.js" defer></script> -->
+
+    <!-- APIS ADICIONALES -->
+    <!-- <script src="script12-clipboard_api.js" defer></script> -->
+
+    <!-- MÉTODOS OBSOLETOS (Solo referencia educativa) -->
+    <!-- <script src="script13-metodos_obsoletos.js" defer></script> -->
+
+    <!-- RESUMEN FINAL -->
+    <!-- <script src="script14-resumen_final.js" defer></script> -->
+  </head>
+  <body>
+    <!-- ============================================ -->
+    <!-- SECCIÓN: ENCABEZADO PRINCIPAL -->
+    <!-- ============================================ -->
+    <!-- USADO EN:
+         - script1: getElementById("titulo")
+         - script2: replaceChild() para reemplazar este h1
+         - script9: document.all["titulo"]
+    -->
+    <h1 id="titulo">Guía Completa del DOM - JavaScript</h1>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN: ELEMENTOS BÁSICOS PARA PRUEBAS -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">Elementos Básicos</div>
+
+      <!-- USADO EN:
+           - script1: getElementsByClassName("descripcion")
+           - script1: querySelector(".descripcion")
+           - script2: removeChild() para eliminar el primero
+      -->
+      <!-- Párrafos con clase descripcion -->
+      <p class="descripcion">
+        Este es un párrafo de prueba con clase "descripcion".
+      </p>
+      <p class="descripcion">Otro párrafo con la misma clase "descripcion".</p>
+
+      <!-- USADO EN:
+           - script1: getElementsByClassName("enlace")
+           - script7: document.links
+      -->
+      <!-- Enlaces -->
+      <a href="https://ejemplo.com" class="enlace">Ir a ejemplo</a>
+      <a href="https://google.com" class="enlace">Ir a Google</a>
+
+      <!-- USADO EN:
+           - script7: document.images
+           - script10: Contar imágenes
+      -->
+      <!-- Imágenes -->
+      <div>
+        <img
+          src="https://via.placeholder.com/100"
+          alt="Imagen de prueba 100x100"
+        />
+        <img
+          src="https://via.placeholder.com/150"
+          alt="Imagen de prueba 150x150"
+        />
+      </div>
+
+      <!-- USADO EN:
+           - script1: getElementsByClassName("btn")
+           - script6: addEventListener("click")
+           - script10: Contar botones
+      -->
+      <!-- Botones -->
+      <div>
+        <button class="btn">Botón 1</button>
+        <button class="btn">Botón 2</button>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN: FORMULARIOS -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">Formularios</div>
+
+      <!-- USADO EN:
+           - script1: getElementById("formulario")
+           - script7: document.forms
+           - script7: document.forms[0]
+      -->
+      <!-- Formulario simple -->
+      <form id="formulario">
+        <input type="text" name="nombre" placeholder="Tu nombre" />
+        <input type="submit" value="Enviar" />
+      </form>
+
+      <!-- USADO EN:
+           - script1: getElementById("miFormulario")
+           - script1: form.nombre, form.email (acceso por name)
+           - script1: form[0] (acceso por índice)
+           - script1: form.querySelectorAll("input")
+           - script1: form.querySelectorAll("input[type='text']")
+           - script1: form.elements
+           - script7: document.forms.miFormulario
+      -->
+      <!-- Formulario completo -->
+      <form id="miFormulario">
+        <input
+          type="text"
+          name="nombre"
+          class="input-text"
+          id="inputNombre"
+          placeholder="Nombre"
+        />
+        <input
+          type="email"
+          name="email"
+          class="input-text"
+          placeholder="Email"
+        />
+        <input type="checkbox" name="aceptar" value="si" id="aceptar" />
+        <label for="aceptar">Acepto los términos</label>
+        <button type="submit">Enviar Formulario</button>
+      </form>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN: CONTENEDORES CON CLASES .texto -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">Contenedor Principal (.container)</div>
+
+      <!-- USADO EN:
+           - script1: querySelector(".container")
+           - script1: querySelectorAll(".container .texto1")
+           - script3: querySelector(".container")
+           - script3: container.children[0], [1], [2]
+           - script3: :nth-child(), :first-child, :last-child
+           - script3: insertBefore(), appendChild()
+           - script3: prepend(), append(), before(), after()
+      -->
+      <div class="container">
+        <p class="texto texto1">Hijo 1 - con clases "texto" y "texto1"</p>
+        <p class="texto texto1">Hijo 2 - con clases "texto" y "texto1"</p>
+        <p class="texto texto1">Hijo 3 - con clases "texto" y "texto1"</p>
+        <p class="texto texto1">Hijo 4 - con clases "texto" y "texto1"</p>
+      </div>
+
+      <!-- USADO EN:
+           - script1: querySelectorAll(".texto1")
+           - script1: Ejemplo de elemento FUERA de .container
+      -->
+      <!-- Párrafo fuera del contenedor -->
+      <p class="texto1">Fuera del container - solo clase "texto1"</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN: CONTENEDORES CON CLASES text-danger y text-warning -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">
+        Contenedores con text-danger y text-warning
+      </div>
+
+      <!-- Container2 con ID y atributo data -->
+      <h2>Container 2 (ID: miContainer)</h2>
+
+      <!-- USADO EN:
+           - script1: getElementById("miContainer")
+           - script1: querySelector("#miContainer")
+           - script1: querySelector("[data-tipo='contenedor']")
+           - script1: getElementsByClassName("text-danger")
+           - script1: miContainer.querySelector(".text-danger")
+           - script1: querySelector(".primero") para navegación DOM
+           - script1: parentElement, children, firstElementChild, lastElementChild
+           - script1: nextElementSibling, previousElementSibling
+           - script1: closest(".container2")
+           - script2: getElementsByClassName("text-danger") para conversión a Array
+      -->
+      <div class="container2" id="miContainer" data-tipo="contenedor">
+        <p class="text-danger primero">
+          Párrafo 1 - classes: "text-danger primero"
+        </p>
+        <p class="text-danger text-warning">
+          Párrafo 2 - classes: "text-danger text-warning"
+        </p>
+        <p class="text-warning">Párrafo 3 - class: "text-warning"</p>
+        <span class="text-danger">Span - class: "text-danger"</span>
+      </div>
+
+      <!-- Wrapper -->
+      <h2>Wrapper</h2>
+
+      <!-- USADO EN:
+           - script1: getElementsByName("parrafoImportante")
+           - script1: querySelectorAll(".text-danger")
+           - script1: Ejemplo con atributo name
+      -->
+      <div class="wrapper">
+        <p class="text-danger" name="parrafoImportante">
+          Párrafo 4 - tiene atributo name="parrafoImportante"
+        </p>
+        <p class="text-danger text-warning">
+          Párrafo 5 - classes: "text-danger text-warning"
+        </p>
+        <p>Párrafo 6 - sin clases</p>
+      </div>
+
+      <!-- Box con elemento anidado -->
+      <h2>Box (con elemento anidado)</h2>
+
+      <!-- USADO EN:
+           - script1: querySelector(".box")
+           - script1: Ejemplo de selectores anidados
+           - script3: before(), after(), prepend(), append()
+      -->
+      <div class="box">
+        <p class="text-danger">Párrafo 7 - hijo directo de box</p>
+        <div class="inner">
+          <p class="text-danger">Párrafo 8 - nieto de box (dentro de .inner)</p>
+        </div>
+      </div>
+
+      <!-- USADO EN:
+           - script1: Ejemplo de elemento fuera de contenedores
+           - script1: querySelectorAll(".text-danger:not(.container .text-danger)")
+      -->
+      <!-- Párrafo fuera de todos los contenedores -->
+      <p class="text-danger">Párrafo 9 - fuera de todos los divs</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN: ELEMENTOS PARA COPIAR/CORTAR -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">Elementos para Copiar/Cortar y Pegar</div>
+
+      <!-- Elemento origen -->
+      <h2>Origen</h2>
+
+      <!-- USADO EN:
+           - script3: querySelectorAll(".texto")
+           - script3: cloneNode(false), cloneNode(true)
+           - script4: querySelector(".origen .texto") para COPIAR
+           - script4: querySelector(".origen") para CORTAR
+           - script4: copiarEnPosicion(), cortarEnPosicion()
+      -->
+      <div class="origen">
+        <p class="texto">Elemento a copiar/cortar</p>
+      </div>
+
+      <!-- Elemento destino -->
+      <h2>Destino</h2>
+
+      <!-- USADO EN:
+           - script4: querySelector(".destino")
+           - script4: destino.children[2] (tercer hijo)
+           - script4: insertBefore() para insertar en posición
+           - script4: Ejemplos de COPIAR y CORTAR
+      -->
+      <div class="destino">
+        <p>Destino - Hijo 1</p>
+        <p>Destino - Hijo 2</p>
+        <p>Destino - Hijo 3</p>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- MENSAJE INFORMATIVO FINAL -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">Información del Proyecto</div>
+
+      <p
+        style="
+          text-align: center;
+          font-size: 18px;
+          color: #2196f3;
+          font-weight: bold;
+        "
+      >
+        📚 Guía Completa del DOM en JavaScript
+      </p>
+
+      <p style="text-align: center; margin: 20px 0">
+        Abre la consola del navegador (F12) para ver todos los ejemplos
+        ejecutándose.<br />
+        Todos los scripts están comentados línea por línea para facilitar el
+        aprendizaje.
+      </p>
+
+      <div
+        style="
+          background: #e3f2fd;
+          padding: 20px;
+          border-radius: 8px;
+          margin: 20px 0;
+        "
+      >
+        <h3 style="color: #1976d2; margin-top: 0">
+          📋 Mapa de Contenido HTML → JavaScript:
+        </h3>
+
+        <h4 style="color: #1976d2; margin-top: 20px">
+          Script 1 - Propiedades y Selección:
+        </h4>
+        <ul style="line-height: 1.8">
+          <li><code>#titulo</code> → getElementById(), querySelector()</li>
+          <li><code>.descripcion</code> → getElementsByClassName()</li>
+          <li>
+            <code>#miContainer</code> → querySelector(),
+            getElementsByClassName()
+          </li>
+          <li>
+            <code>.primero</code> → Navegación DOM (parentElement, children,
+            etc.)
+          </li>
+          <li><code>#miFormulario</code> → Acceso especial a formularios</li>
+          <li><code>name="parrafoImportante"</code> → getElementsByName()</li>
+        </ul>
+
+        <h4 style="color: #1976d2; margin-top: 20px">
+          Script 2 - Conversiones y Manipulación:
+        </h4>
+        <ul style="line-height: 1.8">
+          <li><code>.text-danger</code> → Conversión HTMLCollection a Array</li>
+          <li><code>#titulo</code> → replaceChild() para reemplazo</li>
+          <li><code>.descripcion</code> → removeChild() para eliminación</li>
+          <li>Se crean elementos nuevos con createElement()</li>
+        </ul>
+
+        <h4 style="color: #1976d2; margin-top: 20px">
+          Script 3 - Posiciones y Manipulación Avanzada:
+        </h4>
+        <ul style="line-height: 1.8">
+          <li><code>.container</code> → children[0], [1], [2] por índice</li>
+          <li>
+            <code>.container</code> → :nth-child(), :first-child, :last-child
+          </li>
+          <li>
+            <code>.texto</code> → querySelectorAll() para selección múltiple
+          </li>
+          <li><code>.box</code> → before(), after(), prepend(), append()</li>
+        </ul>
+
+        <h4 style="color: #1976d2; margin-top: 20px">
+          Script 4 - Copiar, Cortar y Funciones:
+        </h4>
+        <ul style="line-height: 1.8">
+          <li><code>.origen</code> → Elemento fuente para copiar/cortar</li>
+          <li><code>.destino</code> → Contenedor destino</li>
+          <li><code>.texto</code> → cloneNode() para duplicar</li>
+          <li>Funciones: copiarEnPosicion(), cortarEnPosicion()</li>
+        </ul>
+
+        <h4 style="color: #1976d2; margin-top: 20px">
+          Script 5 - Inspección y Estado:
+        </h4>
+        <ul style="line-height: 1.8">
+          <li>No depende de elementos específicos del HTML</li>
+          <li>Usa propiedades globales del documento</li>
+          <li>elementFromPoint(), getSelection(), hasFocus(), etc.</li>
+        </ul>
+
+        <h4 style="color: #1976d2; margin-top: 20px">
+          Script 6 - Métodos de Eventos:
+        </h4>
+        <ul style="line-height: 1.8">
+          <li>document → addEventListener("click")</li>
+          <li>document → DOMContentLoaded, visibilitychange</li>
+          <li>Todos los elementos → Eventos disponibles</li>
+        </ul>
+
+        <h4 style="color: #1976d2; margin-top: 20px">
+          Script 7 - Propiedades del DOM:
+        </h4>
+        <ul style="line-height: 1.8">
+          <li><code>document.forms</code> → Todos los formularios</li>
+          <li><code>document.images</code> → Todas las imágenes</li>
+          <li><code>document.links</code> → Todos los enlaces</li>
+          <li><code>document.scripts</code> → Todos los scripts</li>
+        </ul>
+
+        <h4 style="color: #1976d2; margin-top: 20px">
+          Script 8 - Clipboard API:
+        </h4>
+        <ul style="line-height: 1.8">
+          <li>No depende de elementos específicos del HTML</li>
+          <li>navigator.clipboard.writeText() / readText()</li>
+          <li>Ejemplos con botones creados dinámicamente</li>
+        </ul>
+
+        <h4 style="color: #1976d2; margin-top: 20px">
+          Script 9 - Métodos Obsoletos:
+        </h4>
+        <ul style="line-height: 1.8">
+          <li><code>#titulo</code> → document.all["titulo"]</li>
+          <li>Demuestra métodos obsoletos (NO USAR)</li>
+          <li>Tabla de alternativas modernas</li>
+        </ul>
+
+        <h4 style="color: #1976d2; margin-top: 20px">
+          Script 10 - Resumen Final:
+        </h4>
+        <ul style="line-height: 1.8">
+          <li>Índice completo de todos los scripts</li>
+          <li>Estadísticas del documento</li>
+          <li>Mejores prácticas y recursos</li>
+        </ul>
+      </div>
+
+      <p style="text-align: center; color: #666; font-style: italic">
+        Este proyecto unifica y complementa los Proyectos 1, 2 y 3<br />
+        con comentarios detallados en cada línea de código.
+      </p>
+    </div>
+  </body>
+</html>

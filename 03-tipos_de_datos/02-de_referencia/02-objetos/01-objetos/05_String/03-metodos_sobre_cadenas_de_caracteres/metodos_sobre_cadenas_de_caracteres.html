@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Métodos de String en JavaScript</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background-color: #fdfdfd;
+      color: #333;
+      max-width: 900px;
+      margin: auto;
+      padding: 2em;
+    }
+    h1, h2 {
+      color: #2c3e50;
+    }
+    h2 {
+      margin-top: 2em;
+    }
+    ul {
+      padding-left: 1.2em;
+    }
+    li {
+      margin-bottom: 0.5em;
+    }
+    a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    code {
+      background-color: #eef;
+      padding: 2px 4px;
+      border-radius: 3px;
+      font-family: Consolas, monospace;
+    }
+    .seccion {
+      margin-bottom: 2em;
+      padding-bottom: 1em;
+      border-bottom: 1px solid #ddd;
+    }
+  </style>
+</head>
+<body>
+  <h1>📚 Métodos de String en JavaScript</h1>
+  <p>Esta guía modular presenta los principales métodos del objeto <code>String</code> en JavaScript, organizados por funcionalidad. Cada sección enlaza directamente al archivo <code>.js</code> correspondiente para facilitar la navegación y el estudio.</p>
+
+  <h2>🧭 Índice de módulos</h2>
+  <ul>
+    <li><a href="./string-extraccion.js">✂️ Extracción de subcadenas</a></li>
+    <li><a href="./string-transformacion.js">🔠 Transformación de texto</a></li>
+    <li><a href="./string-busqueda.js">🔍 Búsqueda y coincidencias</a></li>
+    <li><a href="./string-reemplazo.js">🔄 Reemplazo y división</a></li>
+    <li><a href="./string-comparacion.js">🧪 Comparación y conversión</a></li>
+  </ul>
+
+  <div class="seccion">
+    <h2>✂️ 1. Extracción de subcadenas</h2>
+    <p>Métodos:</p>
+    <ul>
+      <li><code>slice(start, end)</code></li>
+      <li><code>substring(start, end)</code></li>
+      <li><code>substr(start, length)</code> ⚠️ Obsoleto</li>
+    </ul>
+    <p>📄 Código fuente: <a href="./string-extraccion.js">string-extraccion.js</a></p>
+  </div>
+
+  <div class="seccion">
+    <h2>🔠 2. Transformación de texto</h2>
+    <p>Métodos:</p>
+    <ul>
+      <li><code>toUpperCase()</code>, <code>toLowerCase()</code></li>
+      <li><code>trim()</code>, <code>trimStart()</code>, <code>trimEnd()</code></li>
+      <li><code>padStart()</code>, <code>padEnd()</code></li>
+      <li><code>normalize()</code></li>
+    </ul>
+    <p>📄 Código fuente: <a href="./string-transformacion.js">string-transformacion.js</a></p>
+  </div>
+
+  <div class="seccion">
+    <h2>🔍 3. Búsqueda y coincidencias</h2>
+    <p>Métodos:</p>
+    <ul>
+      <li><code>indexOf()</code>, <code>lastIndexOf()</code></li>
+      <li><code>includes()</code>, <code>startsWith()</code>, <code>endsWith()</code></li>
+      <li><code>search()</code>, <code>match()</code>, <code>matchAll()</code></li>
+    </ul>
+    <p>📄 Código fuente: <a href="./string-busqueda.js">string-busqueda.js</a></p>
+  </div>
+
+  <div class="seccion">
+    <h2>🔄 4. Reemplazo y división</h2>
+    <p>Métodos:</p>
+    <ul>
+      <li><code>replace()</code>, <code>replaceAll()</code></li>
+      <li><code>split()</code></li>
+    </ul>
+    <p>📄 Código fuente: <a href="./string-reemplazo.js">string-reemplazo.js</a></p>
+  </div>
+
+  <div class="seccion">
+    <h2>🧪 5. Comparación y conversión</h2>
+    <p>Métodos:</p>
+    <ul>
+      <li><code>localeCompare()</code></li>
+      <li><code>toString()</code>, <code>valueOf()</code></li>
+    </ul>
+    <p>📄 Código fuente: <a href="./string-comparacion.js">string-comparacion.js</a></p>
+  </div>
+
+  <div class="seccion">
+    <h2>🧵 Recomendaciones</h2>
+    <ul>
+      <li>Usa cadenas primitivas (<code>"texto"</code>) en lugar de objetos <code>String</code>.</li>
+      <li>Evita <code>substr()</code> en nuevos proyectos.</li>
+      <li>Usa <code>normalize()</code> para comparar cadenas con acentos.</li>
+      <li>Prefiere <code>matchAll()</code> cuando necesites recorrer coincidencias con detalle.</li>
+    </ul>
+  </div>
+</body>
+</html>

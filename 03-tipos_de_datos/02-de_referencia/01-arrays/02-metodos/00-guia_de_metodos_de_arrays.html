@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Índice de métodos de arrays en JavaScript</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        line-height: 1.6;
+        max-width: 800px;
+        margin: auto;
+        padding: 2rem;
+      }
+      h1,
+      h2,
+      h3 {
+        color: #2c3e50;
+      }
+      a {
+        color: #2980b9;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      hr {
+        margin: 2rem 0;
+      }
+      ul {
+        margin-top: 0.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>📚 Índice de métodos de arrays en JavaScript</h1>
+    <p>
+      Organizado por categorías funcionales. Cada archivo contiene ejemplos
+      didácticos, advertencias y comparativas.
+    </p>
+
+    <hr />
+
+    <h2>01 – Agregar y eliminar elementos</h2>
+    <p>
+      📂
+      <a href="./01-agregar_eliminar_elementos.js"
+        >01-agregar_eliminar_elementos.js</a
+      >
+    </p>
+    <ul>
+      <li><code>push()</code> – Añadir al final</li>
+      <li><code>unshift()</code> – Añadir al inicio</li>
+      <li><code>shift()</code> – Eliminar el primero</li>
+      <li><code>pop()</code> – Eliminar el último</li>
+      <li>
+        <code>splice()</code> – Añadir, eliminar o reemplazar en cualquier
+        posición
+      </li>
+    </ul>
+
+    <h2>02 – Búsqueda y acceso</h2>
+    <p>
+      📂 <a href="./02-de_busqueda_y_acceso.js">02-de_busqueda_y_acceso.js</a>
+    </p>
+    <ul>
+      <li><code>includes()</code> – Verifica si contiene un valor</li>
+      <li>
+        <code>indexOf()</code> / <code>lastIndexOf()</code> – Índices del
+        primer/último coincidente
+      </li>
+      <li>
+        <code>find()</code> / <code>findIndex()</code> – Elemento o índice que
+        cumple condición
+      </li>
+      <li>
+        <code>findLast()</code> / <code>findLastIndex()</code> – Último elemento
+        o índice que cumple condición (ES2023)
+      </li>
+      <li><code>at()</code> – Acceso por índice (incluye negativos)</li>
+      <li><code>slice()</code> – Extrae parte del array sin modificar</li>
+      <li>
+        <code>hasDuplicate()</code> – Verifica si hay elementos repetidos (con
+        <code>Set</code>)
+      </li>
+    </ul>
+
+    <h2>03 – Iteración</h2>
+    <p>📂 <a href="./03-de_iteracion.js">03-de_iteracion.js</a></p>
+    <ul>
+      <li><code>forEach()</code> – Ejecuta función por cada elemento</li>
+      <li><code>map()</code> – Crea nuevo array transformado</li>
+      <li><code>filter()</code> – Filtra elementos que cumplen condición</li>
+      <li>
+        <code>reduce()</code> / <code>reduceRight()</code> – Reduce a un único
+        valor
+      </li>
+      <li>
+        <code>some()</code> / <code>every()</code> – Verifica si alguno/todos
+        cumplen condición
+      </li>
+      <li>
+        <code>for...of</code> – Bucle complementario para recorrer valores
+      </li>
+      <li>
+        <code>entries()</code> / <code>keys()</code> / <code>values()</code> –
+        Iteradores explícitos
+      </li>
+      <li>
+        <code>with()</code> – Devuelve copia modificada en una posición (ES2023)
+      </li>
+    </ul>
+
+    <h2>04 – Transformación y orden</h2>
+    <p>
+      📂
+      <a href="./04-de_tranformacion_y_orden.js"
+        >04-de_tranformacion_y_orden.js</a
+      >
+    </p>
+    <ul>
+      <li><code>sort()</code> – Ordena elementos</li>
+      <li><code>reverse()</code> – Invierte el orden</li>
+      <li><code>fill()</code> – Rellena con un valor</li>
+      <li>
+        <code>copyWithin()</code> – Copia parte del array dentro de sí mismo
+      </li>
+    </ul>
+
+    <h2>05 – Combinación y conversión</h2>
+    <p>
+      📂
+      <a href="./05-de_combinacion_y_conversion.js"
+        >05-de_combinacion_y_conversion.js</a
+      >
+    </p>
+    <ul>
+      <li><code>concat()</code> – Une arrays</li>
+      <li><code>join()</code> – Convierte en string con separador</li>
+      <li><code>toString()</code> – Convierte en string con comas</li>
+      <li>
+        <code>toLocaleString()</code> – Convierte en string con formato regional
+      </li>
+      <li>
+        <code>split()</code> – Convierte string en array (complemento externo)
+      </li>
+      <li>
+        <code>Array.from()</code> – Crea array desde iterable o array-like
+      </li>
+      <li><code>Array.of()</code> – Crea array con los argumentos dados</li>
+    </ul>
+
+    <h2>06 – Estructurales</h2>
+    <p>📂 <a href="./06-estructurales.js">06-estructurales.js</a></p>
+    <ul>
+      <li><code>flat()</code> – Aplana arrays anidados</li>
+      <li><code>flatMap()</code> – Mapea y aplana en un solo paso</li>
+      <li><code>Array.isArray()</code> – Verifica si es un array</li>
+    </ul>
+
+    <h2>07 – Avanzados y utilidades (ES2023)</h2>
+    <p>
+      📂
+      <a href="./07-avanzados_y_utilidades.js">07-avanzados_y_utilidades.js</a>
+    </p>
+    <ul>
+      <li><code>group()</code> – Agrupa elementos por clave</li>
+      <li>
+        <code>groupToMap()</code> – Agrupa elementos en un <code>Map</code>
+      </li>
+      <li>⚠️ Métodos recientes, aún no disponibles en todos los entornos</li>
+    </ul>
+
+    <hr />
+
+    <h3>🧭 Navegación recomendada</h3>
+    <ul>
+      <li>
+        Métodos que <strong>modifican</strong> el array → <code>01</code>,
+        <code>03</code>, <code>04</code>, <code>06</code>
+      </li>
+      <li>
+        Métodos que <strong>devuelven nuevo array</strong> → <code>02</code>,
+        <code>03</code>, <code>05</code>, <code>07</code>
+      </li>
+      <li>
+        Métodos que <strong>verifican o evalúan</strong> → <code>02</code>,
+        <code>03</code>, <code>06</code>
+      </li>
+      <li>
+        Métodos que <strong>requieren compatibilidad moderna</strong> →
+        <code>02</code>, <code>03</code>, <code>07</code>
+      </li>
+    </ul>
+  </body>
+</html>

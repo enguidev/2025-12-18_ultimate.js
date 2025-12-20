@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Detectar Tecla Pulsada</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎹 Detector de Teclas</h1>
+      <p class="subtitle">Pulsa cualquier tecla para ver la información</p>
+
+      <div class="info-box">
+        💡 <strong>Tip:</strong> Prueba con letras, números, flechas, Enter,
+        Escape, etc.
+      </div>
+
+      <div class="key-display" id="keyDisplay">
+        <div class="key-label">Esperando tecla...</div>
+        <div class="key-value" id="keyValue">⌨️</div>
+      </div>
+
+      <div class="details" id="details" style="display: none">
+        <div class="detail-row">
+          <span class="detail-label">event.key:</span>
+          <span class="detail-value" id="eventKey">-</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">event.code:</span>
+          <span class="detail-value" id="eventCode">-</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">event.keyCode:</span>
+          <span class="detail-value" id="eventKeyCode">-</span>
+        </div>
+        <div class="detail-row">
+          <span class="detail-label">Tecla especial:</span>
+          <span class="detail-value" id="specialKey">-</span>
+        </div>
+      </div>
+
+      <div class="history">
+        <h3>📝 Historial de teclas</h3>
+        <div class="history-list" id="historyList">
+          <div style="text-align: center; color: #999">
+            Aún no has pulsado ninguna tecla
+          </div>
+        </div>
+        <button class="clear-btn" id="clearBtn">Limpiar historial</button>
+      </div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Delegación de eventos 2</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🎯 Delegación de Eventos</h1>
+      <p class="subtitle">
+        Ejemplo práctico del documento 02_eventos_delegar captura.htm
+      </p>
+
+      <!-- EXPLICACIÓN -->
+      <div class="section">
+        <h2>📚 ¿Qué es la Delegación de Eventos?</h2>
+        <div class="info-box">
+          <strong>💡 Concepto:</strong> En lugar de asignar un evento a cada
+          elemento hijo, asignamos UN SOLO evento al contenedor padre y
+          aprovechamos la propagación (burbujeo) para capturar los clicks de
+          todos los hijos.
+        </div>
+      </div>
+
+      <!-- COMPARACIÓN -->
+      <div class="section">
+        <h2>⚖️ Comparación de Métodos</h2>
+        <div class="comparison">
+          <div class="comparison-item bad">
+            <h3>❌ Sin Delegación (Ineficiente)</h3>
+            <div class="code-example">
+              <span class="comment">// Asignar evento a CADA cuadrado</span>
+              <span class="keyword">for</span> (<span class="keyword">let</span>
+              i = 0; i < 10; i++) { cuadrado[i].addEventListener(<span
+                class="string"
+                >'click'</span
+              >, <span class="keyword">function</span>() {
+              <span class="comment">// 10 event listeners! 😱</span>
+              }); }
+            </div>
+            <p><strong>Problemas:</strong></p>
+            <ul>
+              <li>Más consumo de memoria</li>
+              <li>Elementos dinámicos no funcionan</li>
+              <li>Más difícil de mantener</li>
+            </ul>
+          </div>
+
+          <div class="comparison-item good">
+            <h3>✅ Con Delegación (Eficiente)</h3>
+            <div class="code-example">
+              <span class="comment">// UN SOLO evento en el padre</span>
+              contenedor.addEventListener(<span class="string">'click'</span>,
+              <span class="keyword">function</span>(e) {
+              <span class="keyword">if</span> (e.target.classList.contains(<span
+                class="string"
+                >'cuadrado'</span
+              >)) {
+              <span class="comment">// ¡Solo 1 event listener! 🎉</span>
+              } });
+            </div>
+            <p><strong>Ventajas:</strong></p>
+            <ul>
+              <li>Menos memoria</li>
+              <li>Funciona con elementos dinámicos</li>
+              <li>Más fácil de mantener</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- EJEMPLO PRÁCTICO -->
+      <div class="section">
+        <h2>🎮 Ejemplo Práctico</h2>
+        <div class="warning-box">
+          <strong>📝 Ejercicio:</strong> Haz click en cualquier cuadrado para
+          mostrar su número en el pie de página.
+        </div>
+
+        <div class="controls">
+          <button id="btnBorrarPie" class="danger">🗑️ Borrar Pie</button>
+          <button id="btnAgregarCuadrado" class="success">
+            ➕ Agregar Cuadrado
+          </button>
+          <button id="btnEliminarUltimo" class="danger">
+            ➖ Eliminar Último
+          </button>
+          <button id="btnReiniciar">🔄 Reiniciar</button>
+        </div>
+
+        <div id="contenedor"></div>
+
+        <div id="pie" class="empty">
+          Haz click en un cuadrado para ver su contenido aquí
+        </div>
+      </div>
+
+      <!-- ESTADÍSTICAS -->
+      <div class="section">
+        <h2>📊 Estadísticas</h2>
+        <div class="stats">
+          <div class="stat-card">
+            <div class="stat-number" id="statCuadrados">10</div>
+            <div class="stat-label">Cuadrados</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="statClicks">0</div>
+            <div class="stat-label">Clicks totales</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-number" id="statEventListeners">1</div>
+            <div class="stat-label">Event Listeners</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CÓDIGO UTILIZADO -->
+      <div class="section">
+        <h2>💻 Código Utilizado</h2>
+        <div class="code-example">
+          <span class="comment"
+            >// 1. Delegación de eventos en el contenedor</span
+          >
+          contenedor.addEventListener(<span class="string">'click'</span>,
+          <span class="keyword">function</span>(e) {
+          <span class="comment"
+            >// Verificamos si el click fue en un cuadrado</span
+          >
+          <span class="keyword">if</span> (e.target.classList.contains(<span
+            class="string"
+            >'cuadrado'</span
+          >)) {
+          <span class="comment">// e.target es el elemento clickeado</span>
+          pie.textContent =
+          <span class="string">'Has clickeado el cuadrado: '</span> +
+          e.target.textContent; pie.classList.remove(<span class="string"
+            >'empty'</span
+          >);
+
+          <span class="comment">// Animación visual</span>
+          e.target.classList.add(<span class="string">'selected'</span>);
+          setTimeout(() => e.target.classList.remove(<span class="string"
+            >'selected'</span
+          >), 500); } });
+
+          <span class="comment">// 2. Botón para borrar el pie</span>
+          btnBorrarPie.addEventListener(<span class="string">'click'</span>,
+          <span class="keyword">function</span>() { pie.textContent =
+          <span class="string">'Haz click en un cuadrado...'</span>;
+          pie.classList.add(<span class="string">'empty'</span>); });
+
+          <span class="comment">// 3. Agregar cuadrado dinámicamente</span>
+          <span class="comment"
+            >// ¡Funciona automáticamente con delegación!</span
+          >
+          btnAgregarCuadrado.addEventListener(<span class="string">'click'</span
+          >, <span class="keyword">function</span>() {
+          <span class="keyword">let</span> nuevo = document.createElement(<span
+            class="string"
+            >'div'</span
+          >); nuevo.classList.add(<span class="string">'cuadrado'</span>);
+          nuevo.textContent = contador++; contenedor.append(nuevo); });
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

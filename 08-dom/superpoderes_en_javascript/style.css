@@ -1,0 +1,14 @@
+.mutation-container {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 1px solid #ccc;
+  background-color: #f9f9f9;
+}
+
+.mutation-container div {
+  margin: 0.5rem 0;
+  padding: 0.5rem;
+  background-color: #e0f7fa;
+  border-radius: 4px;
+  font-family: sans-serif;
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía Completa del DOM - JavaScript</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <!-- ============================================ -->
+    <!-- SECCIÓN: ENCABEZADO PRINCIPAL -->
+    <!-- ============================================ -->
+    <h1 id="titulo">Guía Completa del DOM - JavaScript</h1>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN: ELEMENTOS BÁSICOS PARA PRUEBAS -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">Elementos Básicos</div>
+
+      <!-- Párrafos con clase descripcion -->
+      <p class="descripcion">
+        Este es un párrafo de prueba con clase "descripcion".
+      </p>
+      <p class="descripcion">Otro párrafo con la misma clase "descripcion".</p>
+
+      <!-- Enlaces -->
+      <a href="https://ejemplo.com" class="enlace">Ir a ejemplo</a>
+      <a href="https://google.com" class="enlace">Ir a Google</a>
+
+      <!-- Imágenes -->
+      <div>
+        <img
+          src="https://via.placeholder.com/100"
+          alt="Imagen de prueba 100x100"
+        />
+        <img
+          src="https://via.placeholder.com/150"
+          alt="Imagen de prueba 150x150"
+        />
+      </div>
+
+      <!-- Botones -->
+      <div>
+        <button class="btn">Botón 1</button>
+        <button class="btn">Botón 2</button>
+      </div>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN: FORMULARIOS -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">Formularios</div>
+
+      <!-- Formulario simple -->
+      <form id="formulario">
+        <input type="text" name="nombre" placeholder="Tu nombre" />
+        <input type="submit" value="Enviar" />
+      </form>
+
+      <!-- Formulario completo -->
+      <form id="miFormulario">
+        <input
+          type="text"
+          name="nombre"
+          class="input-text"
+          id="inputNombre"
+          placeholder="Nombre"
+        />
+        <input
+          type="email"
+          name="email"
+          class="input-text"
+          placeholder="Email"
+        />
+        <input type="checkbox" name="aceptar" value="si" id="aceptar" />
+        <label for="aceptar">Acepto los términos</label>
+        <button type="submit">Enviar Formulario</button>
+      </form>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN: CONTENEDORES CON CLASES .texto -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">Contenedor Principal (.container)</div>
+
+      <div class="container">
+        <p class="texto texto1">Hijo 1 - con clases "texto" y "texto1"</p>
+        <p class="texto texto1">Hijo 2 - con clases "texto" y "texto1"</p>
+        <p class="texto texto1">Hijo 3 - con clases "texto" y "texto1"</p>
+        <p class="texto texto1">Hijo 4 - con clases "texto" y "texto1"</p>
+      </div>
+
+      <!-- Párrafo fuera del contenedor -->
+      <p class="texto1">Fuera del container - solo clase "texto1"</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN: CONTENEDORES CON CLASES text-danger y text-warning -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">
+        Contenedores con text-danger y text-warning
+      </div>
+
+      <!-- Container2 con ID y atributo data -->
+      <h2>Container 2 (ID: miContainer)</h2>
+      <div class="container2" id="miContainer" data-tipo="contenedor">
+        <p class="text-danger primero">
+          Párrafo 1 - classes: "text-danger primero"
+        </p>
+        <p class="text-danger text-warning">
+          Párrafo 2 - classes: "text-danger text-warning"
+        </p>
+        <p class="text-warning">Párrafo 3 - class: "text-warning"</p>
+        <span class="text-danger">Span - class: "text-danger"</span>
+      </div>
+
+      <!-- Wrapper -->
+      <h2>Wrapper</h2>
+      <div class="wrapper">
+        <p class="text-danger" name="parrafoImportante">
+          Párrafo 4 - tiene atributo name="parrafoImportante"
+        </p>
+        <p class="text-danger text-warning">
+          Párrafo 5 - classes: "text-danger text-warning"
+        </p>
+        <p>Párrafo 6 - sin clases</p>
+      </div>
+
+      <!-- Box con elemento anidado -->
+      <h2>Box (con elemento anidado)</h2>
+      <div class="box">
+        <p class="text-danger">Párrafo 7 - hijo directo de box</p>
+        <div class="inner">
+          <p class="text-danger">Párrafo 8 - nieto de box (dentro de .inner)</p>
+        </div>
+      </div>
+
+      <!-- Párrafo fuera de todos los contenedores -->
+      <p class="text-danger">Párrafo 9 - fuera de todos los divs</p>
+    </div>
+
+    <!-- ============================================ -->
+    <!-- SECCIÓN: ELEMENTOS PARA COPIAR/CORTAR -->
+    <!-- ============================================ -->
+    <div class="seccion">
+      <div class="seccion-titulo">Elementos para Copiar/Cortar y Pegar</div>
+
+      <!-- Elemento origen -->
+      <h2>Origen</h2>
+      <div class="origen">
+        <p class="texto">Elemento a copiar/cortar</p>
+      </div>
+
+      <!-- Elemento destino -->
+      <h2>Destino</h2>
+      <div class="destino">
+        <p>Destino - Hijo 1</p>
+        <p>Destino - Hijo 2</p>
+        <p>Destino - Hijo 3</p>
+      </div>
+    </div>
+  </body>
+</html>

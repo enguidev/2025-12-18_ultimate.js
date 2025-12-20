@@ -1,0 +1,28 @@
+      .resaltado {
+        background-color: yellow;
+
+      }
+
+      .oculto {
+        display: none;
+      }
+
+      .visible {
+
+        display: block
+      }
+
+      .seleccionado {
+        font-weight: bold;
+        color: green;
+      }
+
+      #titulo2 {
+
+        color: blue;
+      }
+
+      .activo {
+
+        color: red;
+      }

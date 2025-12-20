@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Interno</title>
+    <!-- 1.- En directamente en el head  -->
+    <script>
+      console.log("JavaScript en el head");
+    </script>
+  </head>
+  <body>
+    <!-- 2.- JavaScript inline (en atributos HTML. Directamente en los atributos 
+         de los elementos (no recomendado) -->
+    <button onclick="alert('Clicked!')">Haz clic</button>
+    <a href="javascript:alert('Link')">Enlace</a>
+
+    <!-- 3.- Directamente en el body (en este caso se recomienda al final) -->
+    <script>
+      console.log("JavaScript en el body");
+      alert("¡Hola desde JavaScript!");
+    </script>
+  </body>
+</html>

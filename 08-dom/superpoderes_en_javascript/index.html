@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IntersectionObserver y MutationObserver</title>
+
+    <!-- Carga de estilos visuales -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Carga del script con defer para que se ejecute después de que el DOM esté listo -->
+    <script src="mutation-observer.js" defer></script>
+  </head>
+  <body>
+    <div class="container">
+      <!-- Botones para interactuar con el DOM -->
+      <div>
+        <button id="addElementButton">Añadir elementos</button>
+        <button id="stopObservationButton">Dejar de observar</button>
+      </div>
+
+      <!-- Contador de mutaciones detectadas -->
+      <div>Se han detectado <span id="mutationResults">0</span> mutations</div>
+
+      <!-- Contenedor que será observado por MutationObserver -->
+      <div id="mutation" class="mutation-container"></div>
+    </div>
+  </body>
+</html>
