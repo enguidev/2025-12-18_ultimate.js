@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nueva Página - Ejercicio Window</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+      }
+
+      .container {
+        text-align: center;
+        padding: 3rem;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border-radius: 20px;
+        border: 2px solid rgba(255, 255, 255, 0.2);
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        max-width: 600px;
+      }
+
+      h1 {
+        font-size: 3rem;
+        margin-bottom: 1rem;
+        animation: fadeInDown 0.8s ease;
+      }
+
+      p {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+        opacity: 0.9;
+        animation: fadeInUp 0.8s ease 0.2s backwards;
+      }
+
+      .buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        flex-wrap: wrap;
+        animation: fadeIn 1s ease 0.4s backwards;
+      }
+
+      button {
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        cursor: pointer;
+        border: 2px solid white;
+        border-radius: 50px;
+        background: transparent;
+        color: white;
+        transition: all 0.3s ease;
+        font-weight: bold;
+      }
+
+      button:hover {
+        background: white;
+        color: #11998e;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+      }
+
+      .info {
+        margin-top: 2rem;
+        padding: 1.5rem;
+        background: rgba(255, 255, 255, 0.15);
+        border-radius: 10px;
+        animation: fadeIn 1s ease 0.6s backwards;
+      }
+
+      .info p {
+        font-size: 0.95rem;
+        margin: 0.5rem 0;
+      }
+
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+
+      .emoji {
+        font-size: 4rem;
+        display: block;
+        margin-bottom: 1rem;
+        animation: bounce 2s infinite;
+      }
+
+      @keyframes bounce {
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-20px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <span class="emoji">🎉</span>
+      <h1>¡Bienvenido!</h1>
+      <p>
+        Has navegado exitosamente a una nueva página usando
+        <strong>window.open()</strong>
+      </p>
+
+      <div class="buttons">
+        <button onclick="cerrarVentana()">🚪 Cerrar ventana</button>
+        <button onclick="volverAtras()">⬅️ Volver atrás</button>
+        <button onclick="abrirOtra()">🔗 Abrir otra</button>
+      </div>
+
+      <div class="info" id="info">
+        <p><strong>📍 URL actual:</strong> <span id="url"></span></p>
+        <p><strong>📏 Tamaño:</strong> <span id="size"></span></p>
+        <p><strong>🕐 Hora de carga:</strong> <span id="time"></span></p>
+      </div>
+    </div>
+
+    <script>
+      // Mostrar información de la ventana
+      document.getElementById("url").textContent = window.location.href;
+      document.getElementById(
+        "size"
+      ).textContent = `${window.innerWidth}x${window.innerHeight}px`;
+      document.getElementById("time").textContent =
+        new Date().toLocaleTimeString();
+
+      function cerrarVentana() {
+        if (confirm("¿Cerrar esta ventana?")) {
+          window.close();
+          // Si no se puede cerrar (ventana principal), mostrar mensaje
+          setTimeout(() => {
+            alert(
+              "No se puede cerrar esta ventana porque no fue abierta por JavaScript."
+            );
+          }, 100);
+        }
+      }
+
+      function volverAtras() {
+        if (window.history.length > 1) {
+          window.history.back();
+        } else {
+          alert("No hay página anterior en el historial");
+        }
+      }
+
+      function abrirOtra() {
+        window.open(
+          "https://developer.mozilla.org/es/docs/Web/API/Window",
+          "_blank"
+        );
+      }
+
+      // Animación del emoji
+      let emojiIndex = 0;
+      const emojis = ["🎉", "✨", "🚀", "💻", "🌟", "⚡"];
+      setInterval(() => {
+        emojiIndex = (emojiIndex + 1) % emojis.length;
+        document.querySelector(".emoji").textContent = emojis[emojiIndex];
+      }, 3000);
+    </script>
+  </body>
+</html>
