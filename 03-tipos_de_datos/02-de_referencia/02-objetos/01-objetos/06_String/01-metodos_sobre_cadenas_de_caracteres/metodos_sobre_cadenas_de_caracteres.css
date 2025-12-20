@@ -1,0 +1,90 @@
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #fdfdfd;
+  color: #333;
+  max-width: 900px;
+  margin: auto;
+  padding: 2em;
+  line-height: 1.6;
+}
+
+h1,
+h2 {
+  color: #2c3e50;
+}
+
+h1 {
+  border-bottom: 3px solid #3498db;
+  padding-bottom: 0.5em;
+}
+
+h2 {
+  margin-top: 2em;
+  border-left: 4px solid #3498db;
+  padding-left: 0.5em;
+}
+
+ul {
+  padding-left: 1.2em;
+}
+
+li {
+  margin-bottom: 0.5em;
+}
+
+a {
+  color: #2980b9;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+code {
+  background-color: #eef;
+  padding: 2px 4px;
+  border-radius: 3px;
+  font-family: Consolas, monospace;
+  font-size: 0.9em;
+}
+
+.seccion {
+  margin-bottom: 2em;
+  padding-bottom: 1em;
+  border-bottom: 1px solid #ddd;
+}
+
+.nuevo {
+  background-color: #d4edda;
+  border-left: 4px solid #28a745;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  border-radius: 4px;
+}
+
+.advertencia {
+  background-color: #fff3cd;
+  border-left: 4px solid #ffc107;
+  padding: 0.5em 1em;
+  margin: 1em 0;
+  border-radius: 4px;
+}
+
+.tabla-comparativa {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1em 0;
+}
+
+.tabla-comparativa th,
+.tabla-comparativa td {
+  border: 1px solid #ddd;
+  padding: 0.5em;
+  text-align: left;
+}
+
+.tabla-comparativa th {
+  background-color: #3498db;
+  color: white;
+}

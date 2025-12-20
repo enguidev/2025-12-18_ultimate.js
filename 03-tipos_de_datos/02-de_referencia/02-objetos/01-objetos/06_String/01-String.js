@@ -26,7 +26,8 @@ console.log(typeof cadena2); // "object"
 console.log(cadena2.valueOf()); // "Hola, mundo!"
 console.log(cadena2.toString()); // "Hola, mundo!"
 
-// PROFE //
+//******** Creación de cadenas ********//
+
 /* 
   Los datos de tipo cadena irán encerrados entre comillas simples,
   dobles o comillas invertidas (backticks).
@@ -38,13 +39,29 @@ cad = "CADENA2";
 /* 
   También se puede usar comillas hacia atrás (tecla a la derecha de la P),
   en cuyo caso podemos insertar variables delimitadas por ${}
+  Esto se llama Template Literals o Template Strings
 */
 
 let num = 3;
 cad = `CADENA${num}`;
 console.log(cad); // -> "CADENA3"
 
-// Caracteres especiales de escape
+// Template Literals permite expresiones más complejas
+let precio = 19.99;
+let cantidad = 3;
+console.log(`Total: ${precio * cantidad}€`); // "Total: 59.97€"
+
+// Template Literals multilínea (sin necesidad de \n)
+let poema = `
+  Roses are red,
+  Violets are blue,
+  JavaScript is awesome,
+  And so are you!
+`;
+console.log(poema);
+
+//******** Caracteres especiales de escape ********//
+
 console.log("primera línea \nsegunda línea"); // Salto de línea en consola
 console.log("primera línea <br>segunda línea"); // Salto de línea en HTML
 
@@ -52,8 +69,42 @@ console.log("primera línea <br>segunda línea"); // Salto de línea en HTML
 console.log("Tabulación:\tTexto"); // Tabulador
 console.log('Comillas dobles: "texto"'); // Escapar comillas
 console.log("Backslash: \\"); // Mostrar barra invertida
+console.log("Unicode: \u00A9"); // © (símbolo copyright)
+console.log("Emoji: \u{1F600}"); // 😀
 
-// Advertencia: las cadenas son inmutables
+//******** Advertencias importantes ********//
+
+// 1. Las cadenas son INMUTABLES
 let saludo = "Hola";
 saludo[0] = "M"; // No tiene efecto
 console.log(saludo); // "Hola"
+// Para modificar, debes crear una nueva cadena:
+saludo = "M" + saludo.slice(1);
+console.log(saludo); // "Mola"
+
+// 2. Diferencia entre primitivo y objeto String
+let str1 = "hola";
+let str2 = new String("hola");
+console.log(str1 === str2); // false (diferente tipo)
+console.log(str1 == str2); // true (coerción de tipo)
+
+// 3. Cuándo SÍ usar new String() (casos MUY raros)
+// Cuando necesitas añadir propiedades custom a un string
+let strObj = new String("test");
+strObj.customProp = "valor";
+console.log(strObj.customProp); // "valor"
+// Pero esto NO funciona con primitivos:
+let strPrim = "test";
+strPrim.customProp = "valor";
+console.log(strPrim.customProp); // undefined
+// 💡 Recomendación: Usa SIEMPRE primitivos salvo casos muy específicos
+
+// 4. Concatenación: varias formas
+let nombre = "Carlos";
+let edad = 25;
+// Forma tradicional
+console.log("Hola " + nombre + ", tienes " + edad + " años");
+// Template literals (PREFERIDO)
+console.log(`Hola ${nombre}, tienes ${edad} años`);
+// Con concat() (casi nunca se usa)
+console.log("Hola ".concat(nombre, ", tienes ", edad, " años"));
