@@ -3,7 +3,7 @@
 //--------------------------------------------------------------------------------------
 
 /*
-🎯 Este archivo contiene 15 ejercicios prácticos con soluciones
+🎯 Este archivo contiene 13 ejercicios prácticos con soluciones
 
 Nivel:
 ⭐ = Básico
@@ -15,6 +15,8 @@ Cada ejercicio incluye:
 - Pistas
 - Solución completa
 - Casos de prueba
+
+NOTA: Los ejercicios de localStorage/sessionStorage están en 12-almacenamiento/
 */
 
 //--------------------------------------------------------------------------------------
@@ -124,142 +126,7 @@ class PomodoroTimer {
 console.log("✅ Ejercicio 1: Temporizador Pomodoro - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 2: SISTEMA DE NOTAS CON LOCALSTORAGE ⭐
-//--------------------------------------------------------------------------------------
-
-/*
-📝 ENUNCIADO:
-Crea un sistema para gestionar notas que:
-- Permita agregar, editar, eliminar notas
-- Guarde automáticamente en localStorage
-- Muestre lista de notas ordenadas por fecha
-- Permita buscar notas
-
-💡 PISTAS:
-- Usa localStorage con JSON.stringify/parse
-- Crea IDs únicos con Date.now()
-- Implementa búsqueda con filter()
-*/
-
-// SOLUCIÓN:
-class NotasManager {
-  constructor() {
-    this.key = "notas_app";
-  }
-
-  obtenerNotas() {
-    try {
-      return JSON.parse(localStorage.getItem(this.key)) || [];
-    } catch (error) {
-      console.error("Error al leer notas:", error);
-      return [];
-    }
-  }
-
-  guardarNotas(notas) {
-    try {
-      localStorage.setItem(this.key, JSON.stringify(notas));
-      return true;
-    } catch (error) {
-      console.error("Error al guardar notas:", error);
-      return false;
-    }
-  }
-
-  agregar(titulo, contenido) {
-    const notas = this.obtenerNotas();
-    const nuevaNota = {
-      id: Date.now(),
-      titulo: titulo,
-      contenido: contenido,
-      fecha: new Date().toISOString(),
-    };
-
-    notas.push(nuevaNota);
-    this.guardarNotas(notas);
-
-    console.log("✅ Nota agregada:", nuevaNota.titulo);
-    return nuevaNota;
-  }
-
-  editar(id, titulo, contenido) {
-    const notas = this.obtenerNotas();
-    const nota = notas.find((n) => n.id === id);
-
-    if (nota) {
-      nota.titulo = titulo;
-      nota.contenido = contenido;
-      nota.fechaModificacion = new Date().toISOString();
-
-      this.guardarNotas(notas);
-      console.log("✅ Nota editada:", nota.titulo);
-      return true;
-    }
-
-    console.log("❌ Nota no encontrada");
-    return false;
-  }
-
-  eliminar(id) {
-    let notas = this.obtenerNotas();
-    const antes = notas.length;
-
-    notas = notas.filter((n) => n.id !== id);
-
-    if (notas.length < antes) {
-      this.guardarNotas(notas);
-      console.log("✅ Nota eliminada");
-      return true;
-    }
-
-    console.log("❌ Nota no encontrada");
-    return false;
-  }
-
-  buscar(termino) {
-    const notas = this.obtenerNotas();
-    const terminoLower = termino.toLowerCase();
-
-    return notas.filter(
-      (nota) =>
-        nota.titulo.toLowerCase().includes(terminoLower) ||
-        nota.contenido.toLowerCase().includes(terminoLower)
-    );
-  }
-
-  listar() {
-    const notas = this.obtenerNotas();
-
-    // Ordenar por fecha (más recientes primero)
-    notas.sort((a, b) => new Date(b.fecha) - new Date(a.fecha));
-
-    console.log(`📝 Total de notas: ${notas.length}`);
-    notas.forEach((nota) => {
-      console.log(`\n📌 ${nota.titulo}`);
-      console.log(`   ${nota.contenido.substring(0, 50)}...`);
-      console.log(`   📅 ${new Date(nota.fecha).toLocaleString()}`);
-    });
-
-    return notas;
-  }
-
-  limpiar() {
-    localStorage.removeItem(this.key);
-    console.log("🗑️ Todas las notas eliminadas");
-  }
-}
-
-// Uso:
-const notasManager = new NotasManager();
-// notasManager.agregar('Compras', 'Leche, pan, huevos');
-// notasManager.agregar('Ideas', 'Nueva app de notas');
-// notasManager.listar();
-// notasManager.buscar('compras');
-
-console.log("✅ Ejercicio 2: Sistema de Notas - COMPLETADO");
-
-//--------------------------------------------------------------------------------------
-// EJERCICIO 3: DETECTOR DE UBICACIÓN Y CLIMA ⭐⭐
+// EJERCICIO 2: DETECTOR DE UBICACIÓN Y CLIMA ⭐⭐
 //--------------------------------------------------------------------------------------
 
 /*
@@ -374,10 +241,10 @@ class UbicacionClima {
 //   ubicacion.obtenerURLMapa();
 // });
 
-console.log("✅ Ejercicio 3: Detector de Ubicación - COMPLETADO");
+console.log("✅ Ejercicio 2: Detector de Ubicación - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 4: MODAL DE CONFIRMACIÓN PERSONALIZADO ⭐
+// EJERCICIO 3: MODAL DE CONFIRMACIÓN PERSONALIZADO ⭐
 //--------------------------------------------------------------------------------------
 
 /*
@@ -567,10 +434,10 @@ const modal = new ModalManager();
 //   console.log('Usuario confirmó:', resultado);
 // });
 
-console.log("✅ Ejercicio 4: Modal Personalizado - COMPLETADO");
+console.log("✅ Ejercicio 3: Modal Personalizado - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 5: INFINITE SCROLL ⭐⭐
+// EJERCICIO 4: INFINITE SCROLL ⭐⭐
 //--------------------------------------------------------------------------------------
 
 /*
@@ -634,7 +501,7 @@ class InfiniteScroll {
 
     this.cargando = true;
     this.mostrarIndicador();
-    console.log(`📥 Cargando página ${this.paginaActual + 1}...`);
+    console.log(`🔥 Cargando página ${this.paginaActual + 1}...`);
 
     try {
       // Simular carga de datos
@@ -645,7 +512,7 @@ class InfiniteScroll {
         console.log(`✅ ${nuevosItems.length} items cargados`);
       } else {
         this.hayMas = false;
-        console.log("📭 No hay más contenido");
+        console.log("🔭 No hay más contenido");
       }
     } catch (error) {
       console.error("❌ Error al cargar:", error);
@@ -700,10 +567,10 @@ class InfiniteScroll {
 //   return Array.from({ length: 10 }, (_, i) => ({ id: (pagina - 1) * 10 + i }));
 // });
 
-console.log("✅ Ejercicio 5: Infinite Scroll - COMPLETADO");
+console.log("✅ Ejercicio 4: Infinite Scroll - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 6: DETECTOR DE INACTIVIDAD ⭐⭐
+// EJERCICIO 5: DETECTOR DE INACTIVIDAD ⭐⭐
 //--------------------------------------------------------------------------------------
 
 /*
@@ -812,10 +679,10 @@ class InactivityDetector {
 //   }
 // });
 
-console.log("✅ Ejercicio 6: Detector de Inactividad - COMPLETADO");
+console.log("✅ Ejercicio 5: Detector de Inactividad - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 7: PROGRESS BAR DE SCROLL ⭐
+// EJERCICIO 6: PROGRESS BAR DE SCROLL ⭐
 //--------------------------------------------------------------------------------------
 
 /*
@@ -898,98 +765,27 @@ class ScrollProgressBar {
 // Uso:
 // const progressBar = new ScrollProgressBar({ color: '#ff6b6b', altura: '5px' });
 
-console.log("✅ Ejercicio 7: Progress Bar de Scroll - COMPLETADO");
+console.log("✅ Ejercicio 6: Progress Bar de Scroll - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// CONTINUACIÓN EJERCICIO 8: SISTEMA DE CACHÉ CON EXPIRACIÓN
+// EJERCICIO 7: GESTOR DE DESCARGAS ⭐⭐
 //--------------------------------------------------------------------------------------
 
-class CacheManager {
-  constructor(ttlPorDefecto = 3600000) {
-    this.ttlPorDefecto = ttlPorDefecto;
-    this.iniciarLimpiezaAutomatica();
-  }
+/*
+📝 ENUNCIADO:
+Crea un gestor que permita descargar:
+- Archivos de texto
+- JSON
+- CSV
+- Canvas como imagen
 
-  set(clave, valor, ttl = null) {
-    try {
-      const item = {
-        data: valor,
-        timestamp: Date.now(),
-        ttl: ttl || this.ttlPorDefecto,
-      };
-      localStorage.setItem(`cache_${clave}`, JSON.stringify(item));
-      return true;
-    } catch (error) {
-      if (error.name === "QuotaExceededError") {
-        this.limpiarExpirados();
-        try {
-          localStorage.setItem(`cache_${clave}`, JSON.stringify(item));
-          return true;
-        } catch {
-          return false;
-        }
-      }
-      return false;
-    }
-  }
+💡 PISTAS:
+- Usa Blob para crear archivos
+- URL.createObjectURL para generar URLs
+- Elemento <a> con download attribute
+*/
 
-  get(clave, renovarTTL = false) {
-    try {
-      const item = JSON.parse(localStorage.getItem(`cache_${clave}`));
-      if (!item) return null;
-
-      const edad = Date.now() - item.timestamp;
-      if (edad > item.ttl) {
-        this.remove(clave);
-        return null;
-      }
-
-      if (renovarTTL) {
-        item.timestamp = Date.now();
-        localStorage.setItem(`cache_${clave}`, JSON.stringify(item));
-      }
-      return item.data;
-    } catch {
-      return null;
-    }
-  }
-
-  remove(clave) {
-    localStorage.removeItem(`cache_${clave}`);
-  }
-
-  limpiarExpirados() {
-    const ahora = Date.now();
-    let eliminados = 0;
-
-    for (let i = 0; i < localStorage.length; i++) {
-      const clave = localStorage.key(i);
-      if (clave?.startsWith("cache_")) {
-        try {
-          const item = JSON.parse(localStorage.getItem(clave));
-          if (ahora - item.timestamp > item.ttl) {
-            localStorage.removeItem(clave);
-            eliminados++;
-          }
-        } catch {
-          localStorage.removeItem(clave);
-        }
-      }
-    }
-    console.log(`🧹 ${eliminados} elementos expirados eliminados`);
-  }
-
-  iniciarLimpiezaAutomatica(intervalo = 300000) {
-    setInterval(() => this.limpiarExpirados(), intervalo);
-  }
-}
-
-console.log("✅ Ejercicio 8 COMPLETADO");
-
-//--------------------------------------------------------------------------------------
-// EJERCICIO 9: GESTOR DE DESCARGAS ⭐⭐
-//--------------------------------------------------------------------------------------
-
+// SOLUCIÓN:
 class DownloadManager {
   descargarTexto(contenido, nombreArchivo = "archivo.txt") {
     const blob = new Blob([contenido], { type: "text/plain" });
@@ -1033,12 +829,27 @@ class DownloadManager {
 const downloadManager = new DownloadManager();
 // downloadManager.descargarJSON({ nombre: 'Juan', edad: 30 }, 'usuario.json');
 
-console.log("✅ Ejercicio 9: Gestor de Descargas - COMPLETADO");
+console.log("✅ Ejercicio 7: Gestor de Descargas - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 10: SISTEMA DE SHORTCUTS (ATAJOS DE TECLADO) ⭐⭐
+// EJERCICIO 8: SISTEMA DE SHORTCUTS (ATAJOS DE TECLADO) ⭐⭐
 //--------------------------------------------------------------------------------------
 
+/*
+📝 ENUNCIADO:
+Crea un sistema para registrar atajos de teclado:
+- Ctrl+S, Alt+D, etc.
+- Prevenir acciones por defecto
+- Permitir registrar/eliminar shortcuts
+- Mostrar lista de shortcuts activos
+
+💡 PISTAS:
+- Escucha evento keydown
+- Verifica ctrlKey, altKey, shiftKey
+- Usa Map para almacenar shortcuts
+*/
+
+// SOLUCIÓN:
 class ShortcutManager {
   constructor() {
     this.shortcuts = new Map();
@@ -1095,12 +906,27 @@ shortcuts.registrar("ctrl+s", (e) => console.log("💾 Guardando..."), "Guardar"
 shortcuts.registrar("ctrl+k", (e) => console.log("🔍 Buscando..."), "Buscar");
 // shortcuts.listar();
 
-console.log("✅ Ejercicio 10: Sistema de Shortcuts - COMPLETADO");
+console.log("✅ Ejercicio 8: Sistema de Shortcuts - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 11: LOGGER AVANZADO ⭐⭐
+// EJERCICIO 9: LOGGER AVANZADO ⭐⭐
 //--------------------------------------------------------------------------------------
 
+/*
+📝 ENUNCIADO:
+Crea un sistema de logging con:
+- Diferentes niveles (debug, info, warn, error)
+- Colores y emojis
+- Almacenamiento de logs
+- Exportación de logs
+
+💡 PISTAS:
+- Usa console.log con %c para estilos
+- Almacena logs en array
+- Implementa diferentes métodos según nivel
+*/
+
+// SOLUCIÓN:
 class Logger {
   constructor(nivel = "debug") {
     this.nivel = nivel;
@@ -1171,12 +997,27 @@ logger.info("Sistema iniciado", { version: "1.0" });
 logger.warn("Advertencia de memoria");
 logger.error("Error crítico", { code: 500 });
 
-console.log("✅ Ejercicio 11: Logger Avanzado - COMPLETADO");
+console.log("✅ Ejercicio 9: Logger Avanzado - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 12: FULL SCREEN MANAGER ⭐
+// EJERCICIO 10: FULL SCREEN MANAGER ⭐
 //--------------------------------------------------------------------------------------
 
+/*
+📝 ENUNCIADO:
+Crea un gestor de pantalla completa que:
+- Entre/salga de fullscreen
+- Detecte soporte del navegador
+- Maneje diferentes prefijos (webkit, moz)
+- Escuche cambios de estado
+
+💡 PISTAS:
+- Usa requestFullscreen() y exitFullscreen()
+- Verifica prefijos: webkit, moz
+- Escucha evento fullscreenchange
+*/
+
+// SOLUCIÓN:
 class FullScreenManager {
   static esSoportado() {
     return (
@@ -1252,12 +1093,27 @@ class FullScreenManager {
 // });
 // FullScreenManager.toggle();
 
-console.log("✅ Ejercicio 12: Full Screen Manager - COMPLETADO");
+console.log("✅ Ejercicio 10: Full Screen Manager - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 13: PERFORMANCE TRACKER ⭐⭐⭐
+// EJERCICIO 11: PERFORMANCE TRACKER ⭐⭐⭐
 //--------------------------------------------------------------------------------------
 
+/*
+📝 ENUNCIADO:
+Crea un tracker de rendimiento que:
+- Mida tiempo de ejecución de funciones
+- Funcione con async/await
+- Genere reportes de rendimiento
+- Use Performance API
+
+💡 PISTAS:
+- Usa performance.now() para precisión
+- Soporta funciones síncronas y asíncronas
+- Almacena métricas para análisis
+*/
+
+// SOLUCIÓN:
 class PerformanceTracker {
   constructor() {
     this.metricas = new Map();
@@ -1324,15 +1180,30 @@ const tracker = new PerformanceTracker();
 //   return await fetch('/api/datos');
 // });
 
-console.log("✅ Ejercicio 13: Performance Tracker - COMPLETADO");
+console.log("✅ Ejercicio 11: Performance Tracker - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 14: DARK MODE MANAGER ⭐
+// EJERCICIO 12: DARK MODE MANAGER ⭐
 //--------------------------------------------------------------------------------------
 
+/*
+📝 ENUNCIADO:
+Crea un gestor de tema oscuro que:
+- Detecte preferencia del sistema
+- Guarde preferencia del usuario
+- Aplique tema automáticamente
+- Escuche cambios del sistema
+
+💡 PISTAS:
+- Usa window.matchMedia('prefers-color-scheme')
+- Guarda en localStorage (o usa variables en memoria)
+- Aplica clases CSS al body
+*/
+
+// SOLUCIÓN:
 class DarkModeManager {
   constructor() {
-    this.tema = this.obtenerTemaGuardado() || this.detectarPreferencia();
+    this.tema = this.detectarPreferencia();
     this.aplicar();
   }
 
@@ -1340,14 +1211,6 @@ class DarkModeManager {
     return window.matchMedia("(prefers-color-scheme: dark)").matches
       ? "dark"
       : "light";
-  }
-
-  obtenerTemaGuardado() {
-    return localStorage.getItem("tema");
-  }
-
-  guardarTema(tema) {
-    localStorage.setItem("tema", tema);
   }
 
   aplicar() {
@@ -1358,7 +1221,6 @@ class DarkModeManager {
 
   toggle() {
     this.tema = this.tema === "dark" ? "light" : "dark";
-    this.guardarTema(this.tema);
     this.aplicar();
     return this.tema;
   }
@@ -1366,7 +1228,6 @@ class DarkModeManager {
   set(tema) {
     if (tema !== "dark" && tema !== "light") return;
     this.tema = tema;
-    this.guardarTema(tema);
     this.aplicar();
   }
 
@@ -1374,10 +1235,8 @@ class DarkModeManager {
     window
       .matchMedia("(prefers-color-scheme: dark)")
       .addEventListener("change", (e) => {
-        if (!this.obtenerTemaGuardado()) {
-          this.tema = e.matches ? "dark" : "light";
-          this.aplicar();
-        }
+        this.tema = e.matches ? "dark" : "light";
+        this.aplicar();
       });
   }
 }
@@ -1387,12 +1246,26 @@ const darkMode = new DarkModeManager();
 // darkMode.toggle();
 // darkMode.escucharCambiosSistema();
 
-console.log("✅ Ejercicio 14: Dark Mode Manager - COMPLETADO");
+console.log("✅ Ejercicio 12: Dark Mode Manager - COMPLETADO");
 
 //--------------------------------------------------------------------------------------
-// EJERCICIO 15: PÁGINA DE PRUEBAS COMPLETA ⭐⭐⭐
+// EJERCICIO 13: PÁGINA DE PRUEBAS COMPLETA ⭐⭐⭐
 //--------------------------------------------------------------------------------------
 
+/*
+📝 ENUNCIADO:
+Crea un dashboard que ejecute todos los tests:
+- Pruebe cada clase creada
+- Muestre resultados
+- Genere reporte
+
+💡 PISTAS:
+- Instancia cada clase
+- Ejecuta métodos básicos
+- Captura errores
+*/
+
+// SOLUCIÓN:
 class TestingDashboard {
   constructor() {
     this.tests = [];
@@ -1401,7 +1274,6 @@ class TestingDashboard {
   async ejecutarTodos() {
     console.log("\n🧪 EJECUTANDO TODOS LOS TESTS\n");
 
-    this.testCache();
     this.testDescargas();
     this.testShortcuts();
     this.testLogger();
@@ -1410,14 +1282,6 @@ class TestingDashboard {
     this.testDarkMode();
 
     this.mostrarResultados();
-  }
-
-  testCache() {
-    console.log("📦 Test: CacheManager");
-    const cache = new CacheManager(5000);
-    cache.set("test", { valor: 123 });
-    const recuperado = cache.get("test");
-    console.log(recuperado ? "✅ PASS" : "❌ FAIL");
   }
 
   testDescargas() {
@@ -1464,9 +1328,9 @@ class TestingDashboard {
 
   mostrarResultados() {
     console.log("\n📊 RESUMEN DE TESTS");
-    console.log("═══════════════════════════");
+    console.log("═══════════════════════════════");
     console.log("✅ Todos los tests completados");
-    console.log("═══════════════════════════\n");
+    console.log("═══════════════════════════════\n");
   }
 }
 
@@ -1474,9 +1338,9 @@ class TestingDashboard {
 const dashboard = new TestingDashboard();
 // dashboard.ejecutarTodos();
 
-console.log("✅ Ejercicio 15: Testing Dashboard - COMPLETADO");
+console.log("✅ Ejercicio 13: Testing Dashboard - COMPLETADO");
 console.log("\n🎉 ¡TODOS LOS EJERCICIOS COMPLETADOS!");
-console.log("═══════════════════════════════════════");
-console.log("📚 Has completado 15 ejercicios prácticos");
+console.log("═══════════════════════════════════════════════");
+console.log("📚 Has completado 13 ejercicios prácticos");
 console.log("💪 Dominas el objeto window de JavaScript");
-console.log("═══════════════════════════════════════\n");
+console.log("═══════════════════════════════════════════════\n");

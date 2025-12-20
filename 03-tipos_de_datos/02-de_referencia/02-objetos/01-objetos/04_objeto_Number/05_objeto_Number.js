@@ -1,162 +1,357 @@
 /* 
+================================================================================
+  OBJETO NUMBER EN JAVASCRIPT
+================================================================================
   Number es un objeto predefinido que permite trabajar con valores numéricos. 
-  Proporciona propiedades y métodos útiles para manejar números en diferentes formatos 
-  y realizar varias operaciones matemáticas. 
+  Proporciona propiedades y métodos útiles para manejar números en diferentes 
+  formatos y realizar varias operaciones matemáticas. 
 */
 
-// Podemos crear un objeto Number de 2 maneras:
-let num = 123;
+//------------------------------------------------------------------------------
+// CREACIÓN DE NÚMEROS
+//------------------------------------------------------------------------------
+
+// Forma primitiva (recomendada)
+let num1 = 123;
+
+// Forma de objeto (NO recomendada - consumo innecesario de memoria)
 let num2 = new Number(123);
 
-//********Propiedades********//
+console.log(typeof num1); // "number"
+console.log(typeof num2); // "object"
 
-// El valor numérico más grande representable:
-console.log(Number.MAX_VALUE); // Devuelve 1.7976931348623157e+308
+// Notaciones especiales
+let numExponencial = 1e9; // 1,000,000,000
+let numHexadecimal = 0xff; // 255 en decimal
+let numBinario = 0b1111011; // 123 en decimal
+let numOctal = 0o173; // 123 en decimal
 
-// El valor positivo más pequeño representable:
-console.log(Number.MIN_VALUE); // Devuelve 5e-324
+console.log(numExponencial); // 1000000000
+console.log(numHexadecimal); // 255
+console.log(numBinario); // 123
+console.log(numOctal); // 123
 
-// Representa un valor "Not-A-Number" (NaN):
-console.log(Number.NaN); // Devuelve NaN
+// BigInt para números muy grandes (ES2020)
+let bigNum = 9007199254740991n;
+console.log(typeof bigNum); // "bigint"
 
-// Representa el valor de negativo infinito:
-console.log(Number.NEGATIVE_INFINITY); // Devuelve -Infinity
+//------------------------------------------------------------------------------
+// PROPIEDADES ESTÁTICAS DE NUMBER
+//------------------------------------------------------------------------------
 
-// Representa el valor de positivo infinito:
-console.log(Number.POSITIVE_INFINITY); // Devuelve Infinity
+console.log("=== PROPIEDADES ESTÁTICAS ===");
 
-// Propiedades adicionales:
+// Valor numérico más grande representable
+console.log("MAX_VALUE:", Number.MAX_VALUE);
+// 1.7976931348623157e+308
 
-// El valor entero más grande que se puede representar con precisión en JavaScript (2^53 - 1):
-console.log(Number.MAX_SAFE_INTEGER); // 9007199254740991
+// Valor positivo más pequeño representable
+console.log("MIN_VALUE:", Number.MIN_VALUE);
+// 5e-324
 
-// El valor entero más pequeño que se puede representar con precisión en JavaScript (-(2^53 - 1)):
-console.log(Number.MIN_SAFE_INTEGER); // -9007199254740991
+// Representa "Not-A-Number"
+console.log("NaN:", Number.NaN);
+// NaN
 
-// La diferencia más pequeña posible entre dos números representables en JavaScript:
-console.log(Number.EPSILON); // 2.220446049250313e-16
-/* Una aplicación práctica de Number.EPSILON es comparar números de punto flotante para determinar 
-   si son "casi iguales" debido a las limitaciones de precisión.
-   Ejemplos:
-*/
-// Ejemplo 1
-function casiIguales(a, b) {
-  return Math.abs(a - b) < Number.EPSILON;
-}
+// Infinito negativo
+console.log("NEGATIVE_INFINITY:", Number.NEGATIVE_INFINITY);
+// -Infinity
 
-console.log(casiIguales(0.1 + 0.2, 0.3)); // Devuelve true
-// Ejemplo 2
-function casiIguales(a, b) {
-  return Math.abs(a - b) < Number.EPSILON;
-}
+// Infinito positivo
+console.log("POSITIVE_INFINITY:", Number.POSITIVE_INFINITY);
+// Infinity
 
-// Ejemplos de uso
-let num3 = 0.1 + 0.2;
-let num4 = 0.3;
-let num5 = 0.1 + 0.2 + 0.3;
-let num6 = 0.6;
+// Mayor entero seguro (2^53 - 1)
+console.log("MAX_SAFE_INTEGER:", Number.MAX_SAFE_INTEGER);
+// 9007199254740991
 
-console.log(`Comparar ${num3} y ${num4}: ${casiIguales(num3, num4)}`); // true
-console.log(`Comparar ${num5} y ${num6}: ${casiIguales(5, num6)}`); // true
+// Menor entero seguro (-(2^53 - 1))
+console.log("MIN_SAFE_INTEGER:", Number.MIN_SAFE_INTEGER);
+// -9007199254740991
 
-// Otro caso con números más grandes
-let num7 = Math.sqrt(2) * Math.sqrt(2);
-let num8 = 2;
+// Diferencia más pequeña entre dos números
+console.log("EPSILON:", Number.EPSILON);
+// 2.220446049250313e-16
 
-console.log(`Comparar ${num7} y ${num8}: ${casiIguales(num7, num8)}`); // true
+//------------------------------------------------------------------------------
+// MÉTODOS ESTÁTICOS DE NUMBER
+//------------------------------------------------------------------------------
 
-//********Métodos********//
+console.log("\n=== MÉTODOS ESTÁTICOS ===");
 
-// Determina si el valor es un número finito:
-console.log(Number.isFinite(123)); // true
-console.log(Number.isFinite(Infinity)); // false
+// Number.isFinite() - Determina si es un número finito
+console.log("isFinite(123):", Number.isFinite(123)); // true
+console.log("isFinite(Infinity):", Number.isFinite(Infinity)); // false
+console.log("isFinite(NaN):", Number.isFinite(NaN)); // false
+console.log("isFinite('123'):", Number.isFinite("123")); // false (no convierte)
 
-// Determina si el valor es un número entero:
-console.log(Number.isInteger(123)); // true
-console.log(Number.isInteger(123.456)); // false
+// Number.isInteger() - Determina si es un entero
+console.log("isInteger(123):", Number.isInteger(123)); // true
+console.log("isInteger(123.456):", Number.isInteger(123.456)); // false
+console.log("isInteger(123.0):", Number.isInteger(123.0)); // true
 
-// Determina si el valor es NaN:
-console.log(Number.isNaN(NaN)); // true
-console.log(Number.isNaN(123)); // false
+// Number.isNaN() - Determina si es NaN
+console.log("isNaN(NaN):", Number.isNaN(NaN)); // true
+console.log("isNaN(123):", Number.isNaN(123)); // false
+console.log("isNaN('hello'):", Number.isNaN("hello")); // false (no convierte)
 
-// Convierte una cadena en un número de punto flotante:
-console.log(Number.parseFloat("123.45")); // 123.45
+// Number.isSafeInteger() - Determina si es un entero seguro
+console.log("isSafeInteger(3):", Number.isSafeInteger(3)); // true
+console.log(
+  "isSafeInteger(Math.pow(2, 53)):",
+  Number.isSafeInteger(Math.pow(2, 53))
+); // false
+console.log(
+  "isSafeInteger(9007199254740991):",
+  Number.isSafeInteger(9007199254740991)
+); // true
 
-// Convierte una cadena en un entero, respetando una base específica (radix):
-console.log(Number.parseInt("123", 10)); // 123
-console.log(Number.parseInt("7B", 16)); // 123 en base 16
+// Number.parseFloat() - Convierte string a número decimal
+console.log("parseFloat('123.45'):", Number.parseFloat("123.45")); // 123.45
+console.log("parseFloat('123.45px'):", Number.parseFloat("123.45px")); // 123.45
+console.log("parseFloat('abc'):", Number.parseFloat("abc")); // NaN
 
-// Métodos adicionales:
+// Number.parseInt() - Convierte string a entero con base opcional
+console.log("parseInt('123'):", Number.parseInt("123")); // 123
+console.log("parseInt('123', 10):", Number.parseInt("123", 10)); // 123 (decimal)
+console.log("parseInt('7B', 16):", Number.parseInt("7B", 16)); // 123 (hexadecimal)
+console.log("parseInt('1111011', 2):", Number.parseInt("1111011", 2)); // 123 (binario)
+console.log("parseInt('173', 8):", Number.parseInt("173", 8)); // 123 (octal)
 
-// Number.isSafeInteger(value): Determina si el valor es un entero seguro (un entero que puede ser representado con precisión):
-console.log(Number.isSafeInteger(3)); // true
-console.log(Number.isSafeInteger(Math.pow(2, 53))); // false
+//------------------------------------------------------------------------------
+// MÉTODOS DE INSTANCIA (PROTOTIPO)
+//------------------------------------------------------------------------------
 
-// Number.toFixed(digits): Devuelve una cadena que representa el número en notación de punto fijo, con el número de decimales especificado:
-let num9 = 123.456;
-console.log(num9.toFixed(2)); // devuelve "123.46"
+console.log("\n=== MÉTODOS DE INSTANCIA ===");
 
-// Number.toPrecision(precision): Devuelve una cadena que representa el número con una precisión específica:
-let num10 = 123.456;
-console.log(num10.toPrecision(4)); // "123.5"
+let num = 123.456789;
 
-//********Métodos del Prototipo Number********//
+// toFixed() - Redondea a n decimales (devuelve string)
+console.log("toFixed(2):", num.toFixed(2)); // "123.46"
+console.log("toFixed(0):", num.toFixed(0)); // "123"
+console.log("toFixed(4):", num.toFixed(4)); // "123.4568"
 
-// toFixed(digits): Devuelve una cadena representando el número con un número fijo de decimales:
-let nu11 = 123.456;
-console.log(num11.toFixed(2)); // "123.46"
+// toPrecision() - Formatea con n dígitos significativos (devuelve string)
+console.log("toPrecision(4):", num.toPrecision(4)); // "123.5"
+console.log("toPrecision(6):", num.toPrecision(6)); // "123.457"
+console.log("toPrecision(2):", num.toPrecision(2)); // "1.2e+2"
 
-// toExponential(fractionDigits): Devuelve una cadena representando el número en notación exponencial:
-let num12 = 123.456;
-console.log(num12.toExponential(2)); // "1.23e+2"
+// toExponential() - Notación exponencial (devuelve string)
+console.log("toExponential():", num.toExponential()); // "1.23456789e+2"
+console.log("toExponential(2):", num.toExponential(2)); // "1.23e+2"
+console.log("toExponential(4):", num.toExponential(4)); // "1.2346e+2"
 
-// toString(radix): Devuelve una cadena representando el número en una base específica (radix)
-let num13 = 123;
-console.log(num13.toString(2)); // "1111011" en binario
-console.log(num13.toString(16)); // "7b" en hexadecimal
+// toString() - Convierte a string en base n
+let num123 = 123;
+console.log("toString():", num123.toString()); // "123" (decimal)
+console.log("toString(2):", num123.toString(2)); // "1111011" (binario)
+console.log("toString(16):", num123.toString(16)); // "7b" (hexadecimal)
+console.log("toString(8):", num123.toString(8)); // "173" (octal)
 
-// PROFE //
+// toLocaleString() - Formato según locale
+let precio = 1234567.89;
+console.log("toLocaleString('es-ES'):", precio.toLocaleString("es-ES")); // "1.234.567,89"
+console.log("toLocaleString('en-US'):", precio.toLocaleString("en-US")); // "1,234,567.89"
+
+// valueOf() - Retorna el valor primitivo
+let numObj = new Number(42);
+console.log("valueOf():", numObj.valueOf()); // 42
+console.log("typeof valueOf():", typeof numObj.valueOf()); // "number"
+
+//------------------------------------------------------------------------------
+// APLICACIÓN PRÁCTICA: Number.EPSILON
+//------------------------------------------------------------------------------
+
+console.log("\n=== APLICACIÓN PRÁCTICA: COMPARAR DECIMALES ===");
+
 /* 
- 
-   Podemos utilizar una variable que contenga un tipo de datos primitivo (principales:number, string, boolean),
-   como un objetos, en el sentido de que podemos utilizar métodos y propiedades del tipo de objeto que representan,
-   no en el sentido de poder añadir otros atributos y métodos.
-
+  JavaScript tiene problemas de precisión con decimales debido a 
+  la representación interna en punto flotante (IEEE 754).
+  Number.EPSILON nos ayuda a comparar si dos números son "casi iguales".
 */
 
-let num14 = 1000;
+// Problema de precisión:
+console.log(0.1 + 0.2); // 0.30000000000000004 (¡no es exactamente 0.3!)
+console.log(0.1 + 0.2 === 0.3); // false
 
-//No se recomienda en js la utilización de constructor en datos primitivos(optimización memoria)
-let num15 = new Number(2);
+// Solución con EPSILON:
+function casiIguales(a, b) {
+  return Math.abs(a - b) < Number.EPSILON;
+}
 
-//Admite notación exponencial
-let numexponencial = 1e9;
-console.log(numexponencial); //1000000000
+// Ejemplos de uso:
+let suma = 0.1 + 0.2;
+let esperado = 0.3;
 
-/*
-   Todos los números se guardan en 64 bits, aunque no se utiliza mucho
-   en versiones actuales de js existe un nuevo tipo bigint que permite 
-   almacenar números más grandes, añadiéndole una n al final del numero
-*/
+console.log(`¿${suma} == ${esperado}?`, suma === esperado); // false
+console.log(`¿Casi iguales?`, casiIguales(suma, esperado)); // true
 
-let bignum = 1111n;
-console.log(typeof bignum); //bignint
+// Más ejemplos:
+let num3 = 0.1 + 0.2 + 0.3;
+let num4 = 0.6;
+console.log(`Comparar ${num3} y ${num4}:`, casiIguales(num3, num4)); // true
 
-//Admite notación Hexadecimal (0x), binaria(0b) y octal(0o)
+let num5 = Math.sqrt(2) * Math.sqrt(2);
+let num6 = 2;
+console.log(`Comparar √2 * √2 (${num5}) y 2:`, casiIguales(num5, num6)); // true
 
-let numexadecimal = 0xff;
-console.log(numexadecimal); //255
+// Caso más complejo
+let resultado = (0.1 + 0.2) * 3;
+let esperado2 = 0.9;
+console.log(
+  `Comparar (0.1 + 0.2) * 3 y 0.9:`,
+  casiIguales(resultado, esperado2)
+); // true
 
-//Métodos
+//------------------------------------------------------------------------------
+// CONVERSIONES Y VALIDACIONES
+//------------------------------------------------------------------------------
 
-let numdecimal = 3.1416;
+console.log("\n=== CONVERSIONES Y VALIDACIONES ===");
 
-console.log(numdecimal.toExponential(2)); //3.14e+0
-console.log(numdecimal.toFixed(3)); //3.142
-console.log(numdecimal.toString()); //3.1416 (string)
+// Diferentes formas de convertir a número
+console.log("Number('123'):", Number("123")); // 123
+console.log("Number('123.45'):", Number("123.45")); // 123.45
+console.log("Number('0xff'):", Number("0xff")); // 255
+console.log("Number(true):", Number(true)); // 1
+console.log("Number(false):", Number(false)); // 0
+console.log("Number(null):", Number(null)); // 0
+console.log("Number(undefined):", Number(undefined)); // NaN
+console.log("Number('hello'):", Number("hello")); // NaN
 
-//También podemos utilizar el propio Number como clase estática y acceder a propiedades
+// Operador unario + (conversión rápida)
+console.log("+'123':", +"123"); // 123
+console.log("+true:", +true); // 1
 
-console.log(Number.MAX_VALUE); //1.7976931348623157e+308
-console.log(Number.MAX_SAFE_INTEGER); //9007199254740991
-console.log(Number.POSITIVE_INFINITY); //Infinity
+// Diferencia entre Number() y parseInt/parseFloat
+console.log("Number('123px'):", Number("123px")); // NaN
+console.log("parseInt('123px'):", parseInt("123px")); // 123
+console.log("parseFloat('123.45px'):", parseFloat("123.45px")); // 123.45
+
+// Validar si es un número
+function esNumeroValido(valor) {
+  return typeof valor === "number" && !isNaN(valor) && isFinite(valor);
+}
+
+console.log("\nValidaciones:");
+console.log("esNumeroValido(123):", esNumeroValido(123)); // true
+console.log("esNumeroValido(NaN):", esNumeroValido(NaN)); // false
+console.log("esNumeroValido(Infinity):", esNumeroValido(Infinity)); // false
+console.log("esNumeroValido('123'):", esNumeroValido("123")); // false
+
+//------------------------------------------------------------------------------
+// CASOS ESPECIALES Y BUENAS PRÁCTICAS
+//------------------------------------------------------------------------------
+
+console.log("\n=== CASOS ESPECIALES ===");
+
+// Operaciones con NaN
+console.log("NaN + 5:", NaN + 5); // NaN
+console.log("NaN === NaN:", NaN === NaN); // false (¡único valor que no es igual a sí mismo!)
+console.log("isNaN(NaN):", isNaN(NaN)); // true
+
+// Operaciones con Infinity
+console.log("1 / 0:", 1 / 0); // Infinity
+console.log("-1 / 0:", -1 / 0); // -Infinity
+console.log("Infinity + 1:", Infinity + 1); // Infinity
+console.log("Infinity - Infinity:", Infinity - Infinity); // NaN
+
+// Redondeo
+console.log("\nRedondeo:");
+let decimal = 3.7;
+console.log("Math.round(3.7):", Math.round(decimal)); // 4 (redondeo estándar)
+console.log("Math.floor(3.7):", Math.floor(decimal)); // 3 (hacia abajo)
+console.log("Math.ceil(3.7):", Math.ceil(decimal)); // 4 (hacia arriba)
+console.log("Math.trunc(3.7):", Math.trunc(decimal)); // 3 (elimina decimales)
+
+// Límites de precisión
+console.log("\nLímites de precisión:");
+console.log("0.1 + 0.2:", 0.1 + 0.2); // 0.30000000000000004
+console.log("9007199254740992 + 1:", 9007199254740992 + 1); // 9007199254740992 (pierde precisión)
+console.log("9007199254740991 + 1:", 9007199254740991 + 1); // 9007199254740992 (correcto)
+
+//------------------------------------------------------------------------------
+// BUENAS PRÁCTICAS
+//------------------------------------------------------------------------------
+
+console.log("\n=== BUENAS PRÁCTICAS ===");
+
+// ✅ HACER: Usar primitivos en lugar de objetos Number
+let buenNumero = 42;
+let malNumero = new Number(42); // ❌ NO hacer esto
+
+console.log("buenNumero === 42:", buenNumero === 42); // true
+console.log("malNumero === 42:", malNumero === 42); // false (es un objeto)
+console.log("malNumero.valueOf() === 42:", malNumero.valueOf() === 42); // true
+
+// ✅ HACER: Usar Number.isNaN() en lugar de isNaN()
+console.log("\nDiferencia isNaN vs Number.isNaN:");
+console.log("isNaN('hello'):", isNaN("hello")); // true (convierte a número)
+console.log("Number.isNaN('hello'):", Number.isNaN("hello")); // false (no convierte)
+
+// ✅ HACER: Usar Number.isFinite() en lugar de isFinite()
+console.log("\nDiferencia isFinite vs Number.isFinite:");
+console.log("isFinite('123'):", isFinite("123")); // true (convierte)
+console.log("Number.isFinite('123'):", Number.isFinite("123")); // false (no convierte)
+
+// ✅ HACER: Validar enteros seguros
+function sumarSiEsSeguro(a, b) {
+  if (Number.isSafeInteger(a) && Number.isSafeInteger(b)) {
+    const resultado = a + b;
+    if (Number.isSafeInteger(resultado)) {
+      return resultado;
+    }
+  }
+  throw new Error("Operación fuera del rango seguro");
+}
+
+console.log("\nSuma segura:");
+console.log("sumarSiEsSeguro(1, 2):", sumarSiEsSeguro(1, 2)); // 3
+
+// ✅ HACER: Redondear antes de comparar decimales
+function compararConRedondeo(a, b, decimales = 2) {
+  const factor = Math.pow(10, decimales);
+  return Math.round(a * factor) === Math.round(b * factor);
+}
+
+console.log("\nComparación con redondeo:");
+console.log(
+  "compararConRedondeo(0.1 + 0.2, 0.3):",
+  compararConRedondeo(0.1 + 0.2, 0.3)
+); // true
+
+//------------------------------------------------------------------------------
+// RESUMEN
+//------------------------------------------------------------------------------
+
+console.log("\n=== RESUMEN ===");
+console.log(`
+✅ Propiedades principales:
+   - MAX_VALUE, MIN_VALUE
+   - MAX_SAFE_INTEGER, MIN_SAFE_INTEGER
+   - EPSILON, NaN, Infinity
+
+✅ Métodos estáticos clave:
+   - Number.isFinite() - verifica si es finito (sin conversión)
+   - Number.isInteger() - verifica si es entero
+   - Number.isNaN() - verifica si es NaN (sin conversión)
+   - Number.isSafeInteger() - verifica rango seguro
+   - Number.parseInt() - convierte a entero
+   - Number.parseFloat() - convierte a decimal
+
+✅ Métodos de instancia:
+   - toFixed() - formatea decimales
+   - toPrecision() - formatea dígitos significativos
+   - toExponential() - notación científica
+   - toString() - convierte a string (con base opcional)
+   - toLocaleString() - formato según región
+
+✅ Buenas prácticas:
+   - Usar primitivos, no new Number()
+   - Usar Number.isNaN() en lugar de isNaN()
+   - Comparar decimales con EPSILON o redondeo
+   - Verificar rangos seguros con isSafeInteger()
+   - Usar BigInt para números muy grandes
+`);
+
+console.log("✅ Archivo completado correctamente");
