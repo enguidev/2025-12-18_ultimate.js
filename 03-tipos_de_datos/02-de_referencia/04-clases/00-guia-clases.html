@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía Completa de Clases en JavaScript</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: #333;
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        font-size: 1.2em;
+        opacity: 0.9;
+      }
+
+      .content {
+        padding: 40px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        border-left: 5px solid #667eea;
+      }
+
+      h2 {
+        color: #667eea;
+        margin-bottom: 20px;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #764ba2;
+        margin: 20px 0 10px 0;
+        font-size: 1.3em;
+      }
+
+      .code-block {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 20px;
+        border-radius: 10px;
+        overflow-x: auto;
+        margin: 15px 0;
+        font-family: "Courier New", monospace;
+        font-size: 0.95em;
+        line-height: 1.5;
+      }
+
+      .keyword {
+        color: #569cd6;
+      }
+      .string {
+        color: #ce9178;
+      }
+      .function {
+        color: #dcdcaa;
+      }
+      .comment {
+        color: #6a9955;
+      }
+      .number {
+        color: #b5cea8;
+      }
+
+      .demo-box {
+        background: white;
+        border: 2px solid #667eea;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1em;
+        margin: 5px;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .output {
+        background: #f8f9fa;
+        border-left: 4px solid #667eea;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+        font-family: monospace;
+        white-space: pre-wrap;
+      }
+
+      .highlight {
+        background: #fff3cd;
+        padding: 2px 6px;
+        border-radius: 3px;
+        font-weight: bold;
+      }
+
+      .info-box {
+        background: #e7f3ff;
+        border-left: 4px solid #2196f3;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+      }
+
+      .warning-box {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+      }
+
+      .nav-buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        margin: 20px 0;
+        flex-wrap: wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🎓 Guía Completa de Clases en JavaScript</h1>
+        <p class="subtitle">Desde fundamentos hasta características ES2022+</p>
+      </header>
+
+      <div class="content">
+        <!-- SECCIÓN 1: INTRODUCCIÓN -->
+        <div class="section">
+          <h2>📚 1. Introducción a las Clases</h2>
+
+          <div class="info-box">
+            <strong>💡 ¿Qué son las clases?</strong><br />
+            Las clases son plantillas para crear objetos. Encapsulan datos
+            (propiedades) y comportamiento (métodos).
+          </div>
+
+          <h3>Dos formas de crear "clases" en JavaScript:</h3>
+
+          <div class="code-block">
+            <span class="comment"
+              >// ❌ FORMA ANTIGUA: Función Constructora (antes de ES6)</span
+            >
+            <span class="keyword">function</span>
+            <span class="function">PersonaAntigua</span>(nombre) {
+            <span class="keyword">this</span>.nombre = nombre;
+            <span class="keyword">this</span>.edad =
+            <span class="number">0</span>;
+            <span class="keyword">this</span>.cumplir =
+            <span class="keyword">function</span>() {
+            <span class="keyword">this</span>.edad++; }; }
+
+            <span class="comment"
+              >// ✅ FORMA MODERNA: Class (desde ES6/2015)</span
+            >
+            <span class="keyword">class</span>
+            <span class="function">PersonaModerna</span> {
+            <span class="function">constructor</span>(nombre) {
+            <span class="keyword">this</span>.nombre = nombre;
+            <span class="keyword">this</span>.edad =
+            <span class="number">0</span>; }
+
+            <span class="function">cumplir</span>() {
+            <span class="keyword">this</span>.edad++; } }
+          </div>
+
+          <div class="demo-box">
+            <h3>🎮 Demostración Interactiva</h3>
+            <button onclick="demo1()">Crear Personas y Comparar</button>
+            <div id="output1" class="output"></div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 2: PROPIEDADES PRIVADAS -->
+        <div class="section">
+          <h2>🔒 2. Propiedades Privadas (ES2022+)</h2>
+
+          <div class="warning-box">
+            <strong>⚠️ Problema del código actual:</strong><br />
+            En tu código, TODOS los atributos son públicos. Cualquiera puede
+            modificarlos directamente:
+            <code>persona.edad = -999;</code> ❌
+          </div>
+
+          <h3>✨ Solución: Usar el símbolo # para privacidad</h3>
+
+          <div class="code-block">
+            <span class="keyword">class</span>
+            <span class="function">PersonaSegura</span> {
+            <span class="comment">// ✅ Propiedades PRIVADAS (con #)</span>
+            #nombre; #edad; #dni;
+
+            <span class="function">constructor</span>(nombre, dni) {
+            <span class="keyword">this</span>.#nombre = nombre;
+            <span class="keyword">this</span>.#edad =
+            <span class="number">0</span>;
+            <span class="keyword">this</span>.#dni = dni; }
+
+            <span class="comment"
+              >// Métodos públicos para acceder a datos privados</span
+            >
+            <span class="function">getNombre</span>() {
+            <span class="keyword">return this</span>.#nombre; }
+
+            <span class="function">getEdad</span>() {
+            <span class="keyword">return this</span>.#edad; }
+
+            <span class="function">cumplir</span>() {
+            <span class="keyword">this</span>.#edad++; console.log(<span
+              class="string"
+              >`¡Feliz cumpleaños! Ahora tienes ${<span class="keyword"
+                >this</span
+              >.#edad} años`</span
+            >); }
+
+            <span class="comment"
+              >// ❌ No exponemos el DNI para proteger privacidad</span
+            >
+            }
+          </div>
+
+          <div class="demo-box">
+            <h3>🎮 Probar Propiedades Privadas</h3>
+            <button onclick="demo2()">Intentar Acceso Directo (Fallará)</button>
+            <button onclick="demo3()">Usar Métodos Correctos (Funciona)</button>
+            <div id="output2" class="output"></div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 3: GETTERS Y SETTERS -->
+        <div class="section">
+          <h2>🎯 3. Getters y Setters</h2>
+
+          <div class="info-box">
+            <strong>💡 ¿Para qué sirven?</strong><br />
+            Permiten acceder y modificar propiedades privadas con validación y
+            control.
+          </div>
+
+          <div class="code-block">
+            <span class="keyword">class</span>
+            <span class="function">Cuenta</span> { #saldo;
+
+            <span class="function">constructor</span>(saldoInicial) {
+            <span class="keyword">this</span>.#saldo = saldoInicial; }
+
+            <span class="comment"
+              >// GETTER: Se usa como una propiedad, no como método</span
+            >
+            <span class="keyword">get</span>
+            <span class="function">saldo</span>() {
+            <span class="keyword">return</span>
+            <span class="string"
+              >`$${<span class="keyword">this</span>.#saldo.toFixed(<span
+                class="number"
+                >2</span
+              >)}`</span
+            >; }
+
+            <span class="comment"
+              >// SETTER: Permite validar antes de asignar</span
+            >
+            <span class="keyword">set</span>
+            <span class="function">saldo</span>(cantidad) {
+            <span class="keyword">if</span> (cantidad <
+            <span class="number">0</span>) {
+            <span class="keyword">throw new</span> Error(<span class="string"
+              >'El saldo no puede ser negativo'</span
+            >); } <span class="keyword">this</span>.#saldo = cantidad; }
+
+            <span class="function">depositar</span>(cantidad) {
+            <span class="keyword">if</span> (cantidad <=
+            <span class="number">0</span>) {
+            <span class="keyword">throw new</span> Error(<span class="string"
+              >'La cantidad debe ser positiva'</span
+            >); } <span class="keyword">this</span>.#saldo += cantidad; } }
+
+            <span class="comment">// USO:</span>
+            <span class="keyword">const</span> cuenta =
+            <span class="keyword">new</span> Cuenta(<span class="number"
+              >1000</span
+            >); console.log(cuenta.saldo);
+            <span class="comment">// "$1000.00" (getter)</span>
+            cuenta.depositar(<span class="number">500</span>);
+            console.log(cuenta.saldo);
+            <span class="comment">// "$1500.00"</span>
+          </div>
+
+          <div class="demo-box">
+            <h3>🎮 Demostración de Cuenta Bancaria</h3>
+            <button onclick="demo4()">Crear Cuenta y Operar</button>
+            <button onclick="demo5()">Intentar Saldo Negativo (Error)</button>
+            <div id="output3" class="output"></div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 4: MÉTODOS ESTÁTICOS -->
+        <div class="section">
+          <h2>⚡ 4. Métodos Estáticos</h2>
+
+          <div class="info-box">
+            <strong>💡 ¿Qué son?</strong><br />
+            Métodos que pertenecen a la clase, NO a las instancias. Se llaman
+            directamente desde la clase.
+          </div>
+
+          <div class="code-block">
+            <span class="keyword">class</span>
+            <span class="function">Calculadora</span> {
+            <span class="comment"
+              >// Método estático: se llama con Calculadora.sumar()</span
+            >
+            <span class="keyword">static</span>
+            <span class="function">sumar</span>(a, b) {
+            <span class="keyword">return</span> a + b; }
+
+            <span class="keyword">static</span>
+            <span class="function">restar</span>(a, b) {
+            <span class="keyword">return</span> a - b; } }
+
+            <span class="keyword">class</span>
+            <span class="function">Usuario</span> {
+            <span class="keyword">static</span> #contadorUsuarios =
+            <span class="number">0</span>;
+
+            <span class="function">constructor</span>(nombre) {
+            <span class="keyword">this</span>.id = ++Usuario.#contadorUsuarios;
+            <span class="keyword">this</span>.nombre = nombre; }
+
+            <span class="keyword">static</span>
+            <span class="function">getTotalUsuarios</span>() {
+            <span class="keyword">return</span> Usuario.#contadorUsuarios; } }
+
+            <span class="comment">// USO:</span>
+            console.log(Calculadora.sumar(<span class="number">5</span>,
+            <span class="number">3</span>)); <span class="comment">// 8</span>
+
+            <span class="keyword">const</span> u1 =
+            <span class="keyword">new</span> Usuario(<span class="string"
+              >'Ana'</span
+            >); <span class="keyword">const</span> u2 =
+            <span class="keyword">new</span> Usuario(<span class="string"
+              >'Luis'</span
+            >); console.log(Usuario.getTotalUsuarios());
+            <span class="comment">// 2</span>
+          </div>
+
+          <div class="demo-box">
+            <h3>🎮 Demostración</h3>
+            <button onclick="demo6()">Usar Calculadora Estática</button>
+            <button onclick="demo7()">Crear Usuarios y Contar</button>
+            <div id="output4" class="output"></div>
+          </div>
+        </div>
+
+        <!-- NAVEGACIÓN -->
+        <div class="nav-buttons">
+          <button onclick="verTodo()">🔍 Ver Comparación Completa</button>
+          <button onclick="limpiar()">🧹 Limpiar Consola</button>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // ============ DEMOSTRACIÓN 1 ============
+      function demo1() {
+        const output = document.getElementById("output1");
+        let resultado = "";
+
+        // Forma antigua
+        function PersonaAntigua(nombre) {
+          this.nombre = nombre;
+          this.edad = 0;
+          this.cumplir = function () {
+            this.edad++;
+          };
+        }
+
+        // Forma moderna
+        class PersonaModerna {
+          constructor(nombre) {
+            this.nombre = nombre;
+            this.edad = 0;
+          }
+          cumplir() {
+            this.edad++;
+          }
+        }
+
+        const p1 = new PersonaAntigua("Raúl");
+        const p2 = new PersonaModerna("María");
+
+        p1.cumplir();
+        p2.cumplir();
+        p2.cumplir();
+
+        resultado += "=== FORMA ANTIGUA ===\n";
+        resultado += `Nombre: ${p1.nombre}, Edad: ${p1.edad}\n`;
+        resultado += `Tipo: ${typeof PersonaAntigua}\n\n`;
+
+        resultado += "=== FORMA MODERNA ===\n";
+        resultado += `Nombre: ${p2.nombre}, Edad: ${p2.edad}\n`;
+        resultado += `Tipo: ${typeof PersonaModerna}\n\n`;
+
+        resultado += "⚠️ PROBLEMA: Ambas son públicas:\n";
+        resultado += `p1.edad = -999; // ❌ Esto funciona pero no debería\n`;
+        p1.edad = -999;
+        resultado += `Edad de ${p1.nombre}: ${p1.edad} (¡Incorrecto!)\n`;
+
+        output.textContent = resultado;
+      }
+
+      // ============ DEMOSTRACIÓN 2 ============
+      function demo2() {
+        const output = document.getElementById("output2");
+        let resultado = "";
+
+        class PersonaSegura {
+          #nombre;
+          #edad;
+
+          constructor(nombre) {
+            this.#nombre = nombre;
+            this.#edad = 0;
+          }
+
+          getNombre() {
+            return this.#nombre;
+          }
+          getEdad() {
+            return this.#edad;
+          }
+          cumplir() {
+            this.#edad++;
+          }
+        }
+
+        const persona = new PersonaSegura("Pedro");
+
+        resultado += "=== INTENTANDO ACCESO DIRECTO ===\n\n";
+
+        try {
+          resultado += `persona.#nombre: `;
+          eval("persona.#nombre");
+        } catch (e) {
+          resultado += `❌ ERROR: ${e.message}\n`;
+        }
+
+        try {
+          resultado += `persona.#edad: `;
+          eval("persona.#edad");
+        } catch (e) {
+          resultado += `❌ ERROR: ${e.message}\n`;
+        }
+
+        resultado += "\n✅ Las propiedades privadas están protegidas!\n";
+        resultado += "Usa los métodos públicos (ver siguiente demo)";
+
+        output.textContent = resultado;
+      }
+
+      // ============ DEMOSTRACIÓN 3 ============
+      function demo3() {
+        const output = document.getElementById("output2");
+        let resultado = "";
+
+        class PersonaSegura {
+          #nombre;
+          #edad;
+
+          constructor(nombre) {
+            this.#nombre = nombre;
+            this.#edad = 0;
+          }
+
+          getNombre() {
+            return this.#nombre;
+          }
+          getEdad() {
+            return this.#edad;
+          }
+          cumplir() {
+            this.#edad++;
+          }
+        }
+
+        const persona = new PersonaSegura("Ana");
+
+        resultado += "=== USANDO MÉTODOS CORRECTAMENTE ===\n\n";
+        resultado += `persona.getNombre(): ${persona.getNombre()} ✅\n`;
+        resultado += `persona.getEdad(): ${persona.getEdad()} ✅\n\n`;
+
+        persona.cumplir();
+        resultado += "Después de cumplir():\n";
+        resultado += `persona.getEdad(): ${persona.getEdad()} ✅\n`;
+
+        output.textContent = resultado;
+      }
+
+      // ============ DEMOSTRACIÓN 4 ============
+      function demo4() {
+        const output = document.getElementById("output3");
+        let resultado = "";
+
+        class Cuenta {
+          #saldo;
+
+          constructor(saldoInicial) {
+            this.#saldo = saldoInicial;
+          }
+
+          get saldo() {
+            return `$${this.#saldo.toFixed(2)}`;
+          }
+
+          depositar(cantidad) {
+            if (cantidad <= 0) throw new Error("Cantidad debe ser positiva");
+            this.#saldo += cantidad;
+          }
+
+          retirar(cantidad) {
+            if (cantidad > this.#saldo) throw new Error("Saldo insuficiente");
+            this.#saldo -= cantidad;
+          }
+        }
+
+        const cuenta = new Cuenta(1000);
+
+        resultado += "=== OPERACIONES BANCARIAS ===\n\n";
+        resultado += `Saldo inicial: ${cuenta.saldo}\n\n`;
+
+        cuenta.depositar(500);
+        resultado += `Después de depositar $500: ${cuenta.saldo}\n`;
+
+        cuenta.retirar(200);
+        resultado += `Después de retirar $200: ${cuenta.saldo}\n\n`;
+
+        resultado += "✅ Todas las operaciones validadas correctamente";
+
+        output.textContent = resultado;
+      }
+
+      // ============ DEMOSTRACIÓN 5 ============
+      function demo5() {
+        const output = document.getElementById("output3");
+        let resultado = "";
+
+        class Cuenta {
+          #saldo;
+
+          constructor(saldoInicial) {
+            this.#saldo = saldoInicial;
+          }
+
+          get saldo() {
+            return `$${this.#saldo.toFixed(2)}`;
+          }
+
+          retirar(cantidad) {
+            if (cantidad > this.#saldo) throw new Error("Saldo insuficiente");
+            this.#saldo -= cantidad;
+          }
+        }
+
+        const cuenta = new Cuenta(100);
+
+        resultado += "=== INTENTANDO OPERACIÓN INVÁLIDA ===\n\n";
+        resultado += `Saldo actual: ${cuenta.saldo}\n`;
+        resultado += `Intentando retirar $500...\n\n`;
+
+        try {
+          cuenta.retirar(500);
+        } catch (e) {
+          resultado += `❌ ERROR CAPTURADO: ${e.message}\n\n`;
+          resultado += "✅ El sistema protege contra operaciones inválidas!";
+        }
+
+        output.textContent = resultado;
+      }
+
+      // ============ DEMOSTRACIÓN 6 ============
+      function demo6() {
+        const output = document.getElementById("output4");
+        let resultado = "";
+
+        class Calculadora {
+          static sumar(a, b) {
+            return a + b;
+          }
+          static restar(a, b) {
+            return a - b;
+          }
+          static multiplicar(a, b) {
+            return a * b;
+          }
+          static dividir(a, b) {
+            if (b === 0) throw new Error("No se puede dividir por 0");
+            return a / b;
+          }
+        }
+
+        resultado += "=== CALCULADORA ESTÁTICA ===\n\n";
+        resultado += `Calculadora.sumar(10, 5) = ${Calculadora.sumar(10, 5)}\n`;
+        resultado += `Calculadora.restar(10, 5) = ${Calculadora.restar(
+          10,
+          5
+        )}\n`;
+        resultado += `Calculadora.multiplicar(10, 5) = ${Calculadora.multiplicar(
+          10,
+          5
+        )}\n`;
+        resultado += `Calculadora.dividir(10, 5) = ${Calculadora.dividir(
+          10,
+          5
+        )}\n\n`;
+
+        resultado += "💡 No necesitamos crear instancias!\n";
+        resultado += "   Se llama directamente desde la clase.";
+
+        output.textContent = resultado;
+      }
+
+      // ============ DEMOSTRACIÓN 7 ============
+      function demo7() {
+        const output = document.getElementById("output4");
+        let resultado = "";
+
+        class Usuario {
+          static #contadorUsuarios = 0;
+
+          constructor(nombre) {
+            this.id = ++Usuario.#contadorUsuarios;
+            this.nombre = nombre;
+          }
+
+          static getTotalUsuarios() {
+            return Usuario.#contadorUsuarios;
+          }
+
+          static resetContador() {
+            Usuario.#contadorUsuarios = 0;
+          }
+        }
+
+        resultado += "=== CONTADOR DE USUARIOS ===\n\n";
+        resultado += `Total inicial: ${Usuario.getTotalUsuarios()}\n\n`;
+
+        const usuarios = [
+          new Usuario("Ana"),
+          new Usuario("Luis"),
+          new Usuario("María"),
+          new Usuario("Pedro"),
+        ];
+
+        usuarios.forEach((u) => {
+          resultado += `Usuario creado: ID=${u.id}, Nombre=${u.nombre}\n`;
+        });
+
+        resultado += `\nTotal de usuarios: ${Usuario.getTotalUsuarios()}\n\n`;
+        resultado += "✅ El contador es compartido por todas las instancias!";
+
+        output.textContent = resultado;
+      }
+
+      // ============ VER TODO ============
+      function verTodo() {
+        console.clear();
+        console.log(
+          "%c=== COMPARACIÓN COMPLETA DE CLASES ===",
+          "color: #667eea; font-size: 20px; font-weight: bold"
+        );
+
+        console.log(
+          "\n%c1️⃣ CLASE ANTIGUA (Función Constructora)",
+          "color: #ff6b6b; font-weight: bold"
+        );
+        function PersonaAntigua(nombre) {
+          this.nombre = nombre;
+          this.edad = 0;
+        }
+        const p1 = new PersonaAntigua("Raúl");
+        console.log(p1);
+
+        console.log(
+          "\n%c2️⃣ CLASE MODERNA (ES6+)",
+          "color: #51cf66; font-weight: bold"
+        );
+        class PersonaModerna {
+          constructor(nombre) {
+            this.nombre = nombre;
+            this.edad = 0;
+          }
+        }
+        const p2 = new PersonaModerna("María");
+        console.log(p2);
+
+        console.log(
+          "\n%c3️⃣ CLASE CON PROPIEDADES PRIVADAS (ES2022+)",
+          "color: #667eea; font-weight: bold"
+        );
+        class PersonaPrivada {
+          #nombre;
+          #edad;
+          constructor(nombre) {
+            this.#nombre = nombre;
+            this.#edad = 0;
+          }
+          getNombre() {
+            return this.#nombre;
+          }
+        }
+        const p3 = new PersonaPrivada("Ana");
+        console.log(p3);
+        console.log("Acceso con método:", p3.getNombre());
+
+        alert(
+          "✅ Revisa la consola del navegador (F12) para ver toda la comparación!"
+        );
+      }
+
+      function limpiar() {
+        console.clear();
+        document
+          .querySelectorAll(".output")
+          .forEach((el) => (el.textContent = ""));
+        alert("🧹 Consola limpiada");
+      }
+    </script>
+  </body>
+</html>
