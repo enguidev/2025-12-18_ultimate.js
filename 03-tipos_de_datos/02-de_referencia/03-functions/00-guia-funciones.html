@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Guía Completa de Funciones en JavaScript</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: #333;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        min-height: 100vh;
+        padding: 20px;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        text-align: center;
+      }
+
+      header h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      }
+
+      header p {
+        font-size: 1.2em;
+        opacity: 0.9;
+      }
+
+      .content {
+        padding: 40px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #f0f0f0;
+      }
+
+      .section:last-child {
+        border-bottom: none;
+      }
+
+      h2 {
+        color: #667eea;
+        margin-bottom: 20px;
+        font-size: 1.8em;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      h3 {
+        color: #764ba2;
+        margin: 20px 0 10px;
+        font-size: 1.3em;
+      }
+
+      .file-list {
+        list-style: none;
+        margin-top: 15px;
+      }
+
+      .file-list li {
+        margin: 8px 0;
+        padding-left: 30px;
+        position: relative;
+      }
+
+      .file-list li:before {
+        content: "📄";
+        position: absolute;
+        left: 0;
+      }
+
+      .file-list a {
+        color: #667eea;
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s;
+      }
+
+      .file-list a:hover {
+        color: #764ba2;
+        padding-left: 5px;
+      }
+
+      .badge {
+        display: inline-block;
+        background: #10b981;
+        color: white;
+        padding: 3px 10px;
+        border-radius: 12px;
+        font-size: 0.8em;
+        font-weight: bold;
+        margin-left: 10px;
+      }
+
+      .badge-new {
+        background: #ef4444;
+      }
+
+      .tabla {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        border-radius: 8px;
+        overflow: hidden;
+      }
+
+      .tabla th {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 15px;
+        text-align: left;
+        font-weight: 600;
+      }
+
+      .tabla td {
+        padding: 12px 15px;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .tabla tr:hover {
+        background: #f8f9fa;
+      }
+
+      .card {
+        background: #f8f9fa;
+        border-left: 4px solid #667eea;
+        padding: 20px;
+        margin: 20px 0;
+        border-radius: 8px;
+      }
+
+      .card h4 {
+        color: #667eea;
+        margin-bottom: 10px;
+      }
+
+      code {
+        background: #f0f0f0;
+        padding: 2px 6px;
+        border-radius: 4px;
+        font-family: "Courier New", monospace;
+        color: #e83e8c;
+      }
+
+      .highlight {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 4px;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .grid-item {
+        background: white;
+        border: 2px solid #e0e0e0;
+        padding: 20px;
+        border-radius: 10px;
+        transition: all 0.3s;
+      }
+
+      .grid-item:hover {
+        border-color: #667eea;
+        box-shadow: 0 5px 20px rgba(102, 126, 234, 0.2);
+        transform: translateY(-5px);
+      }
+
+      .footer {
+        background: #2d3748;
+        color: white;
+        padding: 30px;
+        text-align: center;
+      }
+
+      .footer a {
+        color: #667eea;
+      }
+
+      .stats {
+        display: flex;
+        justify-content: space-around;
+        margin: 30px 0;
+        flex-wrap: wrap;
+        gap: 20px;
+      }
+
+      .stat-box {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 20px 30px;
+        border-radius: 15px;
+        text-align: center;
+        min-width: 150px;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      .stat-box .number {
+        font-size: 2.5em;
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .stat-box .label {
+        font-size: 0.9em;
+        opacity: 0.9;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🎯 Guía Completa de Funciones en JavaScript</h1>
+        <p>Todo lo que necesitas saber sobre funciones en JavaScript</p>
+      </header>
+
+      <div class="content">
+        <!-- Estadísticas -->
+        <div class="stats">
+          <div class="stat-box">
+            <span class="number">25</span>
+            <span class="label">Archivos</span>
+          </div>
+          <div class="stat-box">
+            <span class="number">6</span>
+            <span class="label">Categorías</span>
+          </div>
+          <div class="stat-box">
+            <span class="number">100%</span>
+            <span class="label">Cobertura</span>
+          </div>
+        </div>
+
+        <!-- Fundamentos -->
+        <div class="section">
+          <h2>📚 1. Fundamentos</h2>
+          <p>Conceptos básicos esenciales sobre funciones en JavaScript.</p>
+          <ul class="file-list">
+            <li>
+              <a
+                href="01-fundamentos/01-declaracion-y-expresion.js"
+                target="_blank"
+                >01. Declaración y Expresión</a
+              >
+            </li>
+            <li>
+              <a
+                href="01-fundamentos/02-parametros-y-argumentos.js"
+                target="_blank"
+                >02. Parámetros y Argumentos</a
+              >
+            </li>
+            <li>
+              <a href="01-fundamentos/03-hoisting.js" target="_blank"
+                >03. Hoisting</a
+              >
+            </li>
+            <li>
+              <a href="01-fundamentos/04-scope-y-contexto.js" target="_blank"
+                >04. Scope y Contexto (this)</a
+              >
+            </li>
+            <li>
+              <a href="01-fundamentos/05-operadores-modernos.js" target="_blank"
+                >05. Operadores Modernos (?., ??)</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Arrow Functions -->
+        <div class="section">
+          <h2>🏹 2. Arrow Functions</h2>
+          <p>Sintaxis moderna y concisa introducida en ES6.</p>
+          <ul class="file-list">
+            <li>
+              <a href="02-arrow-functions/01-arrow-functions.js" target="_blank"
+                >01. Arrow Functions Básicas</a
+              >
+            </li>
+            <li>
+              <a href="02-arrow-functions/02-usos-avanzados.js" target="_blank"
+                >02. Usos Avanzados</a
+              >
+              <span class="badge">Renombrado</span>
+            </li>
+            <li>
+              <a href="02-arrow-functions/03-parametros-rest.js" target="_blank"
+                >03. Parámetros Rest</a
+              >
+              <span class="badge">Renombrado</span>
+            </li>
+            <li>
+              <a
+                href="02-arrow-functions/04-parametros-por-defecto.js"
+                target="_blank"
+                >04. Parámetros por Defecto</a
+              >
+              <span class="badge">Renombrado</span>
+            </li>
+            <li>
+              <a
+                href="02-arrow-functions/05-desestructuracion-argumentos.js"
+                target="_blank"
+                >05. Desestructuración en Argumentos</a
+              >
+              <span class="badge">Renombrado</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Conceptos Avanzados -->
+        <div class="section">
+          <h2>🚀 3. Conceptos Avanzados</h2>
+          <p>Patrones y técnicas avanzadas de programación funcional.</p>
+          <ul class="file-list">
+            <li>
+              <a href="03-conceptos-avanzados/01-closures.js" target="_blank"
+                >01. Closures (Clausuras)</a
+              >
+              <span class="badge badge-new">Memory Leaks</span>
+            </li>
+            <li>
+              <a href="03-conceptos-avanzados/02-callbacks.js" target="_blank"
+                >02. Callbacks</a
+              >
+            </li>
+            <li>
+              <a
+                href="03-conceptos-avanzados/03-funciones-orden-superior.js"
+                target="_blank"
+                >03. Funciones de Orden Superior</a
+              >
+            </li>
+            <li>
+              <a href="03-conceptos-avanzados/04-iife.js" target="_blank"
+                >04. IIFE</a
+              >
+            </li>
+            <li>
+              <a
+                href="03-conceptos-avanzados/05-call-apply-bind.js"
+                target="_blank"
+                >05. Call, Apply y Bind</a
+              >
+            </li>
+            <li>
+              <a
+                href="03-conceptos-avanzados/06-recursividad.js"
+                target="_blank"
+                >06. Recursividad</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Asíncronas -->
+        <div class="section">
+          <h2>⏱️ 4. Funciones Asíncronas</h2>
+          <p>Manejo de operaciones asíncronas en JavaScript.</p>
+          <ul class="file-list">
+            <li>
+              <a href="04-async/01-callbacks-asincrono.js" target="_blank"
+                >01. Callbacks Asíncronos</a
+              >
+            </li>
+            <li>
+              <a href="04-async/02-promesas.js" target="_blank">02. Promesas</a>
+            </li>
+            <li>
+              <a href="04-async/03-async-await.js" target="_blank"
+                >03. Async/Await</a
+              >
+            </li>
+            <li>
+              <a href="04-async/04-abort-controller.js" target="_blank"
+                >04. AbortController</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Generadores -->
+        <div class="section">
+          <h2>🔄 5. Generadores</h2>
+          <p>Funciones que pueden pausar y reanudar su ejecución.</p>
+          <ul class="file-list">
+            <li>
+              <a
+                href="05-generadores/01-funciones-generadoras.js"
+                target="_blank"
+                >01. Funciones Generadoras</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Ejercicios -->
+        <div class="section">
+          <h2>💪 6. Ejercicios</h2>
+          <p>Practica lo aprendido con ejercicios resueltos.</p>
+          <ul class="file-list">
+            <li>
+              <a href="06-ejercicios/01-ejercicio-basico.js" target="_blank"
+                >01. Ejercicios Básicos</a
+              >
+            </li>
+            <li>
+              <a
+                href="06-ejercicios/02-ejercicio-desestructuracion.js"
+                target="_blank"
+                >02. Ejercicios Desestructuración</a
+              >
+            </li>
+            <li>
+              <a href="06-ejercicios/03-ejercicios-avanzados.js" target="_blank"
+                >03. Ejercicios Avanzados</a
+              >
+            </li>
+          </ul>
+        </div>
+
+        <!-- Tabla Comparativa -->
+        <div class="section">
+          <h2>📊 Tabla Comparativa</h2>
+          <table class="tabla">
+            <thead>
+              <tr>
+                <th>Característica</th>
+                <th>Function Declaration</th>
+                <th>Function Expression</th>
+                <th>Arrow Function</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Hoisting</td>
+                <td>✅ Sí</td>
+                <td>❌ No</td>
+                <td>❌ No</td>
+              </tr>
+              <tr>
+                <td>this propio</td>
+                <td>✅ Sí</td>
+                <td>✅ Sí</td>
+                <td>❌ No (heredado)</td>
+              </tr>
+              <tr>
+                <td>arguments</td>
+                <td>✅ Sí</td>
+                <td>✅ Sí</td>
+                <td>❌ No (usar rest)</td>
+              </tr>
+              <tr>
+                <td>Constructor (new)</td>
+                <td>✅ Sí</td>
+                <td>✅ Sí</td>
+                <td>❌ No</td>
+              </tr>
+              <tr>
+                <td>Return implícito</td>
+                <td>❌ No</td>
+                <td>❌ No</td>
+                <td>✅ Sí (una línea)</td>
+              </tr>
+              <tr>
+                <td>Sintaxis concisa</td>
+                <td>❌ No</td>
+                <td>❌ No</td>
+                <td>✅ Sí</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Mejores Prácticas -->
+        <div class="section">
+          <h2>🎓 Mejores Prácticas</h2>
+
+          <div class="grid">
+            <div class="grid-item">
+              <h4>✅ Hacer</h4>
+              <ul>
+                <li>Nombres descriptivos de verbos</li>
+                <li>Una función, una responsabilidad</li>
+                <li>Arrow functions para callbacks</li>
+                <li>Funciones puras cuando sea posible</li>
+                <li>Limitar parámetros (≤ 3-4)</li>
+                <li>Documentar funciones complejas</li>
+              </ul>
+            </div>
+
+            <div class="grid-item">
+              <h4>❌ Evitar</h4>
+              <ul>
+                <li>Funciones > 50 líneas</li>
+                <li>Más de 3-4 parámetros posicionales</li>
+                <li>Efectos secundarios ocultos</li>
+                <li>Callback hell (>3 niveles)</li>
+                <li>Modificar parámetros de entrada</li>
+                <li>Memory leaks en closures</li>
+              </ul>
+            </div>
+
+            <div class="grid-item">
+              <h4>🔥 Patrones Recomendados</h4>
+              <ul>
+                <li>Factory functions para objetos</li>
+                <li>Módulo pattern para encapsulación</li>
+                <li>Composición sobre herencia</li>
+                <li>Currying para especialización</li>
+                <li>Memoization para optimización</li>
+                <li>Async/await sobre promesas anidadas</li>
+              </ul>
+            </div>
+
+            <div class="grid-item">
+              <h4>⚡ Performance</h4>
+              <ul>
+                <li>Evitar closures innecesarios</li>
+                <li>Limpiar event listeners</li>
+                <li>Usar WeakMap para asociaciones</li>
+                <li>Throttle/debounce en eventos</li>
+                <li>Lazy evaluation con generadores</li>
+                <li>Memoization en recursividad</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <!-- Checklist de Aprendizaje -->
+        <div class="section">
+          <h2>📝 Checklist de Aprendizaje</h2>
+          <div class="card">
+            <h4>Nivel Básico</h4>
+            <ul>
+              <li>☐ Declaración y expresión de funciones</li>
+              <li>☐ Parámetros y argumentos</li>
+              <li>☐ Return y valores por defecto</li>
+              <li>☐ Arrow functions básicas</li>
+              <li>☐ Scope y contexto</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Nivel Intermedio</h4>
+            <ul>
+              <li>☐ Closures y variables privadas</li>
+              <li>☐ Callbacks síncronos y asíncronos</li>
+              <li>☐ Higher-order functions</li>
+              <li>☐ this, call, apply, bind</li>
+              <li>☐ Promesas y async/await</li>
+            </ul>
+          </div>
+
+          <div class="card">
+            <h4>Nivel Avanzado</h4>
+            <ul>
+              <li>☐ Currying y partial application</li>
+              <li>☐ Composición y pipe</li>
+              <li>☐ Memoization</li>
+              <li>☐ Recursividad optimizada</li>
+              <li>☐ Generadores e iteradores</li>
+              <li>☐ Memory leaks y optimización</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Recursos -->
+        <div class="section">
+          <h2>📚 Recursos Adicionales</h2>
+          <ul class="file-list">
+            <li>
+              <a
+                href="https://developer.mozilla.org/es/docs/Web/JavaScript/Guide/Functions"
+                target="_blank"
+                >MDN - Functions</a
+              >
+            </li>
+            <li>
+              <a href="https://javascript.info/function-basics" target="_blank"
+                >JavaScript.info - Functions</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://eloquentjavascript.net/03_functions.html"
+                target="_blank"
+                >Eloquent JavaScript - Functions</a
+              >
+            </li>
+            <li>
+              <a
+                href="https://github.com/getify/You-Dont-Know-JS"
+                target="_blank"
+                >You Don't Know JS (GitHub)</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer">
+        <p><strong>Guía Completa de Funciones en JavaScript</strong></p>
+        <p>Última actualización: Diciembre 2024 | Versión 2.0</p>
+        <p>Estructurado y optimizado para el aprendizaje progresivo 🚀</p>
+      </div>
+    </div>
+  </body>
+</html>
