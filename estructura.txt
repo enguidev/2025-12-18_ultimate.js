@@ -1,0 +1,385 @@
+Listado de rutas de carpetas para el volumen NAS 8TB
+El número de serie del volumen es EC50-FC42
+G:.
+¦   estructura.txt
+¦   
++---00-introduccion
+¦       que_es_javascript.js
+¦       
++---01-comentarios
+¦       comentarios.js
+¦       
++---02-formas_de_agregar_javascript
+¦   ¦   script.js
+¦   ¦   
+¦   +---externo
+¦   ¦       con_eventos_en_javascript.js
+¦   ¦       externo.html
+¦   ¦       
+¦   +---interno
+¦           interno.html
+¦           
++---03-tipos_de_datos
+¦   ¦   index.html
+¦   ¦   tipos_de_datos.png
+¦   ¦   
+¦   +---01-primitivos
+¦   ¦       01-primitivos.js
+¦   ¦       02-separadores_numericos.js
+¦   ¦       
+¦   +---02-de_referencia
+¦   ¦   +---01-arrays
+¦   ¦   ¦   +---01-arrays
+¦   ¦   ¦   ¦       arrays.js
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---02-metodos
+¦   ¦   ¦   ¦       00-cheatsheet.js
+¦   ¦   ¦   ¦       00-guia_de_metodos_de_arrays.html
+¦   ¦   ¦   ¦       00-guia_de_metodos_de_arrays.md
+¦   ¦   ¦   ¦       01-agregar_eliminar_elementos.js
+¦   ¦   ¦   ¦       02-de_busqueda_y_acceso.js
+¦   ¦   ¦   ¦       03-de_iteracion.js
+¦   ¦   ¦   ¦       04-de_tranformacion_y_orden.js
+¦   ¦   ¦   ¦       05-de_combinacion_y_conversion.js
+¦   ¦   ¦   ¦       06-estructurales.js
+¦   ¦   ¦   ¦       07-avanzados_y_utilidades.js.js
+¦   ¦   ¦   ¦       08-metodos_inmutables.js
+¦   ¦   ¦   ¦       09-iteradores.js
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---03-desestructuracion_en_array
+¦   ¦   ¦   ¦       ejercicio_1_desestructuracion_de_arreglo.js
+¦   ¦   ¦   ¦       ejercicio_2_desestructuracion_avanzada.js
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---04-ejercicio
+¦   ¦   ¦           ejercicio_array_01.js
+¦   ¦   ¦           
+¦   ¦   +---02-objetos
+¦   ¦   ¦   ¦   01-objetos.js
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---0.01-metodos_objeto_console
+¦   ¦   ¦   ¦   +---ejercicios_console_solucionados
+¦   ¦   ¦   ¦   ¦       ejercicios_console_solucionados.js
+¦   ¦   ¦   ¦   ¦       index.html
+¦   ¦   ¦   ¦   ¦       
+¦   ¦   ¦   ¦   +---metodos_objeto_console
+¦   ¦   ¦   ¦           index.html
+¦   ¦   ¦   ¦           metodos_objeto_console.js
+¦   ¦   ¦   ¦           
+¦   ¦   ¦   +---01-objetos
+¦   ¦   ¦   ¦   +---01-objeto_window
+¦   ¦   ¦   ¦   ¦       00-resumen_window.js
+¦   ¦   ¦   ¦   ¦       01-interaccion_usuario.js
+¦   ¦   ¦   ¦   ¦       02-temporizadores.js
+¦   ¦   ¦   ¦   ¦       03-ventanas_navegacion.js
+¦   ¦   ¦   ¦   ¦       04-propiedades_ventana.js
+¦   ¦   ¦   ¦   ¦       05-geolocation.js
+¦   ¦   ¦   ¦   ¦       06-apis_modernas(APIs Modernas del Navegador).js
+¦   ¦   ¦   ¦   ¦       07-eventos_window.js
+¦   ¦   ¦   ¦   ¦       08-ejercicios_window.js
+¦   ¦   ¦   ¦   ¦       index.html
+¦   ¦   ¦   ¦   ¦       indexStyle.css
+¦   ¦   ¦   ¦   ¦       nueva.html
+¦   ¦   ¦   ¦   ¦       readme.md
+¦   ¦   ¦   ¦   ¦       script.js
+¦   ¦   ¦   ¦   ¦       
+¦   ¦   ¦   ¦   +---02_objeto_localStorage_y_sessioStorage
+¦   ¦   ¦   ¦   ¦       01-storage_localstorage_y_sessionstorage.js
+¦   ¦   ¦   ¦   ¦       02-ejercicios-storage_localstorage_y_sessionstorage.js
+¦   ¦   ¦   ¦   ¦       
+¦   ¦   ¦   ¦   +---03_objeto_date
+¦   ¦   ¦   ¦   ¦       00-resumen-date.js
+¦   ¦   ¦   ¦   ¦       01-creacion_fechas.js
+¦   ¦   ¦   ¦   ¦       02_objeto_date.js
+¦   ¦   ¦   ¦   ¦       03-metodos_get.js
+¦   ¦   ¦   ¦   ¦       04-metodos_set_calculos.js
+¦   ¦   ¦   ¦   ¦       05-formato_comparacion.js
+¦   ¦   ¦   ¦   ¦       06-zonas_horarias.js
+¦   ¦   ¦   ¦   ¦       07-utilidades_fechas.js
+¦   ¦   ¦   ¦   ¦       08-ejercicios_date.js
+¦   ¦   ¦   ¦   ¦       09-alternativas_date.js
+¦   ¦   ¦   ¦   ¦       
+¦   ¦   ¦   ¦   +---04_objeto_Number
+¦   ¦   ¦   ¦   ¦       01_objeto_Number.js
+¦   ¦   ¦   ¦   ¦       
+¦   ¦   ¦   ¦   +---05_objeto_Math
+¦   ¦   ¦   ¦   ¦       01_objeto_Math.js
+¦   ¦   ¦   ¦   ¦       02-ejercicios_con_Math.js
+¦   ¦   ¦   ¦   ¦       
+¦   ¦   ¦   ¦   +---06_String
+¦   ¦   ¦   ¦       ¦   01-String.js
+¦   ¦   ¦   ¦       ¦   02-string-propiedades.js
+¦   ¦   ¦   ¦       ¦   
+¦   ¦   ¦   ¦       +---01-metodos_sobre_cadenas_de_caracteres
+¦   ¦   ¦   ¦               01-string-extraccion.js
+¦   ¦   ¦   ¦               02-string-transformacion.js
+¦   ¦   ¦   ¦               metodos_sobre_cadenas_de_caracteres.css
+¦   ¦   ¦   ¦               metodos_sobre_cadenas_de_caracteres.html
+¦   ¦   ¦   ¦               metodos_sobre_cadenas_de_caracteres.md
+¦   ¦   ¦   ¦               string-busqueda.js
+¦   ¦   ¦   ¦               string-casos-especiales.js
+¦   ¦   ¦   ¦               string-comparacion.js
+¦   ¦   ¦   ¦               string-metodos-adicionales.js
+¦   ¦   ¦   ¦               string-reemplazo.js
+¦   ¦   ¦   ¦               
+¦   ¦   ¦   +---02-desestructuracion_en_objetos
+¦   ¦   ¦   ¦       ejercicio_1_desestructuracion_de_objeto.js
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---04_Objeto_literal
+¦   ¦   ¦           01_Objeto_literal.js
+¦   ¦   ¦           
+¦   ¦   +---03-functions
+¦   ¦   ¦   ¦   ejercicio_funciones_01.js
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---00-desestructuracion_en_funciones
+¦   ¦   ¦   ¦       ejercicio_1_desestructuracion_en_funcion.js
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---01-funciones
+¦   ¦   ¦   ¦       01-funciones.js
+¦   ¦   ¦   ¦       
+¦   ¦   ¦   +---02-arrow_functions
+¦   ¦   ¦           01-arrow_fuctions.js
+¦   ¦   ¦           02-usos_avanzados_y_expresivos_de_funciones_flecha.js
+¦   ¦   ¦           03-parametros_rest_en_funciones_flecha.js
+¦   ¦   ¦           04-parametros_por_defecto_en_funciones_flecha.js
+¦   ¦   ¦           05-desestructuración_en_los_argumentos_de_las_funciones_flecha.js
+¦   ¦   ¦           
+¦   ¦   +---04-clases
+¦   ¦       ¦   pruebas.html
+¦   ¦       ¦   
+¦   ¦       +---06-clases
+¦   ¦               clases.js
+¦   ¦               
+¦   +---03-conversiones_de_tipos
+¦   ¦       01-conversion_de_tipos_primitivos.js
+¦   ¦       02-conversion_referencia.js
+¦   ¦       
+¦   +---04-saber_el_tipo_de_dato
+¦           04-saber_el_tipo_de_dato.js
+¦           
++---04-variables
+¦       01-nombrado.js
+¦       02-declaracion.js
+¦       03-tipos.js
+¦       comparativa_de_ambito_de_variables.png
+¦       
++---05-control-flujo
+¦   ¦   index.html
+¦   ¦   
+¦   +---01-bucles
+¦   ¦       01-bucles.js
+¦   ¦       ejercicio_bucles_01.js
+¦   ¦       ejercicio_bucles_02.js
+¦   ¦       ejercicio_bucles_03.js
+¦   ¦       ejercicio_bucles_04.js
+¦   ¦       ejercicio_bucles_05.js
+¦   ¦       
+¦   +---02-condicionales
+¦   ¦       01-condicionales.js
+¦   ¦       ejercicio_condicionales_01.js
+¦   ¦       
+¦   +---03-switch
+¦   ¦       01-switch.js
+¦   ¦       
+¦   +---04-breack-continue
+¦           01-break-continue.js
+¦           
++---05-operadores
+¦   +---01-aritmeticos
+¦   ¦       01-aritmeticos.js
+¦   ¦       index.html
+¦   ¦       
+¦   +---02-asignacion
+¦   ¦       01-asignacion.js
+¦   ¦       
+¦   +---03-comparacion
+¦   ¦       01-comparacion.js
+¦   ¦       ejercicio_comparacion_01.js
+¦   ¦       
+¦   +---04-logicos
+¦   ¦       01-logicos.js
+¦   ¦       
+¦   +---05-falsy
+¦   ¦       01-falsy.js
+¦   ¦       
+¦   +---06-bitwise
+¦   ¦       01-bitwise.js
+¦   ¦       
+¦   +---07-orden
+¦   ¦       01-orden.js
+¦   ¦       
+¦   +---08-ternario
+¦   ¦       01-ternario.js
+¦   ¦       
+¦   +---09-operador_spread
+¦   ¦       00-spread-guia-con-navegacion.md
+¦   ¦       00-spread-guia-con-navegacion.pdf
+¦   ¦       00-spread-guia.md
+¦   ¦       00-spread-guia.pdf
+¦   ¦       00-spread-resumen.js
+¦   ¦       01-uso_basico.js
+¦   ¦       02-convertir_estructuras_parecidas_a_array_en_array.js
+¦   ¦       03-clonacion_de_arrays_y_objetos.js
+¦   ¦       04-spread_en_funciones.js
+¦   ¦       05-diferencia_entre_rest_y_spread.js
+¦   ¦       06-destructuracion_inversa.js
+¦   ¦       07-limitaciones_del_spread.js
+¦   ¦       08-agregar_elementos_en_un_array.js
+¦   ¦       09-agregar_propiedades_a_un_array.js
+¦   ¦       10-fusionar_arrays.js
+¦   ¦       11-fusionar_objetos.js
+¦   ¦       12-estructuras_anidadas.js
+¦   ¦       13-estructuras_anidadas_con_libreria_lodash.js
+¦   ¦       14-propiedades_condicionales.js
+¦   ¦       15-advertencias_comunes.js
+¦   ¦       Tabla resumen final.png
+¦   ¦       
+¦   +---10-parametros_rest_en_desestructuracion
+¦       ¦   parametros_rest_en_desestructuracion.js
+¦       ¦   valores_inexistentes_rest_spread.js
+¦       ¦   
+¦       +---diferecias_entre_spread_y_rest
+¦               01-ejemplos_contrastados.js
+¦               02-bloque_complementario.js
+¦               comparativa_final_rest_spread.js
+¦               diferecias_entre_spread_y_rest.png
+¦               
++---06_expresiones_regulares
+¦       00-resumen_regex.js
+¦       01-sintaxis_basica.js
+¦       02-cuantificadores.js
+¦       03_expresiones_regulares.js
+¦       04-grupos_capturas.js
+¦       05-metodos_regex.js
+¦       06-validaciones_comunes.js
+¦       07-ejercicios_regex.js
+¦       
++---07-modulos
+¦       funciones.js
+¦       index.html
+¦       pruebas.js
+¦       
++---08-dom
+¦   ¦   01_dom_modificacion.html
+¦   ¦   
+¦   +---dom_bluuweb
+¦   ¦   +---guia_completa_dom
+¦   ¦   ¦       index.html
+¦   ¦   ¦       script1-propiedades_y_seleccion.js
+¦   ¦   ¦       script10-observadores.js
+¦   ¦   ¦       script11-contenido_y_manipulacion.js
+¦   ¦   ¦       script12-clipboard_api.js
+¦   ¦   ¦       script13-metodos_obsoletos.js
+¦   ¦   ¦       script14-resumen_final.js
+¦   ¦   ¦       script2-conversiones_y_manipulacion.js
+¦   ¦   ¦       script3-posiciones_y_manipulacion_avanzada.js
+¦   ¦   ¦       script4-copiar_cortar_y_funciones.js
+¦   ¦   ¦       script5-inspeccion_y_estado.js
+¦   ¦   ¦       script6-metodos_de_eventos.js
+¦   ¦   ¦       script7-propiedades_del_dom.js
+¦   ¦   ¦       script8-atributos_clases_estilos.js
+¦   ¦   ¦       script9-dimensiones_y_posicionamiento.js
+¦   ¦   ¦       style.css
+¦   ¦   ¦       
+¦   ¦   +---no_tocar
+¦   ¦   ¦   +---curso
+¦   ¦   ¦   ¦   ¦   01-document_propiedades_basicas.js
+¦   ¦   ¦   ¦   ¦   02-document_metodos_seleccion.js
+¦   ¦   ¦   ¦   ¦   03-document_metodos_manipulacion.js
+¦   ¦   ¦   ¦   ¦   04-document_metodos_inspeccion_de_posicion_y_estado.js
+¦   ¦   ¦   ¦   ¦   05-metodos_de_eventos.js
+¦   ¦   ¦   ¦   ¦   06-propiedades_del_dom.js
+¦   ¦   ¦   ¦   ¦   07-navigator_clipboard_api.js
+¦   ¦   ¦   ¦   ¦   08-document_metodos_obsoletos.js
+¦   ¦   ¦   ¦   ¦   index.html
+¦   ¦   ¦   ¦   ¦   
+¦   ¦   ¦   ¦   +---0.1-ejemplo_metodos _de_seleccion
+¦   ¦   ¦   ¦           0.1-ejemplo_metodos _de_seleccion.html
+¦   ¦   ¦   ¦           script.js
+¦   ¦   ¦   ¦           style.css
+¦   ¦   ¦   ¦           
+¦   ¦   ¦   +---curso2
+¦   ¦   ¦           index.html
+¦   ¦   ¦           script.js
+¦   ¦   ¦           style.css
+¦   ¦   ¦           
+¦   ¦   +---pdf
+¦   ¦           Javascript (DOM #01) _ HTML, CSS y Bootstrap 5 (bluuweb).pdf
+¦   ¦           Javascript (DOM #02) _ HTML, CSS y Bootstrap 5 (bluuweb).pdf
+¦   ¦           
+¦   +---manipulacion_del_DOM
+¦   ¦       01-seleccion-elementos.js
+¦   ¦       02-modificar-contenido.js
+¦   ¦       03-modificar-estilos.js
+¦   ¦       04-crear-elementos.js
+¦   ¦       05-eliminar-elementos.js
+¦   ¦       06-eventos-basicos.js
+¦   ¦       07-navegacion-nodos.js
+¦   ¦       08-agregar-item-lista.js
+¦   ¦       09-manipular-atributos.js
+¦   ¦       10-uso-dataset.js
+¦   ¦       11-delegacion-eventos.js
+¦   ¦       12-formularios-validacion.js
+¦   ¦       13-observador-mutaciones.js
+¦   ¦       14-mostrar-consola.js
+¦   ¦       15-modificaciones_en_el_css.js
+¦   ¦       imagen-original.jpg
+¦   ¦       index.html
+¦   ¦       nueva-imagen.jpg
+¦   ¦       style.css
+¦   ¦       
+¦   +---superpoderes_en_javascript
+¦           index.html
+¦           mutation-observer.js
+¦           mutation-observer2.js
+¦           mutation-observer3.js
+¦           style.css
+¦           
++---09-eventos
+¦   ¦   01-eventos.js
+¦   ¦   02-eventos-delegar_captura.js
+¦   ¦   03-eventos_formularios.js
+¦   ¦   index-01-eventos.html
+¦   ¦   index-02-eventos-delegar_captura.html
+¦   ¦   index-03-eventos_formularios.html
+¦   ¦   index2.html
+¦   ¦   style-03.css
+¦   ¦   style.css
+¦   ¦   tabla_teclas_importantes.png
+¦   ¦   
+¦   +---01-programa_detector_de_teclas
+¦   ¦       index.html
+¦   ¦       script.js
+¦   ¦       style.css
+¦   ¦       
+¦   +---02-programa_validación_con_teclado
+¦   ¦       index.html
+¦   ¦       script.js
+¦   ¦       style.css
+¦   ¦       
+¦   +---programa_delegacion_de_eventos
+¦   ¦       index.html
+¦   ¦       script.js
+¦   ¦       style.css
+¦   ¦       
+¦   +---programa_delegacion_de_eventos_2
+¦   ¦       index.html
+¦   ¦       script.js
+¦   ¦       style.css
+¦   ¦       
+¦   +---programa_delegacion_de_eventos_2_2
+¦           index.html
+¦           script.js
+¦           style.css
+¦           
++---10-formularios
+¦       01-formularios_interaccion_basica.js
+¦       02-formularios_validacion_manual.js
+¦       03-formularios_validacion_html5.js
+¦       04-formularios_eventos_y_estilos.js
+¦       05-formularios_reset_y_clear.js
+¦       index-guia.html
+¦       index-guia.md
+¦       index.html
+¦       style.css
+¦       
++---estructura
