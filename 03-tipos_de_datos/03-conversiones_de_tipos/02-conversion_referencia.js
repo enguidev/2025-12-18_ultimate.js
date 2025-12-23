@@ -76,7 +76,7 @@ console.log([1, 2] + [3, 4]); // "1,23,4" (concatena strings)
 console.log([1] + [2]); // "12"
 console.log([] + []); // ""
 console.log([] + {}); // "[object Object]"
-console.log({} + []); // "[object Object]" o 0 (según contexto)
+// console.log({} + []); // Ambiguo: puede ser "[object Object]" o 0 según contexto
 
 //--------------------------------------------------------------------------------------
 // CONVERSIÓN DE FUNCIONES
@@ -507,7 +507,7 @@ console.log(obj3 === obj4); // false (diferentes referencias)
 
 // Solo son iguales si apuntan a la misma referencia
 const obj5 = {};
-const obj6 = obj5; // obj4 apunta al mismo objeto que obj5
+const obj6 = obj5; // obj6 apunta al mismo objeto que obj5
 console.log(obj5 === obj6); // true (misma referencia)
 
 // Dos objetos literales siempre son diferentes

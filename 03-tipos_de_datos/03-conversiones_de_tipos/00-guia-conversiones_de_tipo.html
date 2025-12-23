@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Conversión de Tipos en JavaScript</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        padding: 20px;
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1400px;
+        margin: 0 auto;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        overflow: hidden;
+      }
+
+      header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 40px;
+        text-align: center;
+      }
+
+      h1 {
+        font-size: 2.5em;
+        margin-bottom: 10px;
+      }
+
+      .subtitle {
+        font-size: 1.2em;
+        opacity: 0.9;
+      }
+
+      .content {
+        padding: 40px;
+      }
+
+      .section {
+        margin-bottom: 40px;
+        padding: 30px;
+        background: #f8f9fa;
+        border-radius: 15px;
+        border-left: 5px solid #667eea;
+      }
+
+      h2 {
+        color: #667eea;
+        margin-bottom: 20px;
+        font-size: 1.8em;
+      }
+
+      h3 {
+        color: #764ba2;
+        margin: 20px 0 10px 0;
+        font-size: 1.3em;
+      }
+
+      h4 {
+        color: #667eea;
+        margin: 15px 0 10px 0;
+        font-size: 1.1em;
+      }
+
+      .demo-box {
+        background: white;
+        border: 2px solid #667eea;
+        border-radius: 10px;
+        padding: 20px;
+        margin: 20px 0;
+      }
+
+      .input-group {
+        display: flex;
+        gap: 10px;
+        margin: 15px 0;
+        flex-wrap: wrap;
+        align-items: center;
+      }
+
+      input[type="text"] {
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+        flex: 1;
+        min-width: 200px;
+      }
+
+      select {
+        padding: 10px;
+        border: 2px solid #ddd;
+        border-radius: 5px;
+        font-size: 1em;
+        background: white;
+        cursor: pointer;
+      }
+
+      button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        border-radius: 25px;
+        cursor: pointer;
+        font-size: 1em;
+        transition: transform 0.2s, box-shadow 0.2s;
+      }
+
+      button:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+      }
+
+      .output {
+        background: #f8f9fa;
+        border-left: 4px solid #667eea;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+        font-family: "Courier New", monospace;
+        white-space: pre-wrap;
+        max-height: 400px;
+        overflow-y: auto;
+      }
+
+      .table-container {
+        overflow-x: auto;
+        margin: 20px 0;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        background: white;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      th,
+      td {
+        padding: 15px;
+        text-align: left;
+        border-bottom: 1px solid #eee;
+      }
+
+      th {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        font-weight: bold;
+      }
+
+      tr:hover {
+        background: #f8f9fa;
+      }
+
+      .danger {
+        background: #fff3cd;
+        border-left: 4px solid #ffc107;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+      }
+
+      .success {
+        background: #d4edda;
+        border-left: 4px solid #28a745;
+        padding: 15px;
+        margin: 15px 0;
+        border-radius: 5px;
+      }
+
+      .code {
+        background: #1e1e1e;
+        color: #d4d4d4;
+        padding: 15px;
+        border-radius: 10px;
+        font-family: "Courier New", monospace;
+        margin: 15px 0;
+        overflow-x: auto;
+      }
+
+      .keyword {
+        color: #569cd6;
+      }
+      .string {
+        color: #ce9178;
+      }
+      .number {
+        color: #b5cea8;
+      }
+      .comment {
+        color: #6a9955;
+      }
+
+      .tabs {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+
+      .tab {
+        padding: 10px 20px;
+        background: #e0e0e0;
+        border-radius: 10px 10px 0 0;
+        cursor: pointer;
+        transition: background 0.3s;
+      }
+
+      .tab.active {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+      }
+
+      .tab-content {
+        display: none;
+      }
+
+      .tab-content.active {
+        display: block;
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+        margin: 20px 0;
+      }
+
+      .comparison-card {
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .comparison-card ul {
+        list-style: none;
+        padding: 0;
+      }
+
+      .comparison-card li {
+        padding: 8px 0;
+        border-bottom: 1px solid #f0f0f0;
+      }
+
+      .comparison-card li:last-child {
+        border-bottom: none;
+      }
+
+      .badge {
+        display: inline-block;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.9em;
+        font-weight: bold;
+        margin: 5px;
+      }
+
+      .badge-good {
+        background: #d4edda;
+        color: #155724;
+      }
+      .badge-bad {
+        background: #f8d7da;
+        color: #721c24;
+      }
+      .badge-warning {
+        background: #fff3cd;
+        color: #856404;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>🔄 Conversión de Tipos en JavaScript</h1>
+        <p class="subtitle">Guía Interactiva Completa</p>
+      </header>
+
+      <div class="content">
+        <!-- SECCIÓN 1: TO NUMBER -->
+        <div class="section">
+          <h2>🔢 Conversión a Number</h2>
+
+          <div class="tabs">
+            <div class="tab active" onclick="showTab('number', 0)">
+              Number()
+            </div>
+            <div class="tab" onclick="showTab('number', 1)">parseInt()</div>
+            <div class="tab" onclick="showTab('number', 2)">parseFloat()</div>
+            <div class="tab" onclick="showTab('number', 3)">Operador +</div>
+          </div>
+
+          <!-- Tab 1: Number() -->
+          <div class="tab-content active" id="number-0">
+            <h3>Number() - Conversión Estricta</h3>
+
+            <div class="demo-box">
+              <h4>🎮 Prueba en Vivo</h4>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="numberInput"
+                  placeholder='Ej: "123", "123abc", true, null'
+                  value="123"
+                />
+                <button onclick="testNumber()">Convertir con Number()</button>
+              </div>
+              <div id="numberOutput" class="output"></div>
+            </div>
+
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Input</th>
+                    <th>Number()</th>
+                    <th>Explicación</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>"123"</td>
+                    <td>123</td>
+                    <td>✅ Conversión directa</td>
+                  </tr>
+                  <tr>
+                    <td>"123.45"</td>
+                    <td>123.45</td>
+                    <td>✅ Mantiene decimales</td>
+                  </tr>
+                  <tr>
+                    <td>"123abc"</td>
+                    <td>NaN</td>
+                    <td>❌ No puede convertir todo</td>
+                  </tr>
+                  <tr>
+                    <td>""</td>
+                    <td>0</td>
+                    <td>⚠️ String vacío = 0</td>
+                  </tr>
+                  <tr>
+                    <td>true</td>
+                    <td>1</td>
+                    <td>✅ true = 1</td>
+                  </tr>
+                  <tr>
+                    <td>false</td>
+                    <td>0</td>
+                    <td>✅ false = 0</td>
+                  </tr>
+                  <tr>
+                    <td>null</td>
+                    <td>0</td>
+                    <td>⚠️ null = 0</td>
+                  </tr>
+                  <tr>
+                    <td>undefined</td>
+                    <td>NaN</td>
+                    <td>❌ undefined = NaN</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Tab 2: parseInt() -->
+          <div class="tab-content" id="number-1">
+            <h3>parseInt() - Parsea Enteros</h3>
+
+            <div class="demo-box">
+              <h4>🎮 Prueba en Vivo</h4>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="parseIntInput"
+                  placeholder='Ej: "123.45", "123abc"'
+                  value="123.45"
+                />
+                <select id="radixSelect">
+                  <option value="10">Base 10 (Decimal)</option>
+                  <option value="2">Base 2 (Binario)</option>
+                  <option value="8">Base 8 (Octal)</option>
+                  <option value="16">Base 16 (Hexadecimal)</option>
+                </select>
+                <button onclick="testParseInt()">
+                  Convertir con parseInt()
+                </button>
+              </div>
+              <div id="parseIntOutput" class="output"></div>
+            </div>
+
+            <div class="danger">
+              <strong>⚠️ IMPORTANTE:</strong> SIEMPRE especifica el radix
+              (base)<br />
+              <code>parseInt("08", 10)</code> es más seguro que
+              <code>parseInt("08")</code>
+            </div>
+
+            <div class="code">
+              <span class="comment"
+                >// Ejemplos de parseInt con diferentes bases</span
+              >
+              <span class="keyword">console</span>.log(parseInt(<span
+                class="string"
+                >"1010"</span
+              >, <span class="number">2</span>));
+              <span class="comment">// 10 (binario)</span>
+              <span class="keyword">console</span>.log(parseInt(<span
+                class="string"
+                >"FF"</span
+              >, <span class="number">16</span>));
+              <span class="comment">// 255 (hexadecimal)</span>
+              <span class="keyword">console</span>.log(parseInt(<span
+                class="string"
+                >"77"</span
+              >, <span class="number">8</span>));
+              <span class="comment">// 63 (octal)</span>
+              <span class="keyword">console</span>.log(parseInt(<span
+                class="string"
+                >"123abc"</span
+              >)); <span class="comment">// 123 (ignora letras)</span>
+            </div>
+          </div>
+
+          <!-- Tab 3: parseFloat() -->
+          <div class="tab-content" id="number-2">
+            <h3>parseFloat() - Parsea Decimales</h3>
+
+            <div class="demo-box">
+              <h4>🎮 Prueba en Vivo</h4>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="parseFloatInput"
+                  placeholder='Ej: "123.45", "1.5e2"'
+                  value="123.45"
+                />
+                <button onclick="testParseFloat()">
+                  Convertir con parseFloat()
+                </button>
+              </div>
+              <div id="parseFloatOutput" class="output"></div>
+            </div>
+
+            <div class="comparison-grid">
+              <div class="comparison-card">
+                <h4>✅ Casos que funciona bien</h4>
+                <ul>
+                  <li>"123.45" → 123.45</li>
+                  <li>"123abc" → 123</li>
+                  <li>"1e3" → 1000</li>
+                  <li>"1.5e2" → 150</li>
+                </ul>
+              </div>
+              <div class="comparison-card">
+                <h4>❌ Casos que devuelven NaN</h4>
+                <ul>
+                  <li>"abc123" → NaN</li>
+                  <li>"" → NaN</li>
+                  <li>undefined → NaN</li>
+                  <li>null → NaN</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- Tab 4: Operador + -->
+          <div class="tab-content" id="number-3">
+            <h3>Operador Unario + - Conversión Rápida</h3>
+
+            <div class="demo-box">
+              <h4>🎮 Prueba en Vivo</h4>
+              <div class="input-group">
+                <input
+                  type="text"
+                  id="plusInput"
+                  placeholder='Ej: "123", true, "123abc"'
+                  value="123"
+                />
+                <button onclick="testPlus()">Convertir con +</button>
+              </div>
+              <div id="plusOutput" class="output"></div>
+            </div>
+
+            <div class="code">
+              <span class="comment"
+                >// El operador unario + convierte a número</span
+              >
+              <span class="keyword">console</span>.log(+<span class="string"
+                >"123"</span
+              >); <span class="comment">// 123</span>
+              <span class="keyword">console</span>.log(+<span class="string"
+                >"123.45"</span
+              >); <span class="comment">// 123.45</span>
+              <span class="keyword">console</span>.log(+<span class="keyword"
+                >true</span
+              >); <span class="comment">// 1</span>
+              <span class="keyword">console</span>.log(+<span class="keyword"
+                >false</span
+              >); <span class="comment">// 0</span>
+              <span class="keyword">console</span>.log(+<span class="string"
+                >"123abc"</span
+              >); <span class="comment">// NaN</span>
+            </div>
+
+            <div class="success">
+              <strong>💡 Tip:</strong> El operador + es una forma rápida de
+              convertir a número,<br />
+              pero <code>Number()</code> es más explícito y legible en
+              producción.
+            </div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 2: TO STRING -->
+        <div class="section">
+          <h2>📝 Conversión a String</h2>
+
+          <div class="demo-box">
+            <h4>🎮 Comparador de Métodos</h4>
+            <div class="input-group">
+              <input
+                type="text"
+                id="stringInput"
+                placeholder="Ej: 123, true, null, [1,2,3]"
+                value="123"
+              />
+              <button onclick="testString()">Comparar Métodos</button>
+            </div>
+            <div id="stringOutput" class="output"></div>
+          </div>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Input</th>
+                  <th>String()</th>
+                  <th>.toString()</th>
+                  <th>Template Literal</th>
+                  <th>+ ""</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>123</td>
+                  <td>"123"</td>
+                  <td>"123"</td>
+                  <td>"123"</td>
+                  <td>"123"</td>
+                </tr>
+                <tr>
+                  <td>true</td>
+                  <td>"true"</td>
+                  <td>"true"</td>
+                  <td>"true"</td>
+                  <td>"true"</td>
+                </tr>
+                <tr>
+                  <td>null</td>
+                  <td>"null"</td>
+                  <td>❌ Error</td>
+                  <td>"null"</td>
+                  <td>"null"</td>
+                </tr>
+                <tr>
+                  <td>undefined</td>
+                  <td>"undefined"</td>
+                  <td>❌ Error</td>
+                  <td>"undefined"</td>
+                  <td>"undefined"</td>
+                </tr>
+                <tr>
+                  <td>[1,2,3]</td>
+                  <td>"1,2,3"</td>
+                  <td>"1,2,3"</td>
+                  <td>"1,2,3"</td>
+                  <td>"1,2,3"</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="danger">
+            <strong>⚠️ CUIDADO:</strong> null y undefined NO tienen método
+            .toString()<br />
+            Usa String() o template literals para convertirlos de forma segura.
+          </div>
+
+          <div class="code">
+            <span class="comment">// toString() con base (solo números)</span>
+            (<span class="number">10</span>).toString(<span class="number"
+              >2</span
+            >); <span class="comment">// "1010" (binario)</span> (<span
+              class="number"
+              >255</span
+            >).toString(<span class="number">16</span>);
+            <span class="comment">// "ff" (hexadecimal)</span> (<span
+              class="number"
+              >8</span
+            >).toString(<span class="number">8</span>);
+            <span class="comment">// "10" (octal)</span>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 3: TO BOOLEAN -->
+        <div class="section">
+          <h2>✅ Conversión a Boolean</h2>
+
+          <div class="demo-box">
+            <h4>🎮 Detector de Truthy/Falsy</h4>
+            <div class="input-group">
+              <input
+                type="text"
+                id="boolInput"
+                placeholder='Ej: 0, "", null, "hola", []'
+                value="0"
+              />
+              <button onclick="testBoolean()">Verificar</button>
+            </div>
+            <div id="boolOutput" class="output"></div>
+          </div>
+
+          <div class="comparison-grid">
+            <div class="comparison-card">
+              <h4>❌ FALSY (8 valores)</h4>
+              <ul style="list-style: none; padding: 0">
+                <li><span class="badge badge-bad">false</span></li>
+                <li><span class="badge badge-bad">0</span></li>
+                <li><span class="badge badge-bad">-0</span></li>
+                <li><span class="badge badge-bad">0n</span> (BigInt)</li>
+                <li><span class="badge badge-bad">""</span> (string vacío)</li>
+                <li><span class="badge badge-bad">null</span></li>
+                <li><span class="badge badge-bad">undefined</span></li>
+                <li><span class="badge badge-bad">NaN</span></li>
+              </ul>
+            </div>
+            <div class="comparison-card">
+              <h4>✅ TRUTHY (todo lo demás)</h4>
+              <ul style="list-style: none; padding: 0">
+                <li><span class="badge badge-good">true</span></li>
+                <li>
+                  <span class="badge badge-good">1, -1, 3.14</span> (números !=
+                  0)
+                </li>
+                <li>
+                  <span class="badge badge-good">"0", "false"</span> (strings no
+                  vacíos)
+                </li>
+                <li><span class="badge badge-good">[]</span> (array vacío)</li>
+                <li><span class="badge badge-good">{}</span> (objeto vacío)</li>
+                <li><span class="badge badge-good">function(){}</span></li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="code">
+            <span class="comment">// Dos formas de convertir a boolean</span>
+
+            <span class="comment">// 1. Boolean() - explícito</span>
+            Boolean(<span class="number">1</span>);
+            <span class="comment">// true</span> Boolean(<span class="number"
+              >0</span
+            >); <span class="comment">// false</span> Boolean(<span
+              class="string"
+              >"hola"</span
+            >); <span class="comment">// true</span> Boolean(<span
+              class="string"
+              >""</span
+            >); <span class="comment">// false</span>
+
+            <span class="comment">// 2. Doble negación !! - rápido</span>
+            !!<span class="number">1</span>;
+            <span class="comment">// true</span> !!<span class="number">0</span
+            >; <span class="comment">// false</span> !!<span class="string"
+              >"hola"</span
+            >; <span class="comment">// true</span> !!<span class="string"
+              >""</span
+            >; <span class="comment">// false</span>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 4: COERCIÓN IMPLÍCITA -->
+        <div class="section">
+          <h2>⚠️ Coerción Implícita (Peligrosa)</h2>
+
+          <div class="danger">
+            <strong>🚨 ADVERTENCIA:</strong> La coerción implícita puede causar
+            bugs difíciles de detectar. Siempre convierte de forma explícita
+            cuando sea posible.
+          </div>
+
+          <div class="demo-box">
+            <h4>🎮 Probador de Coerción</h4>
+            <div class="input-group">
+              <input
+                type="text"
+                id="coercionInput1"
+                placeholder="Valor 1"
+                value='"5"'
+              />
+              <select id="operatorSelect">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">*</option>
+                <option value="/">/</option>
+                <option value="==">==</option>
+                <option value="===">=== (sin coerción)</option>
+              </select>
+              <input
+                type="text"
+                id="coercionInput2"
+                placeholder="Valor 2"
+                value="3"
+              />
+              <button onclick="testCoercion()">Probar</button>
+            </div>
+            <div id="coercionOutput" class="output"></div>
+          </div>
+
+          <h3>Ejemplos Peligrosos</h3>
+
+          <div class="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Expresión</th>
+                  <th>Resultado</th>
+                  <th>Explicación</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>"5" + 3</td>
+                  <td>"53"</td>
+                  <td>⚠️ Concatena (3 → "3")</td>
+                </tr>
+                <tr>
+                  <td>"5" - 3</td>
+                  <td>2</td>
+                  <td>⚠️ Resta ("5" → 5)</td>
+                </tr>
+                <tr>
+                  <td>true + 1</td>
+                  <td>2</td>
+                  <td>⚠️ true → 1</td>
+                </tr>
+                <tr>
+                  <td>"5" == 5</td>
+                  <td>true</td>
+                  <td>⚠️ Convierte tipos</td>
+                </tr>
+                <tr>
+                  <td>"5" === 5</td>
+                  <td>false</td>
+                  <td>✅ No convierte</td>
+                </tr>
+                <tr>
+                  <td>[] + []</td>
+                  <td>""</td>
+                  <td>⚠️ Strings vacíos</td>
+                </tr>
+                <tr>
+                  <td>[] + {}</td>
+                  <td>"[object Object]"</td>
+                  <td>⚠️ Concatenación</td>
+                </tr>
+                <tr>
+                  <td>null == undefined</td>
+                  <td>true</td>
+                  <td>⚠️ Caso especial</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="success">
+            <strong>✅ MEJOR PRÁCTICA:</strong><br />
+            - Usa <code>===</code> en lugar de <code>==</code><br />
+            - Convierte explícitamente antes de operar<br />
+            - Usa TypeScript o JSDoc para tipos estrictos
+          </div>
+        </div>
+
+        <!-- SECCIÓN 5: VALIDACIÓN -->
+        <div class="section">
+          <h2>🔍 Validación de Conversiones</h2>
+
+          <div class="comparison-grid">
+            <div class="comparison-card">
+              <h4>❌ Legacy (Evitar)</h4>
+              <div class="code" style="font-size: 0.9em">
+                isNaN(<span class="string">"abc"</span>)
+                <span class="comment">// true (convierte)</span> isNaN(<span
+                  class="string"
+                  >"123"</span
+                >)
+                <span class="comment">// false (convierte)</span> isFinite(<span
+                  class="string"
+                  >"123"</span
+                >) <span class="comment">// true (convierte)</span>
+              </div>
+            </div>
+            <div class="comparison-card">
+              <h4>✅ Moderno (Usar)</h4>
+              <div class="code" style="font-size: 0.9em">
+                Number.isNaN(<span class="string">"abc"</span>)
+                <span class="comment">// false (no convierte)</span>
+                Number.isNaN(NaN)
+                <span class="comment">// true</span> Number.isFinite(<span
+                  class="number"
+                  >123</span
+                >) <span class="comment">// true</span> Number.isInteger(<span
+                  class="number"
+                  >123</span
+                >) <span class="comment">// true</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="demo-box">
+            <h4>🎮 Validador de Números</h4>
+            <div class="input-group">
+              <input
+                type="text"
+                id="validateInput"
+                placeholder="Ingresa un valor"
+                value="123.45"
+              />
+              <button onclick="validateNumber()">Validar</button>
+            </div>
+            <div id="validateOutput" class="output"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Función para cambiar entre tabs
+      function showTab(section, index) {
+        const tabs = document.querySelectorAll(`.tabs .tab`);
+        const contents = document.querySelectorAll(`.tab-content`);
+
+        // Remover clase active de todos
+        tabs.forEach((tab) => tab.classList.remove("active"));
+        contents.forEach((content) => content.classList.remove("active"));
+
+        // Activar el tab y contenido seleccionado
+        tabs[index].classList.add("active");
+        document.getElementById(`${section}-${index}`).classList.add("active");
+      }
+
+      // Función auxiliar para evaluar código de forma segura
+      function evaluarCodigo(codigo) {
+        try {
+          return eval(codigo);
+        } catch (error) {
+          return error;
+        }
+      }
+
+      // Test Number()
+      function testNumber() {
+        const input = document.getElementById("numberInput").value;
+        const output = document.getElementById("numberOutput");
+
+        const valor = evaluarCodigo(input);
+        const resultado = Number(valor);
+
+        output.textContent = `Input: ${input}
+Valor evaluado: ${JSON.stringify(valor)} (tipo: ${typeof valor})
+Number(valor): ${resultado}
+Tipo resultado: ${typeof resultado}
+¿Es NaN?: ${Number.isNaN(resultado)}
+¿Es finito?: ${Number.isFinite(resultado)}`;
+      }
+
+      // Test parseInt()
+      function testParseInt() {
+        const input = document.getElementById("parseIntInput").value;
+        const radix = document.getElementById("radixSelect").value;
+        const output = document.getElementById("parseIntOutput");
+
+        const resultado = parseInt(input, radix);
+
+        output.textContent = `Input: "${input}"
+Radix (base): ${radix}
+parseInt("${input}", ${radix}): ${resultado}
+Tipo: ${typeof resultado}
+¿Es NaN?: ${Number.isNaN(resultado)}
+
+Comparación con otras bases:
+- Base 10: ${parseInt(input, 10)}
+- Base 2: ${parseInt(input, 2)}
+- Base 8: ${parseInt(input, 8)}
+- Base 16: ${parseInt(input, 16)}`;
+      }
+
+      // Test parseFloat()
+      function testParseFloat() {
+        const input = document.getElementById("parseFloatInput").value;
+        const output = document.getElementById("parseFloatOutput");
+
+        const resultado = parseFloat(input);
+
+        output.textContent = `Input: "${input}"
+parseFloat("${input}"): ${resultado}
+Tipo: ${typeof resultado}
+¿Es NaN?: ${Number.isNaN(resultado)}
+
+Comparación:
+- parseInt(): ${parseInt(input, 10)}
+- Number(): ${Number(input)}
+- Operador +: ${+input}`;
+      }
+
+      // Test Operador +
+      function testPlus() {
+        const input = document.getElementById("plusInput").value;
+        const output = document.getElementById("plusOutput");
+
+        const valor = evaluarCodigo(input);
+        const resultado = +valor;
+
+        output.textContent = `Input: ${input}
+Valor evaluado: ${JSON.stringify(valor)} (tipo: ${typeof valor})
++valor: ${resultado}
+Tipo: ${typeof resultado}
+
+Comparación con Number():
+- Number(valor): ${Number(valor)}
+- ¿Son iguales?: ${+valor === Number(valor)}`;
+      }
+
+      // Test String conversions
+      function testString() {
+        const input = document.getElementById("stringInput").value;
+        const output = document.getElementById("stringOutput");
+
+        const valor = evaluarCodigo(input);
+
+        let toStringResult;
+        try {
+          toStringResult = valor.toString();
+        } catch (e) {
+          toStringResult = `Error: ${e.message}`;
+        }
+
+        output.textContent = `Input: ${input}
+Valor evaluado: ${JSON.stringify(valor)} (tipo: ${typeof valor})
+
+Métodos de conversión:
+1. String(valor): "${String(valor)}"
+2. valor.toString(): ${toStringResult}
+3. Template literal: "${`${valor}`}"
+4. Concatenación: "${valor + ""}"
+
+Todos son tipo: string
+¿Son iguales?: ${String(valor) === `${valor}` && `${valor}` === valor + ""}`;
+      }
+
+      // Test Boolean conversions
+      function testBoolean() {
+        const input = document.getElementById("boolInput").value;
+        const output = document.getElementById("boolOutput");
+
+        const valor = evaluarCodigo(input);
+        const resultado = Boolean(valor);
+
+        const falsyValues = [false, 0, -0, 0n, "", null, undefined, NaN];
+        const esFalsy = falsyValues.some(
+          (v) => (Number.isNaN(v) && Number.isNaN(valor)) || v === valor
+        );
+
+        output.textContent = `Input: ${input}
+Valor evaluado: ${JSON.stringify(valor)} (tipo: ${typeof valor})
+
+Conversión a Boolean:
+- Boolean(valor): ${resultado}
+- !!valor: ${!!valor}
+
+Clasificación: ${esFalsy ? "❌ FALSY" : "✅ TRUTHY"}
+
+${
+  esFalsy
+    ? "Este es uno de los 8 valores falsy en JavaScript"
+    : "Este valor es truthy (todo lo que no es falsy)"
+}`;
+      }
+
+      // Test Coercion
+      function testCoercion() {
+        const input1 = document.getElementById("coercionInput1").value;
+        const input2 = document.getElementById("coercionInput2").value;
+        const operator = document.getElementById("operatorSelect").value;
+        const output = document.getElementById("coercionOutput");
+
+        const valor1 = evaluarCodigo(input1);
+        const valor2 = evaluarCodigo(input2);
+
+        let resultado, expresion;
+
+        try {
+          switch (operator) {
+            case "+":
+              resultado = valor1 + valor2;
+              expresion = `${input1} + ${input2}`;
+              break;
+            case "-":
+              resultado = valor1 - valor2;
+              expresion = `${input1} - ${input2}`;
+              break;
+            case "*":
+              resultado = valor1 * valor2;
+              expresion = `${input1} * ${input2}`;
+              break;
+            case "/":
+              resultado = valor1 / valor2;
+              expresion = `${input1} / ${input2}`;
+              break;
+            case "==":
+              resultado = valor1 == valor2;
+              expresion = `${input1} == ${input2}`;
+              break;
+            case "===":
+              resultado = valor1 === valor2;
+              expresion = `${input1} === ${input2}`;
+              break;
+          }
+
+          output.textContent = `Expresión: ${expresion}
+
+Valores:
+- Valor 1: ${JSON.stringify(valor1)} (tipo: ${typeof valor1})
+- Valor 2: ${JSON.stringify(valor2)} (tipo: ${typeof valor2})
+
+Resultado: ${JSON.stringify(resultado)} (tipo: ${typeof resultado})
+
+${
+  operator === "==="
+    ? "✅ Sin coerción de tipos (===)"
+    : "⚠️ Con posible coerción de tipos"
+}
+
+${
+  (operator === "+" && typeof valor1 === "string") || typeof valor2 === "string"
+    ? "⚠️ El operador + concatena cuando hay strings"
+    : ""
+}`;
+        } catch (error) {
+          output.textContent = `Error: ${error.message}`;
+        }
+      }
+
+      // Validate Number
+      function validateNumber() {
+        const input = document.getElementById("validateInput").value;
+        const output = document.getElementById("validateOutput");
+
+        const valor = evaluarCodigo(input);
+        const numero = Number(valor);
+
+        const validaciones = {
+          "Number.isNaN(valor)": Number.isNaN(numero),
+          "Number.isFinite(valor)": Number.isFinite(numero),
+          "Number.isInteger(valor)": Number.isInteger(numero),
+          "isNaN(valor) [legacy]": isNaN(valor),
+          "isFinite(valor) [legacy]": isFinite(valor),
+        };
+
+        let validacionTexto = "Validaciones:\n";
+        for (const [metodo, resultado] of Object.entries(validaciones)) {
+          validacionTexto += `${
+            resultado ? "✅" : "❌"
+          } ${metodo}: ${resultado}\n`;
+        }
+
+        let veredicto = "";
+        if (Number.isNaN(numero)) {
+          veredicto = "\n❌ VEREDICTO: No es un número válido (NaN)";
+        } else if (!Number.isFinite(numero)) {
+          veredicto = "\n⚠️ VEREDICTO: Es Infinity o -Infinity";
+        } else if (Number.isInteger(numero)) {
+          veredicto = "\n✅ VEREDICTO: Es un número entero válido";
+        } else {
+          veredicto = "\n✅ VEREDICTO: Es un número decimal válido";
+        }
+
+        output.textContent = `Input: ${input}
+Valor: ${JSON.stringify(valor)} (tipo: ${typeof valor})
+Convertido a número: ${numero}
+
+${validacionTexto}${veredicto}
+
+💡 Recomendación: Usa Number.isNaN() y Number.isFinite() 
+   (sin conversión) en lugar de las versiones legacy.`;
+      }
+
+      // Inicializar con el primer test
+      testNumber();
+    </script>
+  </body>
+</html>

@@ -272,6 +272,31 @@ console.log(num.toPrecision(4)); // "123.5"
 console.log(num.toPrecision(2)); // "1.2e+2"
 
 //--------------------------------------------------------------------------------------
+// CONVERSIÓN DE BIGINT (ES2020)
+//--------------------------------------------------------------------------------------
+
+// BigInt para números enteros muy grandes
+const bigNum = 9007199254740991n; // nota la 'n' al final
+console.log(bigNum); // 9007199254740991n
+
+// Conversión a BigInt
+console.log(BigInt(123)); // 123n
+console.log(BigInt("123")); // 123n
+// console.log(BigInt(123.45)); // ❌ Error: no acepta decimales
+// console.log(BigInt("123abc")); // ❌ Error: no parsea
+
+// BigInt a Number (puede perder precisión)
+console.log(Number(bigNum)); // 9007199254740991
+
+// BigInt a String
+console.log(String(bigNum)); // "9007199254740991"
+console.log(bigNum.toString()); // "9007199254740991"
+
+// BigInt a Boolean
+console.log(Boolean(0n)); // false
+console.log(Boolean(1n)); // true
+
+//--------------------------------------------------------------------------------------
 // EJEMPLOS PRÁCTICOS
 //--------------------------------------------------------------------------------------
 
@@ -425,3 +450,9 @@ console.log(parseInt(1000000000000000000000)); // 1
 console.log(Infinity + 1); // Infinity
 console.log(Infinity - Infinity); // NaN
 console.log(1 / Infinity); // 0
+
+// Conversión de -0
+console.log(-0 === 0); // true
+console.log(Object.is(-0, 0)); // false
+console.log(1 / -0); // -Infinity
+console.log(1 / 0); // Infinity
