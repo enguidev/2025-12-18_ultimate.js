@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Operadores Lógicos en JavaScript</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      padding: 20px;
+      min-height: 100vh;
+    }
+
+    .container {
+      max-width: 1400px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      overflow: hidden;
+    }
+
+    header {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    .subtitle {
+      font-size: 1.2em;
+      opacity: 0.9;
+    }
+
+    .content {
+      padding: 40px;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      padding: 30px;
+      background: #f8f9fa;
+      border-radius: 15px;
+      border-left: 5px solid #667eea;
+    }
+
+    h2 {
+      color: #667eea;
+      margin-bottom: 20px;
+      font-size: 1.8em;
+    }
+
+    h3 {
+      color: #764ba2;
+      margin: 20px 0 10px 0;
+      font-size: 1.3em;
+    }
+
+    .demo-box {
+      background: white;
+      border: 2px solid #667eea;
+      border-radius: 10px;
+      padding: 20px;
+      margin: 20px 0;
+    }
+
+    .input-group {
+      display: flex;
+      gap: 10px;
+      margin: 15px 0;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    input[type="text"], input[type="number"] {
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+      flex: 1;
+      min-width: 150px;
+    }
+
+    select {
+      padding: 10px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      font-size: 1em;
+      background: white;
+      cursor: pointer;
+      min-width: 100px;
+    }
+
+    button {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+    }
+
+    .output {
+      background: #f8f9fa;
+      border-left: 4px solid #667eea;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+      font-family: 'Courier New', monospace;
+      white-space: pre-wrap;
+      max-height: 400px;
+      overflow-y: auto;
+    }
+
+    .truth-table {
+      overflow-x: auto;
+      margin: 20px 0;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    th, td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+      font-weight: bold;
+    }
+
+    tr:hover {
+      background: #f8f9fa;
+    }
+
+    .true-value {
+      color: #28a745;
+      font-weight: bold;
+    }
+
+    .false-value {
+      color: #dc3545;
+      font-weight: bold;
+    }
+
+    .info {
+      background: #d1ecf1;
+      border-left: 4px solid #0c5460;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+
+    .warning {
+      background: #fff3cd;
+      border-left: 4px solid #ffc107;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+
+    .success {
+      background: #d4edda;
+      border-left: 4px solid #28a745;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 5px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+      margin: 20px 0;
+    }
+
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .card h4 {
+      color: #667eea;
+      margin-bottom: 10px;
+    }
+
+    .operator-symbol {
+      font-size: 2em;
+      font-weight: bold;
+      color: #764ba2;
+      text-align: center;
+      margin: 10px 0;
+    }
+
+    .comparison-result {
+      font-size: 1.5em;
+      font-weight: bold;
+      text-align: center;
+      margin: 15px 0;
+      padding: 10px;
+      border-radius: 5px;
+    }
+
+    .result-true {
+      background: #d4edda;
+      color: #155724;
+    }
+
+    .result-false {
+      background: #f8d7da;
+      color: #721c24;
+    }
+
+    code {
+      background: #f8f9fa;
+      padding: 2px 6px;
+      border-radius: 3px;
+      font-family: 'Courier New', monospace;
+      color: #e83e8c;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>⚡ Operadores Lógicos en JavaScript</h1>
+      <p class="subtitle">Guía Interactiva Completa</p>
+    </header>
+
+    <div class="content">
+      <!-- SECCIÓN 1: AND -->
+      <div class="section">
+        <h2>🔹 Operador AND (&&)</h2>
+        
+        <div class="info">
+          <strong>Definición:</strong> Devuelve <code>true</code> solo si AMBOS operandos son verdaderos.
+        </div>
+
+        <div class="demo-box">
+          <h3>🎮 Prueba Interactiva</h3>
+          <div class="input-group">
+            <select id="and1">
+              <option value="true">true</option>
+              <option value="false">false</option>
+              <option value="1">1 (truthy)</option>
+              <option value="0">0 (falsy)</option>
+              <option value='"texto"'>"texto" (truthy)</option>
+              <option value='""'>"" (falsy)</option>
+              <option value="null">null (falsy)</option>
+            </select>
+            <span class="operator-symbol">&&</span>
+            <select id="and2">
+              <option value="true">true</option>
+              <option value="false">false</option>
+              <option value="1">1 (truthy)</option>
+              <option value="0">0 (falsy)</option>
+              <option value='"texto"'>"texto" (truthy)</option>
+              <option value='""'>"" (falsy)</option>
+              <option value="null">null (falsy)</option>
+            </select>
+            <button onclick="testAnd()">Evaluar</button>
+          </div>
+          <div id="andOutput" class="output"></div>
+        </div>
+
+        <div class="truth-table">
+          <h3>Tabla de Verdad</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Operando 1</th>
+                <th>Operando 2</th>
+                <th>Resultado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="true-value">true</td>
+                <td class="true-value">true</td>
+                <td class="true-value">true</td>
+              </tr>
+              <tr>
+                <td class="true-value">true</td>
+                <td class="false-value">false</td>
+                <td class="false-value">false</td>
+              </tr>
+              <tr>
+                <td class="false-value">false</td>
+                <td class="true-value">true</td>
+                <td class="false-value">false</td>
+              </tr>
+              <tr>
+                <td class="false-value">false</td>
+                <td class="false-value">false</td>
+                <td class="false-value">false</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 2: OR -->
+      <div class="section">
+        <h2>🔹 Operador OR (||)</h2>
+        
+        <div class="info">
+          <strong>Definición:</strong> Devuelve <code>true</code> si AL MENOS UNO de los operandos es verdadero.
+        </div>
+
+        <div class="demo-box">
+          <h3>🎮 Prueba Interactiva</h3>
+          <div class="input-group">
+            <select id="or1">
+              <option value="true">true</option>
+              <option value="false">false</option>
+              <option value="1">1 (truthy)</option>
+              <option value="0">0 (falsy)</option>
+              <option value='"texto"'>"texto" (truthy)</option>
+              <option value='""'>"" (falsy)</option>
+              <option value="null">null (falsy)</option>
+            </select>
+            <span class="operator-symbol">||</span>
+            <select id="or2">
+              <option value="true">true</option>
+              <option value="false">false</option>
+              <option value="1">1 (truthy)</option>
+              <option value="0">0 (falsy)</option>
+              <option value='"texto"'>"texto" (truthy)</option>
+              <option value='""'>"" (falsy)</option>
+              <option value="null">null (falsy)</option>
+            </select>
+            <button onclick="testOr()">Evaluar</button>
+          </div>
+          <div id="orOutput" class="output"></div>
+        </div>
+
+        <div class="truth-table">
+          <h3>Tabla de Verdad</h3>
+          <table>
+            <thead>
+              <tr>
+                <th>Operando 1</th>
+                <th>Operando 2</th>
+                <th>Resultado</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="true-value">true</td>
+                <td class="true-value">true</td>
+                <td class="true-value">true</td>
+              </tr>
+              <tr>
+                <td class="true-value">true</td>
+                <td class="false-value">false</td>
+                <td class="true-value">true</td>
+              </tr>
+              <tr>
+                <td class="false-value">false</td>
+                <td class="true-value">true</td>
+                <td class="true-value">true</td>
+              </tr>
+              <tr>
+                <td class="false-value">false</td>
+                <td class="false-value">false</td>
+                <td class="false-value">false</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 3: NOT -->
+      <div class="section">
+        <h2>🔹 Operador NOT (!)</h2>
+        
+        <div class="info">
+          <strong>Definición:</strong> Invierte el valor lógico: <code>true → false</code>, <code>false → true</code>
+        </div>
+
+        <div class="demo-box">
+          <h3>🎮 Prueba Interactiva</h3>
+          <div class="input-group">
+            <span class="operator-symbol">!</span>
+            <select id="not1">
+              <option value="true">true</option>
+              <option value="false">false</option>
+              <option value="1">1 (truthy)</option>
+              <option value="0">0 (falsy)</option>
+              <option value='"texto"'>"texto" (truthy)</option>
+              <option value='""'>"" (falsy)</option>
+              <option value="null">null (falsy)</option>
+              <option value="undefined">undefined (falsy)</option>
+              <option value="[]">[] (truthy)</option>
+              <option value="{}">({}) (truthy)</option>
+            </select>
+            <button onclick="testNot()">Evaluar</button>
+          </div>
+          <div id="notOutput" class="output"></div>
+        </div>
+
+        <div class="warning">
+          <strong>⚠️ Importante:</strong> El operador <code>!</code> convierte cualquier valor a booleano antes de negarlo. Usa <code>!!</code> para convertir a booleano sin negar.
+        </div>
+      </div>
+
+      <!-- SECCIÓN 4: CORTOCIRCUITO -->
+      <div class="section">
+        <h2>⚡ Evaluación de Cortocircuito</h2>
+        
+        <div class="info">
+          <strong>Short-Circuit Evaluation:</strong> Los operadores <code>&&</code> y <code>||</code> no siempre evalúan ambos operandos.
+        </div>
+
+        <div class="grid">
+          <div class="card">
+            <h4>AND (&&)</h4>
+            <p>Devuelve el primer valor <strong>falsy</strong> o el último valor si todos son truthy.</p>
+            <code>5 && 10 → 10</code><br>
+            <code>0 && 10 → 0</code>
+          </div>
+          <div class="card">
+            <h4>OR (||)</h4>
+            <p>Devuelve el primer valor <strong>truthy</strong> o el último valor si todos son falsy.</p>
+            <code>5 || 10 → 5</code><br>
+            <code>0 || 10 → 10</code>
+          </div>
+        </div>
+
+        <div class="demo-box">
+          <h3>🎮 Prueba Cortocircuito</h3>
+          <div class="input-group">
+            <input type="text" id="short1" value="5" placeholder="Valor 1">
+            <select id="shortOp">
+              <option value="&&">&&</option>
+              <option value="||">||</option>
+            </select>
+            <input type="text" id="short2" value="10" placeholder="Valor 2">
+            <button onclick="testShortCircuit()">Evaluar</button>
+          </div>
+          <div id="shortOutput" class="output"></div>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 5: NULLISH COALESCING -->
+      <div class="section">
+        <h2>🔹 Operador ?? (Nullish Coalescing)</h2>
+        
+        <div class="info">
+          <strong>Definición:</strong> Devuelve el primer valor que NO sea <code>null</code> ni <code>undefined</code>.
+        </div>
+
+        <div class="demo-box">
+          <h3>🎮 Comparación: || vs ??</h3>
+          <div class="input-group">
+            <input type="text" id="nullish1" value="0" placeholder="Valor">
+            <span>con valor por defecto</span>
+            <input type="text" id="nullish2" value="100" placeholder="Defecto">
+            <button onclick="testNullish()">Comparar</button>
+          </div>
+          <div id="nullishOutput" class="output"></div>
+        </div>
+
+        <div class="warning">
+          <strong>⚠️ Diferencia clave:</strong><br>
+          <code>||</code> considera falsy: <code>false, 0, "", null, undefined, NaN</code><br>
+          <code>??</code> solo considera: <code>null, undefined</code>
+        </div>
+      </div>
+
+      <!-- SECCIÓN 6: OPTIONAL CHAINING -->
+      <div class="section">
+        <h2>🔹 Operador ?. (Optional Chaining)</h2>
+        
+        <div class="info">
+          <strong>Definición:</strong> Permite acceder a propiedades sin lanzar error si el objeto es <code>null</code> o <code>undefined</code>.
+        </div>
+
+        <div class="demo-box">
+          <h3>🎮 Prueba Acceso Seguro</h3>
+          <div class="input-group">
+            <input type="text" id="chainPath" value="usuario?.direccion?.ciudad" placeholder="Ej: obj?.prop?.subprop">
+            <button onclick="testChaining()">Evaluar</button>
+          </div>
+          <div id="chainOutput" class="output"></div>
+        </div>
+
+        <div class="success">
+          <strong>✅ Beneficio:</strong> Evita errores tipo <code>Cannot read property of null</code> en cadenas de propiedades anidadas.
+        </div>
+      </div>
+
+      <!-- SECCIÓN 7: TRUTHY/FALSY -->
+      <div class="section">
+        <h2>📊 Valores Truthy y Falsy</h2>
+        
+        <div class="grid">
+          <div class="card">
+            <h4 style="color: #dc3545;">❌ Valores Falsy (8 en total)</h4>
+            <ul style="list-style: none; padding: 0;">
+              <li><code>false</code></li>
+              <li><code>0</code></li>
+              <li><code>-0</code></li>
+              <li><code>0n</code> (BigInt)</li>
+              <li><code>""</code> (string vacío)</li>
+              <li><code>null</code></li>
+              <li><code>undefined</code></li>
+              <li><code>NaN</code></li>
+            </ul>
+          </div>
+          <div class="card">
+            <h4 style="color: #28a745;">✅ Valores Truthy</h4>
+            <p><strong>Todo lo demás:</strong></p>
+            <ul style="list-style: none; padding: 0;">
+              <li><code>true</code></li>
+              <li><code>1, -1, 3.14</code> (números ≠ 0)</li>
+              <li><code>"texto", "0", "false"</code></li>
+              <li><code>[]</code> (array vacío)</li>
+              <li><code>{}</code> (objeto vacío)</li>
+              <li><code>function(){}</code></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="demo-box">
+          <h3>🎮 Detector Truthy/Falsy</h3>
+          <div class="input-group">
+            <input type="text" id="truthyTest" value="0" placeholder="Ingresa un valor">
+            <button onclick="testTruthy()">Verificar</button>
+          </div>
+          <div id="truthyOutput" class="output"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Función auxiliar para evaluar código
+    function evalCode(code) {
+      try {
+        return eval(code);
+      } catch (e) {
+        return `Error: ${e.message}`;
+      }
+    }
+
+    // Test AND
+    function testAnd() {
+      const val1 = evalCode(document.getElementById('and1').value);
+      const val2 = evalCode(document.getElementById('and2').value);
+      const resultado = val1 && val2;
+      const booleano = Boolean(val1) && Boolean(val2);
+      
+      document.getElementById('andOutput').textContent = 
+`Valor 1: ${JSON.stringify(val1)} (${Boolean(val1) ? 'truthy' : 'falsy'})
+Valor 2: ${JSON.stringify(val2)} (${Boolean(val2) ? 'truthy' : 'falsy'})
+
+Operación: ${JSON.stringify(val1)} && ${JSON.stringify(val2)}
+Resultado: ${JSON.stringify(resultado)}
+Boolean: ${booleano}
+
+💡 Explicación:
+- AND devuelve el primer valor falsy
+- Si ambos son truthy, devuelve el último valor`;
+    }
+
+    // Test OR
+    function testOr() {
+      const val1 = evalCode(document.getElementById('or1').value);
+      const val2 = evalCode(document.getElementById('or2').value);
+      const resultado = val1 || val2;
+      const booleano = Boolean(val1) || Boolean(val2);
+      
+      document.getElementById('orOutput').textContent = 
+`Valor 1: ${JSON.stringify(val1)} (${Boolean(val1) ? 'truthy' : 'falsy'})
+Valor 2: ${JSON.stringify(val2)} (${Boolean(val2) ? 'truthy' : 'falsy'})
+
+Operación: ${JSON.stringify(val1)} || ${JSON.stringify(val2)}
+Resultado: ${JSON.stringify(resultado)}
+Boolean: ${booleano}
+
+💡 Explicación:
+- OR devuelve el primer valor truthy
+- Si ambos son falsy, devuelve el último valor`;
+    }
+
+    // Test NOT
+    function testNot() {
+      const val = evalCode(document.getElementById('not1').value);
+      const resultado = !val;
+      const dobleNegacion = !!val;
+      
+      document.getElementById('notOutput').textContent = 
+`Valor: ${JSON.stringify(val)}
+Tipo: ${typeof val}
+Boolean(valor): ${Boolean(val)} (${Boolean(val) ? 'truthy' : 'falsy'})
+
+Operación: !${JSON.stringify(val)}
+Resultado: ${resultado}
+
+Doble negación: !!${JSON.stringify(val)} = ${dobleNegacion}
+
+💡 Explicación:
+- ! convierte a boolean y luego niega
+- !! convierte a boolean sin negar`;
+    }
+
+    // Test Short Circuit
+    function testShortCircuit() {
+      const val1 = evalCode(document.getElementById('short1').value);
+      const val2 = evalCode(document.getElementById('short2').value);
+      const op = document.getElementById('shortOp').value;
+      
+      let resultado;
+      if (op === '&&') {
+        resultado = val1 && val2;
+      } else {
+        resultado = val1 || val2;
+      }
+      
+      document.getElementById('shortOutput').textContent = 
+`Valor 1: ${JSON.stringify(val1)} (${Boolean(val1) ? 'truthy' : 'falsy'})
+Valor 2: ${JSON.stringify(val2)} (${Boolean(val2) ? 'truthy' : 'falsy'})
+
+Operación: ${JSON.stringify(val1)} ${op} ${JSON.stringify(val2)}
+Resultado: ${JSON.stringify(resultado)}
+
+💡 Cortocircuito:
+${op === '&&' ? 
+  `- Si val1 es falsy → devuelve val1 (no evalúa val2)
+- Si val1 es truthy → devuelve val2` :
+  `- Si val1 es truthy → devuelve val1 (no evalúa val2)
+- Si val1 es falsy → devuelve val2`}`;
+    }
+
+    // Test Nullish
+    function testNullish() {
+      const val = evalCode(document.getElementById('nullish1').value);
+      const def = evalCode(document.getElementById('nullish2').value);
+      
+      const conOr = val || def;
+      const conNullish = val ?? def;
+      
+      document.getElementById('nullishOutput').textContent = 
+`Valor: ${JSON.stringify(val)}
+Defecto: ${JSON.stringify(def)}
+
+Con OR (||):
+${JSON.stringify(val)} || ${JSON.stringify(def)} = ${JSON.stringify(conOr)}
+${Boolean(val) ? '✅ Valor es truthy → usa el valor' : '❌ Valor es falsy → usa el defecto'}
+
+Con Nullish (??):
+${JSON.stringify(val)} ?? ${JSON.stringify(def)} = ${JSON.stringify(conNullish)}
+${val == null ? '❌ Valor es null/undefined → usa el defecto' : '✅ Valor NO es null/undefined → usa el valor'}
+
+💡 Diferencia:
+- || usa defecto si valor es falsy (0, "", false, etc.)
+- ?? usa defecto SOLO si valor es null o undefined`;
+    }
+
+    // Test Chaining
+    function testChaining() {
+      const path = document.getElementById('chainPath').value;
+      
+      const usuario = {
+        nombre: "Ana",
+        direccion: {
+          ciudad: "Madrid",
+          cp: "28001"
+        }
+      };
+      
+      let resultado, error = false;
+      try {
+        resultado = eval(path);
+      } catch (e) {
+        resultado = e.message;
+        error = true;
+      }
+      
+      document.getElementById('chainOutput').textContent = 
+`Objeto disponible:
+${JSON.stringify(usuario, null, 2)}
+
+Evaluando: ${path}
+Resultado: ${JSON.stringify(resultado)}
+${error ? '❌ Error' : '✅ Éxito'}
+
+💡 Optional Chaining:
+- Si alguna propiedad es null/undefined → devuelve undefined
+- Sin ?. → lanzaría TypeError si la cadena se rompe`;
+    }
+
+    // Test Truthy/Falsy
+    function testTruthy() {
+      const input = document.getElementById('truthyTest').value;
+      const val = evalCode(input);
+      const isTruthy = Boolean(val);
+      
+      const falsyValues = [false, 0, -0, 0n, '', null, undefined, NaN];
+      const isFalsy = falsyValues.some(f => 
+        (Number.isNaN(f) && Number.isNaN(val)) || f === val
+      );
+      
+      document.getElementById('truthyOutput').textContent = 
+`Input: ${input}
+Valor evaluado: ${JSON.stringify(val)}
+Tipo: ${typeof val}
+
+Boolean(valor): ${isTruthy}
+Clasificación: ${isTruthy ? '✅ TRUTHY' : '❌ FALSY'}
+
+${isFalsy ? 
+  '❌ Este es uno de los 8 valores falsy:\nfalse, 0, -0, 0n, "", null, undefined, NaN' :
+  '✅ Es truthy (todo lo que NO es falsy)'}
+
+Ejemplo de uso:
+if (${input}) {
+  ${isTruthy ? '// ✅ Este bloque se ejecutaría' : '// ❌ Este bloque NO se ejecutaría'}
+}`;
+    }
+
+    // Inicializar
+    testAnd();
+  </script>
+</body>
+</html>
