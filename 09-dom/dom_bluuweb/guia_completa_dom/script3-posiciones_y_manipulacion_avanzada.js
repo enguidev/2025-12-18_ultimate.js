@@ -227,3 +227,231 @@ boxModerno.prepend(elementoPrepend);
 boxModerno.append(elementoAppend);
 
 console.log("  ✅ Métodos modernos aplicados");
+
+// ============================================
+// SECCIÓN 14: EJEMPLOS PRÁCTICOS DE INTERCAMBIO
+// ============================================
+
+console.log("\n" + "=".repeat(60));
+console.log("EJEMPLOS PRÁCTICOS - INTERCAMBIO DE ELEMENTOS");
+console.log("=".repeat(60));
+
+console.log("\n11. Ejemplo práctico - Insertar entre elementos:\n");
+
+// Crear lista de ejemplo para demostraciones
+const listaEjemplo = document.createElement("ul");
+listaEjemplo.id = "lista-ejemplo";
+listaEjemplo.style.cssText = `
+  background: #f0f0f0;
+  padding: 20px;
+  border-radius: 8px;
+  margin: 20px 0;
+`;
+
+// Añadir 5 elementos a la lista
+for (let i = 1; i <= 5; i++) {
+  const li = document.createElement("li");
+  li.textContent = `Elemento ${i}`;
+  li.style.margin = "5px 0";
+  listaEjemplo.appendChild(li);
+}
+
+document.body.appendChild(listaEjemplo);
+
+console.log("  ✅ Lista de ejemplo creada con 5 elementos");
+
+// EJEMPLO 1: Insertar un nuevo elemento entre el 3º y 4º
+console.log("\n  EJEMPLO 1: Insertar entre 3º y 4º elemento");
+
+const elementoNuevo = document.createElement("li");
+elementoNuevo.textContent = "Elemento NUEVO (entre 3 y 4)";
+elementoNuevo.style.cssText = "color: red; font-weight: bold; margin: 5px 0;";
+
+// Obtener referencia al 4º elemento (índice 3)
+const cuartoElemento = listaEjemplo.children[3];
+
+// Insertar ANTES del 4º elemento (quedará en posición 4, entre 3 y 4)
+listaEjemplo.insertBefore(elementoNuevo, cuartoElemento);
+
+console.log("  ✅ Elemento insertado entre 3º y 4º");
+console.log("  Método: insertBefore(nuevo, lista.children[3])");
+
+// ------------------------------------------
+// EJEMPLO 2: Intercambiar 2º y 4º elemento
+// ------------------------------------------
+
+console.log("\n12. Ejemplo práctico - Intercambiar elementos:\n");
+
+console.log("  EJEMPLO 2: Intercambiar 2º y 4º elemento");
+console.log("  Estado inicial:");
+Array.from(listaEjemplo.children).forEach((li, i) => {
+  console.log(`    [${i}]: ${li.textContent}`);
+});
+
+// Crear otra lista para demostrar el intercambio
+const listaIntercambio = listaEjemplo.cloneNode(true);
+listaIntercambio.id = "lista-intercambio";
+listaIntercambio.style.marginTop = "10px";
+document.body.appendChild(listaIntercambio);
+
+// MÉTODO 1: Con cloneNode
+console.log("\n  MÉTODO 1 - Con cloneNode:");
+
+// Seleccionar elementos a intercambiar
+const elem2 = listaIntercambio.children[1]; // 2º elemento (índice 1)
+const elem4 = listaIntercambio.children[3]; // 4º elemento (índice 3)
+
+// Clonar ambos elementos
+const clon2 = elem2.cloneNode(true);
+const clon4 = elem4.cloneNode(true);
+
+// Reemplazar: poner clon4 donde estaba el 2º
+listaIntercambio.replaceChild(clon4, elem2);
+
+// Reemplazar: poner clon2 donde estaba el 4º
+listaIntercambio.replaceChild(clon2, elem4);
+
+console.log("  ✅ Elementos intercambiados con replaceChild");
+console.log("  Estado final:");
+Array.from(listaIntercambio.children).forEach((li, i) => {
+  console.log(`    [${i}]: ${li.textContent}`);
+});
+
+// MÉTODO 2: Con insertBefore (más eficiente)
+console.log("\n  MÉTODO 2 - Con insertBefore (sin clonar):");
+
+// Crear tercera lista
+const listaIntercambio2 = listaEjemplo.cloneNode(true);
+listaIntercambio2.id = "lista-intercambio-2";
+listaIntercambio2.style.marginTop = "10px";
+document.body.appendChild(listaIntercambio2);
+
+// Seleccionar elementos
+const el2 = listaIntercambio2.children[1];
+const el4 = listaIntercambio2.children[3];
+
+// Guardar referencia al siguiente del 2º
+const despuesDel2 = el2.nextElementSibling;
+
+// Paso 1: Mover el 4º ANTES del 2º
+listaIntercambio2.insertBefore(el4, el2);
+
+// Paso 2: Mover el 2º a donde estaba el 4º (antes del que era siguiente del 4º)
+listaIntercambio2.insertBefore(el2, despuesDel2);
+
+console.log("  ✅ Elementos intercambiados con insertBefore");
+console.log("  Ventaja: No clona, mueve los elementos reales");
+
+// ------------------------------------------
+// EJEMPLO 3: Mover 2º entre 3º y 4º
+// ------------------------------------------
+
+console.log("\n13. Ejemplo práctico - Mover elemento específico:\n");
+
+console.log("  EJEMPLO 3: Mover 2º elemento entre 3º y 4º");
+
+// Crear cuarta lista
+const listaMover = listaEjemplo.cloneNode(true);
+listaMover.id = "lista-mover";
+listaMover.style.marginTop = "10px";
+document.body.appendChild(listaMover);
+
+console.log("  Estado inicial:");
+Array.from(listaMover.children).forEach((li, i) => {
+  console.log(`    [${i}]: ${li.textContent}`);
+});
+
+// Seleccionar el 2º elemento (índice 1)
+const elementoAMover = listaMover.children[1];
+
+// Seleccionar el 4º elemento (índice 3) - donde queremos insertar ANTES
+const referencia = listaMover.children[3];
+
+// Mover el 2º antes del 4º (quedará entre 3º y 4º)
+listaMover.insertBefore(elementoAMover, referencia);
+
+console.log("\n  Estado final:");
+Array.from(listaMover.children).forEach((li, i) => {
+  console.log(`    [${i}]: ${li.textContent}`);
+});
+
+console.log("\n  ✅ Elemento movido exitosamente");
+console.log("  Método: insertBefore(children[1], children[3])");
+
+// ALTERNATIVA: Usando nextElementSibling
+console.log("\n  ALTERNATIVA - Con nextElementSibling:");
+
+const listaMover2 = listaEjemplo.cloneNode(true);
+listaMover2.id = "lista-mover-2";
+listaMover2.style.marginTop = "10px";
+document.body.appendChild(listaMover2);
+
+const elemento2Lista = listaMover2.children[1]; // 2º elemento
+const elemento3Lista = listaMover2.children[2]; // 3º elemento
+
+// Insertar el 2º después del 3º (antes del siguiente del 3º)
+listaMover2.insertBefore(elemento2Lista, elemento3Lista.nextElementSibling);
+
+console.log("  ✅ Mismo resultado con nextElementSibling");
+console.log(
+  "  Método: insertBefore(children[1], children[2].nextElementSibling)"
+);
+
+// ------------------------------------------
+// FUNCIÓN AUXILIAR: Intercambiar dos elementos
+// ------------------------------------------
+
+console.log("\n14. Función reutilizable - Intercambiar:\n");
+
+/**
+ * Intercambia la posición de dos elementos hermanos
+ * @param {HTMLElement} elemento1 - Primer elemento
+ * @param {HTMLElement} elemento2 - Segundo elemento
+ */
+function intercambiarElementos(elemento1, elemento2) {
+  // Validar que tengan el mismo padre
+  if (elemento1.parentElement !== elemento2.parentElement) {
+    console.error("Los elementos deben tener el mismo padre");
+    return;
+  }
+
+  // Guardar referencia al siguiente del primer elemento
+  const siguiente1 = elemento1.nextElementSibling;
+
+  // Si elemento2 está justo después de elemento1
+  if (siguiente1 === elemento2) {
+    // Insertar elemento1 después de elemento2
+    elemento2.parentElement.insertBefore(
+      elemento1,
+      elemento2.nextElementSibling
+    );
+  } else {
+    // Mover elemento2 a donde estaba elemento1
+    elemento1.parentElement.insertBefore(elemento2, elemento1);
+
+    // Mover elemento1 a donde estaba elemento2
+    elemento2.parentElement.insertBefore(elemento1, siguiente1);
+  }
+}
+
+// Ejemplo de uso
+const listaFuncion = listaEjemplo.cloneNode(true);
+listaFuncion.id = "lista-funcion";
+listaFuncion.style.marginTop = "10px";
+document.body.appendChild(listaFuncion);
+
+const el1 = listaFuncion.children[0]; // Primer elemento
+const el3 = listaFuncion.children[2]; // Tercer elemento
+
+console.log("  Antes del intercambio:");
+console.log(`    [0]: ${listaFuncion.children[0].textContent}`);
+console.log(`    [2]: ${listaFuncion.children[2].textContent}`);
+
+intercambiarElementos(el1, el3);
+
+console.log("\n  Después del intercambio:");
+console.log(`    [0]: ${listaFuncion.children[0].textContent}`);
+console.log(`    [2]: ${listaFuncion.children[2].textContent}`);
+
+console.log("\n  ✅ Función intercambiarElementos() definida");
+console.log("  Uso: intercambiarElementos(elem1, elem2)");
