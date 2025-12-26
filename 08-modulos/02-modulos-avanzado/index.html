@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Módulos ES6 - Ejemplo Funcional</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>🚀 Módulos ES6 en JavaScript</h1>
+
+      <div class="info">
+        <strong>📝 Instrucciones:</strong>
+        <ol>
+          <li>
+            Abre la <strong>Consola del navegador</strong> (F12 → Console)
+          </li>
+          <li>Verás todos los ejemplos de imports funcionando</li>
+          <li>Los módulos se cargan automáticamente</li>
+        </ol>
+      </div>
+
+      <div class="success">
+        <strong>✅ Estructura de archivos:</strong>
+        <div class="file-structure">
+          📁 proyecto/<br />
+          ├── 📄 index.html (este archivo)<br />
+          ├── 📄 app.js (importa funciones)<br />
+          └── 📄 matematicas.js (exporta funciones)
+        </div>
+      </div>
+
+      <h2>📦 Tipos de Import/Export</h2>
+      <ul>
+        <li><code>export function nombre()</code> → Named Export</li>
+        <li>
+          <code>export default class</code> → Default Export (solo uno por
+          archivo)
+        </li>
+        <li><code>import { algo } from './archivo.js'</code> → Named Import</li>
+        <li><code>import Algo from './archivo.js'</code> → Default Import</li>
+        <li>
+          <code>import * as Todo from './archivo.js'</code> → Namespace Import
+        </li>
+      </ul>
+
+      <h2>🔑 Puntos importantes</h2>
+      <ul>
+        <li>Necesitas <code>type="module"</code> en el script</li>
+        <li>
+          Solo puede haber <strong>un</strong> <code>export default</code> por
+          archivo
+        </li>
+        <li>Siempre incluye la extensión <code>.js</code> en los imports</li>
+        <li>
+          Los módulos se ejecutan en
+          <strong>strict mode</strong> automáticamente
+        </li>
+        <li>Necesitas un servidor local (Live Server, http-server, etc.)</li>
+      </ul>
+
+      <div class="info">
+        <strong>💡 Abre la consola para ver los resultados</strong>
+      </div>
+    </div>
+
+    <!-- ⭐ IMPORTANTE: type="module" es necesario -->
+    <script type="module" src="./app.js"></script>
+  </body>
+</html>
