@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Eventos en JavaScript - Guía Interactiva</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <h1>⚡ Eventos en JavaScript</h1>
+        <p class="subtitle">Guía Interactiva Completa</p>
+      </header>
+
+      <div class="content">
+        <!-- SECCIÓN 1: EVENTOS DE RATÓN -->
+        <div class="section">
+          <h2>🖱️ Eventos de Ratón</h2>
+
+          <div class="info">
+            <strong>Instrucciones:</strong> Haz click, doble click, pasa el
+            ratón y haz clic derecho sobre el cuadrado.
+          </div>
+
+          <div class="demo-box">
+            <div class="cuadrado" id="cuadradoMouse">Interactúa conmigo</div>
+            <div class="output" id="outputMouse"></div>
+          </div>
+
+          <div class="warning">
+            <strong>Eventos disponibles:</strong>
+            <code>click</code>, <code>dblclick</code>, <code>contextmenu</code>,
+            <code>mouseenter</code>, <code>mouseleave</code>,
+            <code>mousemove</code>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 2: EVENTOS DE TECLADO -->
+        <div class="section">
+          <h2>⌨️ Eventos de Teclado</h2>
+
+          <div class="info">
+            <strong>Instrucciones:</strong> Escribe en el campo y presiona
+            diferentes teclas (Enter, Escape, flechas, etc.)
+          </div>
+
+          <div class="demo-box">
+            <input
+              type="text"
+              id="inputTeclado"
+              placeholder="Escribe aquí y presiona teclas..."
+            />
+            <div class="output" id="outputTeclado"></div>
+          </div>
+
+          <div class="success">
+            <strong>💡 Tip:</strong> Prueba combinaciones como Ctrl+S,
+            Shift+Enter, Alt+A
+          </div>
+        </div>
+
+        <!-- SECCIÓN 3: DELEGACIÓN DE EVENTOS -->
+        <div class="section">
+          <h2>🎯 Delegación de Eventos</h2>
+
+          <div class="info">
+            <strong>Concepto:</strong> Un solo listener en el padre captura
+            eventos de todos los hijos. <strong>Ventaja:</strong> Funciona con
+            elementos dinámicos.
+          </div>
+
+          <div class="demo-box">
+            <div class="grid" id="contenedorBotones">
+              <!-- Botones se crean dinámicamente -->
+            </div>
+            <button id="btnAgregarBoton">➕ Añadir Botón Dinámico</button>
+            <div class="output" id="outputDelegacion"></div>
+          </div>
+        </div>
+
+        <!-- SECCIÓN 4: FORMULARIO COMPLETO -->
+        <div class="section">
+          <h2>📝 Eventos de Formularios</h2>
+
+          <div class="info">
+            <strong>Instrucciones:</strong> Completa el formulario. Observa cómo
+            se valida en tiempo real.
+          </div>
+
+          <form id="formulario" novalidate>
+            <label for="nombre">
+              Nombre <span class="obligatorio">*</span>
+            </label>
+            <input
+              type="text"
+              id="nombre"
+              name="nombre"
+              placeholder="Tu nombre completo"
+            />
+
+            <label for="email">
+              Email <span class="obligatorio">*</span>
+            </label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="ejemplo@correo.com"
+            />
+
+            <label for="telefono">Teléfono (solo números)</label>
+            <input
+              type="tel"
+              id="telefono"
+              name="telefono"
+              placeholder="600123456"
+            />
+
+            <label for="provincia">
+              Provincia <span class="obligatorio">*</span>
+            </label>
+            <select id="provincia" name="provincia">
+              <option value="">-- Selecciona --</option>
+              <option value="Madrid">Madrid</option>
+              <option value="Barcelona">Barcelona</option>
+              <option value="Valencia">Valencia</option>
+              <option value="Sevilla">Sevilla</option>
+              <option value="Málaga">Málaga</option>
+            </select>
+
+            <label>Aficiones:</label>
+            <div class="checkbox-group">
+              <label>
+                <input
+                  type="checkbox"
+                  name="aficiones"
+                  value="Deportes"
+                  id="deportes"
+                />
+                Deportes
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="aficiones"
+                  value="Lectura"
+                  id="lectura"
+                />
+                Lectura
+              </label>
+              <label>
+                <input
+                  type="checkbox"
+                  name="aficiones"
+                  value="Música"
+                  id="musica"
+                />
+                Música
+              </label>
+            </div>
+
+            <label>Sexo:</label>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="sexo" value="Hombre" id="hombre" />
+                Hombre
+              </label>
+              <label>
+                <input type="radio" name="sexo" value="Mujer" id="mujer" />
+                Mujer
+              </label>
+              <label>
+                <input type="radio" name="sexo" value="Otro" id="otro" />
+                Otro
+              </label>
+            </div>
+
+            <label for="mensaje">Mensaje:</label>
+            <textarea
+              id="mensaje"
+              name="mensaje"
+              rows="4"
+              placeholder="Escribe un mensaje (máx 500 caracteres)"
+            ></textarea>
+
+            <div style="margin-top: 20px; display: flex; gap: 10px">
+              <button type="submit">✅ Validar y Enviar</button>
+              <button type="reset" style="background: #6c757d">
+                🔄 Limpiar
+              </button>
+            </div>
+
+            <div id="resultado"></div>
+          </form>
+        </div>
+
+        <!-- SECCIÓN 5: PROPAGACIÓN -->
+        <div class="section">
+          <h2>🎈 Propagación de Eventos</h2>
+
+          <div class="info">
+            <strong>Concepto:</strong> Los eventos se propagan de hijo a padre
+            (bubbling) o de padre a hijo (capturing).
+          </div>
+
+          <div class="demo-box">
+            <div
+              id="padre"
+              style="
+                background: #43e97b;
+                padding: 40px;
+                border-radius: 10px;
+                cursor: pointer;
+              "
+            >
+              <strong>PADRE</strong>
+              <div
+                id="hijo"
+                style="
+                  background: #38f9d7;
+                  padding: 30px;
+                  margin: 20px;
+                  border-radius: 8px;
+                  cursor: pointer;
+                "
+              >
+                <strong>HIJO</strong>
+              </div>
+            </div>
+            <div class="output" id="outputPropagacion"></div>
+          </div>
+
+          <div class="warning">
+            <strong>⚠️ Importante:</strong> Haz click en el HIJO y observa que
+            el PADRE también captura el evento (bubbling).
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      // Esperar a que el DOM esté listo
+      document.addEventListener("DOMContentLoaded", function () {
+        console.log("=== GUÍA DE EVENTOS INICIADA ===\n");
+
+        //------------------------------------------------------------------------------------
+        // SECCIÓN 1: EVENTOS DE RATÓN
+        //------------------------------------------------------------------------------------
+
+        const cuadradoMouse = document.getElementById("cuadradoMouse");
+        const outputMouse = document.getElementById("outputMouse");
+
+        function logMouse(mensaje) {
+          const tiempo = new Date().toLocaleTimeString();
+          outputMouse.textContent += `[${tiempo}] ${mensaje}\n`;
+          outputMouse.scrollTop = outputMouse.scrollHeight;
+        }
+
+        cuadradoMouse.addEventListener("click", function (e) {
+          logMouse(`🖱️ CLICK en (${e.clientX}, ${e.clientY})`);
+        });
+
+        cuadradoMouse.addEventListener("dblclick", function () {
+          logMouse("🖱️🖱️ DOBLE CLICK");
+        });
+
+        cuadradoMouse.addEventListener("contextmenu", function (e) {
+          e.preventDefault();
+          logMouse("🖱️ CLIC DERECHO (menú contextual prevenido)");
+        });
+
+        cuadradoMouse.addEventListener("mouseenter", function () {
+          logMouse("👉 Ratón ENTRÓ");
+          this.style.transform = "scale(1.1)";
+        });
+
+        cuadradoMouse.addEventListener("mouseleave", function () {
+          logMouse("👈 Ratón SALIÓ");
+          this.style.transform = "scale(1)";
+        });
+
+        let moveCount = 0;
+        cuadradoMouse.addEventListener("mousemove", function (e) {
+          moveCount++;
+          if (moveCount % 20 === 0) {
+            // Solo mostrar cada 20 movimientos
+            logMouse(`🎯 Movimiento en (${e.offsetX}, ${e.offsetY})`);
+          }
+        });
+
+        //------------------------------------------------------------------------------------
+        // SECCIÓN 2: EVENTOS DE TECLADO
+        //------------------------------------------------------------------------------------
+
+        const inputTeclado = document.getElementById("inputTeclado");
+        const outputTeclado = document.getElementById("outputTeclado");
+
+        function logTeclado(mensaje) {
+          const tiempo = new Date().toLocaleTimeString();
+          outputTeclado.textContent += `[${tiempo}] ${mensaje}\n`;
+          outputTeclado.scrollTop = outputTeclado.scrollHeight;
+        }
+
+        inputTeclado.addEventListener("keydown", function (e) {
+          let msg = `⌨️ TECLA: "${e.key}"`;
+
+          if (e.ctrlKey) msg += " + Ctrl";
+          if (e.shiftKey) msg += " + Shift";
+          if (e.altKey) msg += " + Alt";
+
+          logTeclado(msg);
+
+          // Combinaciones especiales
+          if (e.ctrlKey && e.key === "s") {
+            e.preventDefault();
+            logTeclado("💾 Ctrl+S detectado (guardar prevenido)");
+          }
+        });
+
+        inputTeclado.addEventListener("keyup", function (e) {
+          if (["Enter", "Escape", "Tab"].includes(e.key)) {
+            logTeclado(`⬆️ Tecla ${e.key} soltada`);
+          }
+        });
+
+        //------------------------------------------------------------------------------------
+        // SECCIÓN 3: DELEGACIÓN DE EVENTOS
+        //------------------------------------------------------------------------------------
+
+        const contenedorBotones = document.getElementById("contenedorBotones");
+        const btnAgregarBoton = document.getElementById("btnAgregarBoton");
+        const outputDelegacion = document.getElementById("outputDelegacion");
+
+        // Crear botones iniciales
+        for (let i = 1; i <= 4; i++) {
+          const btn = document.createElement("div");
+          btn.className = "btn-lista";
+          btn.textContent = `Botón ${i}`;
+          btn.dataset.numero = i;
+          contenedorBotones.appendChild(btn);
+        }
+
+        // UN SOLO listener en el padre (delegación)
+        contenedorBotones.addEventListener("click", function (e) {
+          if (e.target.classList.contains("btn-lista")) {
+            const numero = e.target.dataset.numero;
+            const tiempo = new Date().toLocaleTimeString();
+            outputDelegacion.textContent += `[${tiempo}] Click en Botón ${numero}\n`;
+            outputDelegacion.scrollTop = outputDelegacion.scrollHeight;
+            console.log("Delegación: Click en botón", numero);
+          }
+        });
+
+        // Añadir botones dinámicamente
+        let contador = 5;
+        btnAgregarBoton.addEventListener("click", function () {
+          const nuevoBtn = document.createElement("div");
+          nuevoBtn.className = "btn-lista";
+          nuevoBtn.textContent = `Botón ${contador}`;
+          nuevoBtn.dataset.numero = contador;
+          contenedorBotones.appendChild(nuevoBtn);
+
+          const tiempo = new Date().toLocaleTimeString();
+          outputDelegacion.textContent += `[${tiempo}] ✅ Botón ${contador} añadido (funciona automáticamente)\n`;
+          outputDelegacion.scrollTop = outputDelegacion.scrollHeight;
+
+          contador++;
+        });
+
+        //------------------------------------------------------------------------------------
+        // SECCIÓN 4: FORMULARIO (código del tercer archivo)
+        //------------------------------------------------------------------------------------
+
+        // (El código del formulario ya está en el tercer archivo JavaScript)
+        // Aquí solo añadimos los listeners básicos
+
+        //------------------------------------------------------------------------------------
+        // SECCIÓN 5: PROPAGACIÓN
+        //------------------------------------------------------------------------------------
+
+        const padre = document.getElementById("padre");
+        const hijo = document.getElementById("hijo");
+        const outputPropagacion = document.getElementById("outputPropagacion");
+
+        function logPropagacion(mensaje) {
+          const tiempo = new Date().toLocaleTimeString();
+          outputPropagacion.textContent += `[${tiempo}] ${mensaje}\n`;
+          outputPropagacion.scrollTop = outputPropagacion.scrollHeight;
+        }
+
+        padre.addEventListener("click", function (e) {
+          logPropagacion(`🟢 PADRE capturó el click (target: ${e.target.id})`);
+        });
+
+        hijo.addEventListener("click", function (e) {
+          logPropagacion(`🔵 HIJO capturó el click`);
+          // No hacemos stopPropagation() para ver el bubbling
+        });
+
+        // Limpiar consolas
+        outputMouse.textContent = "";
+        output.textContent = "Interactúa con el cuadrado...\n";
+        outputTeclado.textContent = "Escribe y presiona teclas...\n";
+        outputDelegacion.textContent = "Haz click en los botones...\n";
+        outputPropagacion.textContent = "Haz click en el HIJO o el PADRE...\n";
+      });
+    </script>
+  </body>
+</html>
