@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <meta charset="UTF-8" />
-    <title>Ejemplos de Formularios en JavaScript</title>
-    <!-- Cambia el nombre del script aquí según el ejemplo que quieras probar -->
-    <script src="03-formularios_validacion_html5.js" defer></script>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <h1>🧾 Ejemplos de Formularios en JavaScript</h1>
+<head>
+  <meta charset="UTF-8">
+  <title>Ejemplos de Formularios en JavaScript</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>🧾 Ejemplos de Formularios en JavaScript</h1>
 
-    <form id="formulario">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required minlength="3" />
-      <!--Para el 2º .js-->
-      <!-- <input type="text" id="nombre" name="nombre" /> -->
+  <form id="formulario">
+    <label for="nombre">Nombre: <span class="obligatorio">*</span></label>
+    <input type="text" id="nombre" name="nombre" required minlength="3">
+    
+    <label for="email">Email: <span class="obligatorio">*</span></label>
+    <input type="email" id="email" name="email" required>
+    
+    <!-- AÑADIR: Más campos para ejemplos completos -->
+    <label for="telefono">Teléfono:</label>
+    <input type="tel" id="telefono" name="telefono" pattern="[0-9]{9}">
+    
+    <label for="mensaje">Mensaje:</label>
+    <textarea id="mensaje" name="mensaje" maxlength="200"></textarea>
 
-      <label for="email">Correo electrónico:</label>
-      <input type="email" id="email" name="email" required />
-      <!--Para el 2º .js-->
-      <!-- <input type="email" id="email" name="email" /> -->
+    <button type="submit">Enviar</button>
+    <button type="button" class="btn">Resetear</button>
+  </form>
 
-      <button type="submit">Enviar</button>
-      <button type="button" class="btn">Resetear</button>
-    </form>
-  </body>
+  <!-- Cambia aquí el script según el ejemplo -->
+  <script src="01-formularios_interaccion_basica.js"></script>
+</body>
 </html>
